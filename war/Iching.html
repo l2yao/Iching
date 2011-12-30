@@ -11,8 +11,11 @@
     <!--                                                               -->
     <!-- Consider inlining CSS to reduce the number of requested files -->
     <!--                                                               -->
-    <link type="text/css" rel="stylesheet" href="Iching.css">
+    <link type="text/css" rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+    
 	<link type="text/css" rel="stylesheet" href="mobiscroll-1.5.2.css"/>
+	
+	<link type="text/css" rel="stylesheet" href="Iching.css">
     <!--                                           -->
     <!-- Any title is fine                         -->
     <!--                                           -->
@@ -25,12 +28,12 @@
     <!--                                           -->
     <script type="text/javascript" language="javascript" src="iching/iching.nocache.js"></script>
     <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
     <script src="mobiscroll-1.5.2.js" type="text/javascript"></script>
     <script type="text/javascript">
        $(document).ready(function () {
            // Date with external button
-           $('#date').scroller({ preset: 'datetime' });
+           $('#date').scroller({ preset: 'datetime' });           
        });
     </script>
   </head>
@@ -65,11 +68,11 @@
       <div class="hero-unit">        
         <p>	      
 	        <div data-role="fieldcontain">
-                <label for="date1">八字起卦</label>
+                <label for="date">八字起卦</label>
                 <input type="text" name="date" id="date" class="mobiscroll" value="01.01.2011" />
-            </div>
-	    </p>
-        <p><a class="btn primary large">卦象 &raquo;</a></p>
+                <a class="btn primary large">卦象 &raquo;</a>
+            </div>            
+	    </p>        
       </div>
 
       <!-- Example row of columns -->
