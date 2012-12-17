@@ -1,2 +1,0 @@
-serviceClass: org.iching.client.GreetingService
-path: FFA353FA0C962412B2AB8EA9D2331DD5.gwt.rpc
