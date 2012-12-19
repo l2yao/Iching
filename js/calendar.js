@@ -597,6 +597,7 @@ function set_curlocation(){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
             Cp11_J.value = position.coords.longitude;
+            Cp11_W.value = position.coords.latitude;
         });
     }
 }
