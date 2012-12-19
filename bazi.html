@@ -40,8 +40,8 @@
                     <a class="brand" href="index.html">易经风水</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><a href="bazi.html">八字</a></li>
-                            <li class="active"><a href="zhanbu.html">占卜</a></li>
+                            <li class="active"><a href="bazi.html">八字</a></li>
+                            <li><a href="zhanbu.html">占卜</a></li>
                             <li><a href="fengshui.html">风水</a></li>
                             <li><a href="calendar.html">万年历</a></li>
                         </ul>
@@ -59,6 +59,36 @@
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
+                <form class="form-horizontal">
+                    <div class="control-group">
+                    <label class="control-label">时间</label>
+                    <div class="controls">
+                      <select>
+                        <option>公历</option>
+                        <option>农历</option>
+                        </select>
+                        <input class="input-small" type="date" id="input-date">
+                        <input class="input-small" type="time" id="input-time">
+                        <button class="btn btn-primary">此时</button>
+                    </div>
+                    </div>
+                    
+                    <div class="control-group">
+                    <label class="control-label">地点</label>
+                    <div class="controls">
+                      <input type="number" id="input-latitude">
+                      <input type="number" id="input-longitude">
+                      <button class="btn btn-primary">此地</button>
+                    </div>
+                    </div>
+                    
+                    <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn btn-large btn-primary">排卦</button>
+                    </div>
+                    </div>
+                    
+                </form>
             </div>
 
             <hr>
