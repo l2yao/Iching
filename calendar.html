@@ -59,38 +59,22 @@
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <table class="table">
-                  <tr><td width="100%">
-                  <!--本地时间--><span id=Clock1 style='color:red;font-weight:bold'></span>
-                  <!--时区选择--><select id=Sel_zhou onchange="change_zhou()"></select> <select id=Sel_dq onchange="change_dq()"></select>
-                  <!--外地时间--><span id=Sel_sqsm></span>&nbsp;<span id=Clock2 style='font-weight:bold;color:blue'></span>
-                  </td></tr>
 
-                  <tr><td width="100%">
-                  <!--软件版本--><span>地理经纬度</span>
-                  <!--经纬选择--><select id=Sel1 onchange="change(0)"></select> <select id=Sel2 onchange="change2()"></select>
-                  <!--经度纬度--><span id=Cal_zdzb></span>
-                  </td></tr>
-
-                  <tr><td>
-                  <div class="btn-group">
-                  <button class="btn" onclick="showPage(1)">月历</button>
-                  <button class="btn" onclick="showPage(2)">年历</button>
-                  <button class="btn" onclick="showPage(3)">日月食</button>
-                  <button class="btn" onclick="showPage(4)">地方食</button>
-                  <button class="btn" onclick="showPage(5)">星历</button>
-                  <button class="btn" onclick="showPage(6)">天象</button>
-                  <button class="btn" onclick="showPage(7)">恒星</button>
-                  <button class="btn" onclick="showPage(8)">气朔</button>
-                  <button class="btn" onclick="showPage(9)">升降</button>
-                  <button class="btn" onclick="showPage(10)">日食概略</button>
-                  <button class="btn" onclick="showPage(11)">八字</button>
-                  <button class="btn" onclick="showPage(12)">工具</button>
-                  <button class="btn" onclick="showPage(13)">常数</button>
-                  </div>
-                  </td></tr>
-                </table>
-
+              <div class="btn-group">
+              <button class="btn" onclick="showPage(1)">月历</button>
+              <button class="btn" onclick="showPage(2)">年历</button>
+              <button class="btn" onclick="showPage(3)">日月食</button>
+              <button class="btn" onclick="showPage(4)">地方食</button>
+              <button class="btn" onclick="showPage(5)">星历</button>
+              <button class="btn" onclick="showPage(6)">天象</button>
+              <button class="btn" onclick="showPage(7)">恒星</button>
+              <button class="btn" onclick="showPage(8)">气朔</button>
+              <button class="btn" onclick="showPage(9)">升降</button>
+              <button class="btn" onclick="showPage(10)">日食概略</button>
+              <button class="btn" onclick="showPage(11)">八字</button>
+              <button class="btn" onclick="showPage(12)">工具</button>
+              <button class="btn" onclick="showPage(13)">常数</button>
+              </div>
 
                 <table class="table">
                 <!--帮助-->
@@ -500,6 +484,20 @@
 
             </div>
 
+            <div class="row">
+                <div class="span4">
+                  <!--本地时间--><span id=Clock1 style='color:red;font-weight:bold'></span>
+                </div>
+                <div class="span4">
+                  <!--时区选择--><select id=Sel_zhou onchange="change_zhou()"></select> <select id=Sel_dq onchange="change_dq()"></select><br>
+                  <!--外地时间--><span id=Sel_sqsm></span>&nbsp;<span id=Clock2 style='font-weight:bold;color:blue'></span>
+                </div>
+                <div class="span4">
+                  <!--经纬选择--><select id=Sel1 onchange="change(0)"></select> <select id=Sel2 onchange="change2()"></select><br>
+                  <!--经度纬度--><span id=Cal_zdzb></span>
+                </div>
+            </div>
+            <hr>
             <footer>
                 <p>&copy; Yao Long 2012</p>
             </footer>
