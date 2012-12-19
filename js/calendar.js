@@ -593,6 +593,14 @@ function showPage(pg){
   if(pg==13) page13.style.display='block'; //常数表
 }
 
+function set_curlocation(){
+    if (navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+            Cp11_J.value = position.coords.longitude;
+        });
+    }
+}
+
 /********************
 当前时间初始化,在屏幕上显示时间、保存本地时区信息等
 *********************/
@@ -709,6 +717,7 @@ function ML_calc(){
 //ML_calc(); //在时间、地标初始化完成后就可执行
 
 function ML_settime(){ set_date_screen(1); ML_calc(); }
+function ML_setlocation() {set_curlocation();ML_calc();}
 
 /**********************
 月历的年、月跳转控制函数
