@@ -98,10 +98,12 @@
 
                 <!--月历表-->
                 <tr id=page1>
-                 <td width=25% valign=top style='line-height: 150%' class=dRig>
-                  <br><b>　提示：</b>如果按住ctrl键不放，再将鼠标移出日历区，即可保持该日信息摘要不变；日月升降是本地时间，气朔时刻是北京时间；输入公元前212年方法是B212或*212或-211；BC4713至9999年有效,<font color=red><b><i>BC722年以后与实历相符。</i></b></font><br><br>
-                  <!--日月出没--><div align=center id=Cal5></div><br>
-                  <!--月相节气--><div align=center id=Cal4></div>
+                 <td width=25% valign=top class=dRig>
+                  <!--日月出没--><div class="alert" id=Cal5></div>
+                  <!--月相节气--><div class="alert" id=Cal4></div>
+                  <!--农历信息--><div class="alert" id=Cal_pan_in></div>
+                  <div id=Cal_pan></div>
+                  
                  </td>
 
                  <td width=75% valign=top>
@@ -465,7 +467,7 @@
                 一AU长度：1.49597870691*10<sup>11</sup>米(±3米)<br>
                 章动常数(标准历元2000年)：N = 9".2052331<br>
                 太阳视差：π = 8".794144<br>
-                光行差常数(标准历元2000年)：κ = 20".49552<br>
+                光行差常数(标准历元2000年)：κ = 20.49552<br>
                 地球扁率： f = 0.00335281 = 1/298.25642<br>
                 日心引力常数：GS = 1.32712442076*10<sup>20</sup>米<sup>3</sup>/秒<sup>2</sup><br>
                 太阳质量：S = GS/G = 1.9888*10<sup>30</sup>千克<br>
@@ -496,10 +498,7 @@
 
                 </table>
 
-
             </div>
-
-            <hr>
 
             <footer>
                 <p>&copy; Yao Long 2012</p>
