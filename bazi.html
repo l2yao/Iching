@@ -69,7 +69,7 @@
                         </select>
                         <input class="input-small" type="date" id="input-date">
                         <input class="input-small" type="time" id="input-time">
-                        <button class="btn btn-primary">此时</button>
+                        <button class="btn btn-primary" id="getCurtime">此时</button>
                     </div>
                     </div>
                     
@@ -78,13 +78,13 @@
                     <div class="controls">
                       <input type="number" id="input-latitude">
                       <input type="number" id="input-longitude">
-                      <button class="btn btn-primary">此地</button>
+                      <button class="btn btn-primary" id="getCurlocation">此地</button>
                     </div>
                     </div>
                     
                     <div class="control-group">
                     <div class="controls">
-                      <button type="submit" class="btn btn-large btn-primary">排卦</button>
+                      <button class="btn btn-large btn-primary" id="getBazi">排卦</button>
                     </div>
                     </div>
                     
@@ -104,7 +104,15 @@
 
         <script src="js/vendor/bootstrap.min.js"></script>
 
-        <script src="js/main.js"></script>
+        <script language=javascript src="js/lunar/tools.js"></script><!--工具函数-->
+        <script language=javascript src="js/lunar/eph0.js"></script> <!--天文常数等-->
+        <script language=javascript src="js/lunar/ephB.js"></script> <!--恒星计算(如果不须要恒星,删除此行)-->
+        <script language=javascript src="js/lunar/eph.js"></script>  <!--星历模块-->
+        <script language=javascript src="js/lunar/JW.js"></script>   <!--全国城市经纬数据库及皇帝纪年数据库-->
+        <script language=javascript src="js/lunar/lunar.js"></script><!--日历物件-->
+        <script language=javascript src="js/lunar/help.js"></script> <!--即时帮助-->
+        <script language=javascript src="js/lunar/page_gj.js"></script> <!--工具页面函数-->
+        <script src="js/bazi.js"></script>
 
     </body>
 </html>
