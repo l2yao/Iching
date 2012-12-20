@@ -61,24 +61,30 @@
             <div class="hero-unit">
 
 
-            <label class="control-label">时间</label>
-                
+            <label>时间</label>
+            <div class="input-prepend">   
             <select>
             <option>公历</option>
             <option>农历</option>
             </select>
+            <span class="add-on">日期</span>
             <input class="input-small" type="date" id="input-date">
+            <span class="add-on">时间</span>
             <input class="input-small" type="time" id="input-time">
             <button class="btn btn-primary" id="getCurtime">此时</button>
-        
-            <label class="control-label">地点</label>
-            <div class="controls">
-              <input class="input-small" type="number" id="input-latitude">
-              <input class="input-small" type="number" id="input-longitude">
-              <button class="btn btn-primary" id="getCurlocation">此地</button>
             </div>
-                
-            <button class="btn btn-large btn-primary" id="getBazi">排卦</button>                
+            <label>地点</label>
+            <div class="input-prepend">
+            <span class="add-on">经度</span>
+            <input class="input-small" type="number" id="input-longitude">
+            <span class="add-on">纬度</span>
+            <input class="input-small" type="number" id="input-latitude">
+            <button class="btn btn-primary" id="getCurlocation">此地</button>
+            </div>
+
+            <div>
+            <button class="btn btn-large btn-primary" id="getBazi">排卦</button>
+            </div>
             <div id="guaxiang"></div>
 
             </div>
