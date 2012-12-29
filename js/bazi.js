@@ -16,17 +16,17 @@ $(document).ready(function() {
      JD.setFromJD(curJD+J2000);
 
      $('#input-date').attr('value', JD.Y+'-'+JD.M+'-'+JD.D);
-     $('#input-time').attr('value', JD.h+':'+JD.m);
+     $('#input-time').attr('value', JD.h+':'+JD.m+':'+Math.floor(JD.s));
     });
 
     $('#getBazi').click(function(){
         var ob = new Object();
         var t = timeStr2hour($('#input-time').attr('value'));
         var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
-        obb.mingLiBaZi(jd + curTZ/24-J2000, $('#input-longitude').attr('value')/radd, ob );
+        var longitude = new Number($('#input-longitude').attr('value'));
+        obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
         
-        var bazi = '<table class="table"><tbody><tr class="info"><td><h2>'+ob.bz_jn+'年</h2></td><td><h2>'+ob.bz_jy+'月</h2></td><td><h2>'+ob.bz_jr+'日</h2></td><td><h2>'+ob.bz_js+'时</h2></td></tr></tbody>';
-        bazi += '</table>';
+        var bazi = '<table class="table"><tbody><tr class="info"><td><h2>'+ob.bz_jn+'年</h2></td><td><h2>'+ob.bz_jy+'月</h2></td><td><h2>'+ob.bz_jr+'日</h2></td><td><h2>'+ob.bz_js+'时</h2></td></tr></tbody></table>';
         $('#guaxiang').html(bazi);
     });
     
