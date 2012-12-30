@@ -26,8 +26,11 @@ $(document).ready(function() {
         var longitude = new Number($('#input-longitude').attr('value'));
         obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
         
-        var bazi = '<table class="table"><tbody><tr class="info"><td><h2>'+ob.bz_jn+'年</h2></td><td><h2>'+ob.bz_jy+'月</h2></td><td><h2>'+ob.bz_jr+'日</h2></td><td><h2>'+ob.bz_js+'时</h2></td></tr></tbody></table>';
+        var bazi = '<table class="table table-bordered"><thead><tr><td><h2>八字</h2></td><td><h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2></td></tr></thead><tbody><tr><td><h2>卦象</h2></td><td><div id="gua"></div></td></tr></tbody></table>';
+        
         $('#guaxiang').html(bazi);
+        
+        Iching.drawHexagram('gua', Iching.Hexagram[0]);
     });
     
     $('#getCurlocation').click();
