@@ -21,6 +21,11 @@ $(document).ready(function() {
 
     $('#getBazi').click(function(){
         var ob = new Object();
+        var date = $('#input-date').attr('value');
+        var array = date.split('-');
+        JD.Y = Number(array[0]);
+        JD.M = Number(array[1]);
+        JD.D = Number(array[2]);
         var t = timeStr2hour($('#input-time').attr('value'));
         var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
         var longitude = new Number($('#input-longitude').attr('value'));
