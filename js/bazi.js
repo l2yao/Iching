@@ -30,7 +30,22 @@ $(document).ready(function() {
         
         $('#guaxiang').html(bazi);
         
-        Iching.drawHexagram('gua', Iching.Hexagram[0]);
+        var d0 = int2(JD.toJD()) - J2000;
+        if(!SSQ.ZQ.length || d0<SSQ.ZQ[0] || d0>=SSQ.ZQ[24]) {
+            SSQ.calcY(d0);
+        }
+        var mk = int2( (d0-SSQ.HS[0])/30 );  
+        if(mk<13 && SSQ.HS[mk+1]<=d0) mk++; //农历所在月的序数
+        var nlr = d0 - SSQ.HS[mk];
+        
+        if(mk <2) {
+            mk += 11;
+        }else{
+            mk -= 1;
+        }
+        var nongli_yue = (mk-1) % 8;
+        var nongli_ri = nlr % 8;
+        Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue]);
     });
     
     $('#getCurlocation').click();

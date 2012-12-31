@@ -76,6 +76,11 @@ var Iching = (function() {
             var upper_index = hexagram_index % 8;
             Iching.drawBagua(paper, Iching.Trigram[upper_index], 50, 50, 50, 200, 30);
             Iching.drawBagua(paper, Iching.Trigram[lower_index], 50, 210, 50, 200, 30);
+        },
+        drawTrigrams : function(div, upper_trigram, lower_trigram) {
+            var paper = Raphael(div, 300, 420);
+            Iching.drawBagua(paper, upper_trigram, 50, 50, 50, 200, 30);
+            Iching.drawBagua(paper, lower_trigram, 50, 210, 50, 200, 30);
         }
     }
     return iching;
