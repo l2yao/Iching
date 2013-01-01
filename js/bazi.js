@@ -31,7 +31,7 @@ $(document).ready(function() {
         var longitude = new Number($('#input-longitude').attr('value'));
         obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
         
-        var bazi = '<table class="table table-bordered"><thead><tr><td><h2>八字</h2></td><td><h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2></td></tr></thead><tbody><tr><td><h2>卦象</h2></td><td><div id="gua"></div></td></tr></tbody></table>';
+        var bazi = '<table class="table table-bordered"><thead><tr><td><h2>八字</h2></td><td><h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2></td></tr></thead><tbody><tr><td><h2>卦名</h2></td><td><div id="gua-name"></div></td></tr><tr><td><h2>卦象</h2></td><td><div id="gua"></div></td></tr></tbody></table>';
         
         $('#guaxiang').html(bazi);
         
@@ -50,6 +50,13 @@ $(document).ready(function() {
         }
         var nongli_yue = (mk-1) % 8;
         var nongli_ri = nlr % 8;
+        
+        var ri_index = Iching.Trigram.indexOf(Iching.xiantian_bagua[nongli_ri]);
+        var ri_symbol = Iching.Trigram_symbol[ri_index];
+        var yue_index = Iching.Trigram.indexOf(Iching.xiantian_bagua[nongli_yue]);
+        var yue_symbol = Iching.Trigram_symbol[yue_index];
+        var hexagram_symbol = Iching.Hexagram_name[ri_index+yue_index*8];
+        $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+'</h2>');
         Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue]);
     });
     
