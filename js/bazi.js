@@ -56,7 +56,9 @@ $(document).ready(function() {
         var yue_index = Iching.Trigram.indexOf(Iching.xiantian_bagua[nongli_yue]);
         var yue_symbol = Iching.Trigram_symbol[yue_index];
         var hexagram_symbol = Iching.Hexagram_name[ri_index+yue_index*8];
-        $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+'</h2>');
+        var gong_name = Iching.getGongName(Iching.Hexagram[ri_index+yue_index*8]);
+        var gong_index = Iching.Trigram_name.indexOf(gong_name);
+        $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+Iching.Trigram_wuxing[gong_index]+'</h2>');
         Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue]);
     });
     
