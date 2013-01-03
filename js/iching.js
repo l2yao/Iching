@@ -11,6 +11,7 @@ var Iching = (function() {
         dizhi: ['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'],
         dizhi_wuxing: ['水','土','木','木','土','火','火','土','金','金','土','水'],
         wuxing: ['土','金','水','木','火'],
+        liushou: ['青龍','朱雀','勾陳','騰蛇','白虎','玄武'],
         Hexagram : ['䷀','䷡','䷄','䷙','䷊','䷈','䷍','䷪',
                     '䷘','䷲','䷂','䷚','䷗','䷩','䷔','䷐',
                     '䷅','䷧','䷜','䷃','䷆','䷺','䷿','䷮',
@@ -143,27 +144,29 @@ var Iching = (function() {
             var paper = Raphael(div, 300, 210);
             Iching.drawBagua(paper, trigram, 50, 50, 50, 200, 30);
         },
-        drawHexagram: function(div, hexagram) {
-            var paper = Raphael(div, 350, 420);
+        drawHexagram: function(div, hexagram, ri_tiangan) {
+            var paper = Raphael(div, 400, 420);
             var hexagram_index = Iching.Hexagram.indexOf(hexagram);
             var lower_index = Math.floor(hexagram_index / 8);
             var upper_index = hexagram_index % 8;
-            Iching.drawBagua(paper, Iching.Trigram[upper_index], 100, 50, 50, 200, 30);
-            Iching.drawNaJia(paper, Iching.Trigram[upper_index], 'upper', 70, 65, 50);
-            Iching.drawBagua(paper, Iching.Trigram[lower_index], 100, 200, 50, 200, 30);
-            Iching.drawNaJia(paper, Iching.Trigram[lower_index], 'lower', 70, 215, 50);
-            Iching.drawShiYing(paper, hexagram, 315, 65, 50);
-            Iching.drawLiuQin(paper, hexagram, 40, 65, 50);
+            Iching.drawBagua(paper, Iching.Trigram[upper_index], 150, 50, 50, 200, 30);
+            Iching.drawNaJia(paper, Iching.Trigram[upper_index], 'upper', 100, 65, 50);
+            Iching.drawBagua(paper, Iching.Trigram[lower_index], 150, 200, 50, 200, 30);
+            Iching.drawNaJia(paper, Iching.Trigram[lower_index], 'lower', 100, 215, 50);
+            Iching.drawShiYing(paper, hexagram, 375, 65, 50);
+            Iching.drawLiuQin(paper, hexagram, 60, 65, 50);
+            Iching.drawLiuShou(paper, ri_tiangan, 20, 65, 50);
         },
-        drawTrigrams : function(div, upper_trigram, lower_trigram) {
-            var paper = Raphael(div, 350, 420);
-            Iching.drawBagua(paper, upper_trigram, 100, 50, 50, 200, 30);
-            Iching.drawNaJia(paper, upper_trigram, 'upper', 70, 65, 50);
-            Iching.drawBagua(paper, lower_trigram, 100, 200, 50, 200, 30);
-            Iching.drawNaJia(paper, lower_trigram, 'lower', 70, 215, 50);
+        drawTrigrams : function(div, upper_trigram, lower_trigram, ri_tiangan) {
+            var paper = Raphael(div, 400, 420);
+            Iching.drawBagua(paper, upper_trigram, 150, 50, 50, 200, 30);
+            Iching.drawNaJia(paper, upper_trigram, 'upper', 100, 65, 50);
+            Iching.drawBagua(paper, lower_trigram, 150, 200, 50, 200, 30);
+            Iching.drawNaJia(paper, lower_trigram, 'lower', 100, 215, 50);
             var hexagram = Iching.trigram2hexagram(upper_trigram, lower_trigram);
-            Iching.drawShiYing(paper, hexagram, 315, 65, 50);
-            Iching.drawLiuQin(paper, hexagram, 40, 65, 50);
+            Iching.drawShiYing(paper, hexagram, 375, 65, 50);
+            Iching.drawLiuQin(paper, hexagram, 60, 65, 50);
+            Iching.drawLiuShou(paper, ri_tiangan, 20, 65, 50);
         },
         drawShiYing : function(paper, hexagram, x, y, interval) {
             var gong_index = Iching.getGongIndex(hexagram);
@@ -294,6 +297,29 @@ var Iching = (function() {
                 var liuqin = Iching.getLiuqin(gua[i], hexagram);
                 var text = paper.text(x, y + i * interval, liuqin);
                 text.attr({'font-size':16}); 
+            }
+        },
+        drawLiuShou : function(paper, tiangan, x, y, interval) {
+            var tiangan_index = Iching.tiangan.indexOf(tiangan);
+            var offset = 0;
+            if(tiangan_index ===0 || tiangan_index ===1){
+                offset =0;
+            }else if(tiangan_index === 2 || tiangan_index ===3){
+                offset =1;
+            }else if(tiangan_index === 4){
+                offset =2;
+            }else if(tiangan_index === 5){
+                offset =3;
+            }else if(tiangan_index === 6 || tiangan_index === 7){
+                offset =4;
+            }else if(tiangan_index === 8 || tiangan_index === 9){
+                offset =5;
+            }
+            
+            for( var i=0; i<Iching.liushou.length; i++) {
+                var pos = (i + offset) % 6;
+                var text = paper.text(x, y + (Iching.liushou.length -1 - i) *interval, Iching.liushou[pos]);
+                text.attr({'font-size':16});                
             }
         }
     }

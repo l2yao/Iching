@@ -59,7 +59,7 @@ $(document).ready(function() {
         var gong_name = Iching.getGongName(Iching.Hexagram[ri_index+yue_index*8]);
         var gong_index = Iching.Trigram_name.indexOf(gong_name);
         $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+Iching.Trigram_wuxing[gong_index]+'</h2>');
-        Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue]);
+        Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));
     });
     
     $('#getCurlocation').click();
