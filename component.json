@@ -5,8 +5,8 @@
     "sass-bootstrap": "~2.3.0",
     "requirejs": "~2.1.4",
     "modernizr": "~2.6.2",
-    "jquery": "~1.9.1",
-    "raphael": "~2.1.0"
+    "raphael": "~2.1.0",
+    "backbone": "~0.9.10"
   },
   "devDependencies": {}
 }
