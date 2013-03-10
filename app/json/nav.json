@@ -1,0 +1,9 @@
+{
+	"title": "易经风水",
+	"pages": [
+		{"name": "八字", "link": "bazi.html"},
+		{"name": "占卜", "link": "zhanbu.html"},
+		{"name": "风水", "link": "fengshui.html"},
+		{"name": "万年历", "link": "calendar.html"}
+	]
+}

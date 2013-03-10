@@ -28,17 +28,17 @@ var Iching = (function() {
                     '姤','恆','井','蠱','升','巽','鼎','大過',
                     '同人','豐','既濟','賁','明夷','家人','離','革',
                     '履','歸妹','節','損','臨','中孚','睽','兌'],
-        bagong_bagua :[['䷀','䷫','䷠','䷋','䷓','䷖','䷢','䷍'],
-                       ['䷹','䷮','䷬','䷞','䷦','䷎','䷽','䷵'],
-                       ['䷝','䷷','䷱','䷿','䷃','䷺','䷅','䷌'],
-                       ['䷲','䷏','䷧','䷟','䷭','䷯','䷛','䷐'],
-                       ['䷸','䷈','䷤','䷩','䷘','䷔','䷚','䷑'],
-                       ['䷜','䷻','䷂','䷾','䷰','䷶','䷣','䷆'],
-                       ['䷳','䷕','䷙','䷨','䷥','䷉','䷼','䷴'],
-                       ['䷁','䷗','䷒','䷊','䷡','䷪','䷄','䷇']],
+        bagong_bagua :[{'gua': ['䷀','䷫','䷠','䷋','䷓','䷖','䷢','䷍'], 'gong': '䷀'},
+                       {'gua': ['䷹','䷮','䷬','䷞','䷦','䷎','䷽','䷵'], 'gong': '䷹'},
+                       {'gua': ['䷝','䷷','䷱','䷿','䷃','䷺','䷅','䷌'], 'gong': '䷝'},
+                       {'gua': ['䷲','䷏','䷧','䷟','䷭','䷯','䷛','䷐'], 'gong': '䷲'},
+                       {'gua': ['䷸','䷈','䷤','䷩','䷘','䷔','䷚','䷑'], 'gong': '䷸'},
+                       {'gua': ['䷜','䷻','䷂','䷾','䷰','䷶','䷣','䷆'], 'gong': '䷜'},
+                       {'gua': ['䷳','䷕','䷙','䷨','䷥','䷉','䷼','䷴'], 'gong': '䷳'},
+                       {'gua': ['䷁','䷗','䷒','䷊','䷡','䷪','䷄','䷇'], 'gong': '䷁'}],
         getGongIndex : function(hexagram) {
             for(var i=0;i<Iching.bagong_bagua.length; i++) {
-                var gong = Iching.bagong_bagua[i];
+                var gong = Iching.bagong_bagua[i].gua;
                 var gong_index = gong.indexOf(hexagram);
                 if(gong_index != -1)    return gong_index;
             }
@@ -46,7 +46,7 @@ var Iching = (function() {
         },
         getGongName : function(hexagram) {
             for(var i=0;i<Iching.bagong_bagua.length; i++) {
-                var gong = Iching.bagong_bagua[i];
+                var gong = Iching.bagong_bagua[i].gua;
                 var gong_index = gong.indexOf(hexagram);
                 if(gong_index != -1){
                     return Iching.Hexagram_name[Iching.Hexagram.indexOf(gong[0])];

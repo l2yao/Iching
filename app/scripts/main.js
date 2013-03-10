@@ -2,7 +2,10 @@ require.config({
     paths: {
         jquery: '../components/jquery/jquery',
         bootstrap: '../components/sass-bootstrap/docs/assets/js/bootstrap',
-        raphael: '../components/raphael/raphael'
+        raphael: '../components/raphael/raphael',
+        backbone: '../components/backbone/backbone',
+        underscore: '../components/underscore/underscore',
+        handlebars: '../components/handlebars/handlebars'
     },
     shim: {
         bootstrap: {
@@ -12,9 +15,8 @@ require.config({
     }
 });
 
-require(['app', 'jquery', 'bootstrap'], function (app, $) {
+require(['jquery', 'bootstrap', 'underscore','backbone', 'handlebars','app'], function (app, $) {
     'use strict';
     // use app here
-    console.log(app);
-    console.log('Running jQuery %s', $().jquery);
+    app;
 });

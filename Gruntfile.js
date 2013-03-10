@@ -36,6 +36,10 @@ module.exports = function (grunt) {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass']
             },
+            handlebars: {
+                files: ['app/templates/*.handlebars'],
+                tasks: ['handlebars reload']
+            },
             livereload: {
                 files: [
                     '<%= yeoman.app %>/*.html',
@@ -149,6 +153,22 @@ module.exports = function (grunt) {
                 }
             }
         },
+        handlebars: {
+            compile: {
+                files: {
+                  "<%= yeoman.app %>/templates/nav.js": ["<%= yeoman.app %>/templates/nav.handlebars"],
+                  "<%= yeoman.app %>/templates/bagua-table.js": ["<%= yeoman.app %>/templates/bagua-table.handlebars"]
+                },
+                options: {
+                  processName: function(filename) {
+                    // funky name processing here
+                    return filename
+                            .replace(/^app\/modules\//, '')
+                            .replace(/\.handlebars$/, '');
+                  }
+                }
+            }
+        },
         // not used since Uglify task does concat,
         // but still available if needed
         /*concat: {
@@ -259,6 +279,7 @@ module.exports = function (grunt) {
             'clean:server',
             'coffee:dist',
             'compass:server',
+            'handlebars',
             'livereload-start',
             'connect:livereload',
             'open',
@@ -270,6 +291,7 @@ module.exports = function (grunt) {
         'clean:server',
         'coffee',
         'compass',
+        'handlebars',
         'connect:test',
         'mocha'
     ]);
@@ -285,6 +307,7 @@ module.exports = function (grunt) {
         'concat',
         'cssmin',
         'uglify',
+        'handlebars',
         'copy',
         'usemin'
     ]);
