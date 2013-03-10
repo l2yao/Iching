@@ -156,7 +156,6 @@ module.exports = function (grunt) {
         handlebars: {
             compile: {
                 files: {
-                  "<%= yeoman.app %>/templates/nav.js": ["<%= yeoman.app %>/templates/nav.handlebars"],
                   "<%= yeoman.app %>/templates/bagua-table.js": ["<%= yeoman.app %>/templates/bagua-table.handlebars"]
                 },
                 options: {

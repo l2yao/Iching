@@ -3,7 +3,7 @@ define(['jquery','underscore','backbone', 'handlebars','../../templates/bagua-ta
 	'use strict';
 
 	var baguaTableView = Backbone.View.extend({
-		el: '#content',
+		el: '#bagua',
 		template: JST['app/templates/bagua-table'],
 		render: function(){
 			var self = this;
