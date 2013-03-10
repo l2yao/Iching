@@ -3,8 +3,8 @@ require.config({
         jquery: '../components/jquery/jquery',
         bootstrap: '../components/sass-bootstrap/docs/assets/js/bootstrap',
         raphael: '../components/raphael/raphael',
-        backbone: '../components/backbone/backbone',
-        underscore: '../components/underscore/underscore',
+        backbone: '../components/backbone-amd/backbone',
+        underscore: '../components/underscore-amd/underscore',
         handlebars: '../components/handlebars/handlebars'
     },
     shim: {
@@ -15,8 +15,8 @@ require.config({
     }
 });
 
-require(['jquery', 'bootstrap', 'underscore','backbone', 'handlebars','app'], function (app, $) {
+require(['app'], function (app) {
     'use strict';
     // use app here
-    app;
+    app.init();
 });
