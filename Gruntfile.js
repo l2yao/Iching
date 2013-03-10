@@ -156,7 +156,11 @@ module.exports = function (grunt) {
         handlebars: {
             compile: {
                 files: {
-                  "<%= yeoman.app %>/templates/bagua-table.js": ["<%= yeoman.app %>/templates/bagua-table.handlebars"]
+                  "<%= yeoman.app %>/templates/bagua.js": ["<%= yeoman.app %>/templates/bagua.handlebars"],
+                  "<%= yeoman.app %>/templates/bazi.js": ["<%= yeoman.app %>/templates/bazi.handlebars"],
+                  "<%= yeoman.app %>/templates/calendar.js": ["<%= yeoman.app %>/templates/calendar.handlebars"],
+                  "<%= yeoman.app %>/templates/fengshui.js": ["<%= yeoman.app %>/templates/fengshui.handlebars"],
+                  "<%= yeoman.app %>/templates/zhanbu.js": ["<%= yeoman.app %>/templates/zhanbu.handlebars"]
                 },
                 options: {
                   processName: function(filename) {

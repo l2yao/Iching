@@ -1,3 +1,19 @@
+define(['jquery','underscore','backbone', 'handlebars','../../templates/calendar','iching'], 
+    function ($, _, Backbone,Handlebars) {
+    'use strict';
+
+    var calendarView = Backbone.View.extend({
+        el: '#calendar',
+        template: JST['app/templates/calendar'],
+        render: function(){
+            var self = this;
+            var html = self.template();
+            self.$el.html(html);
+        }
+    });
+
+    return calendarView;
+
 var lun = new Lunar(); //月历全局对象
 var msc = new sun_moon(); //日月计算全局对象
 var curJD; //现在日期
@@ -445,7 +461,7 @@ function dfRS(ly){ //地方日食表生成
  Cc_d.value = ts.substr(9,2);
 
  rsPL.nasa_r=0; if(Cc_nasa.checked) rsPL.nasa_r=1; //视径选择
- var i,j,t,c, ou='地名	食分	初亏	食甚	复圆	食既	生光	日出	日落	P1,V1	P2,V2\r\n', s=Cc_db.innerText;
+ var i,j,t,c, ou='地名  食分  初亏  食甚  复圆  食既  生光  日出  日落  P1,V1 P2,V2\r\n', s=Cc_db.innerText;
  s=s.replace(/\r\n/g,'#'); s=s.replace(/ /g,''); s=s.split('#');
  for(i=0;i<s.length;i++){
   c=s[i];         if(c.length==0||c.substr(0,1)=='*') continue;
@@ -453,17 +469,17 @@ function dfRS(ly){ //地方日食表生成
   c[2]/=radd, c[1]/=radd; //经纬度
   rsPL.secMax(jd,c[2],c[1],c[3]/1000); //日食计算
   ou += c[0]+'['+rsPL.LX+']';
-  ou += '	'+rsPL.sf.toFixed(5); //食分
+  ou += ' '+rsPL.sf.toFixed(5); //食分
   for(j=0;j<5;j++){
-   t  = rsPL.sT[j]; if(!t) {ou+='	--:--:--'; continue;}
+   t  = rsPL.sT[j]; if(!t) {ou+=' --:--:--'; continue;}
    t = t -curTZ/24 -dt_T(t) +J2000; //转为UTC(本地时间)
-   ou+='	'+JD.JD2str(t).substr(12,8);
+   ou+='  '+JD.JD2str(t).substr(12,8);
   }
   if(rsPL.sf){
-   ou += '	'+JD.timeStr(rsPL.sun_s -curTZ/24+J2000);
-   ou += '	'+JD.timeStr(rsPL.sun_j -curTZ/24+J2000);
-   ou += '	'+(rsPL.P1*radd).toFixed(0)+','+(rsPL.V1*radd).toFixed(0);
-   ou += '	'+(rsPL.P2*radd).toFixed(0)+','+(rsPL.V2*radd).toFixed(0);
+   ou += '  '+JD.timeStr(rsPL.sun_s -curTZ/24+J2000);
+   ou += '  '+JD.timeStr(rsPL.sun_j -curTZ/24+J2000);
+   ou += '  '+(rsPL.P1*radd).toFixed(0)+','+(rsPL.V1*radd).toFixed(0);
+   ou += '  '+(rsPL.P2*radd).toFixed(0)+','+(rsPL.V2*radd).toFixed(0);
   }
   ou += '\r\n';
  }
@@ -863,3 +879,4 @@ function tick() { //即时坐标计算
   window.setTimeout("tick()", 1000);
 }
 tick(); //触发时钟
+});

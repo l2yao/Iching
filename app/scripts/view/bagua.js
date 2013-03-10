@@ -1,10 +1,10 @@
-define(['jquery','underscore','backbone', 'handlebars','../../templates/bagua-table','iching'], 
+define(['jquery','underscore','backbone', 'handlebars','../../templates/bagua','iching'], 
 	function ($, _, Backbone,Handlebars) {
 	'use strict';
 
-	var baguaTableView = Backbone.View.extend({
+	var baguaView = Backbone.View.extend({
 		el: '#bagua',
-		template: JST['app/templates/bagua-table'],
+		template: JST['app/templates/bagua'],
 		render: function(){
 			var self = this;
 			var html = self.template({'bagong': Iching.bagong_bagua});
@@ -12,5 +12,5 @@ define(['jquery','underscore','backbone', 'handlebars','../../templates/bagua-ta
 		}
 	});
 
-	return baguaTableView;
+	return baguaView;
 });

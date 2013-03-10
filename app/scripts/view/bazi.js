@@ -1,4 +1,17 @@
-$(document).ready(function() {
+define(['jquery','underscore','backbone', 'handlebars','../../templates/bazi','iching'], 
+    function ($, _, Backbone,Handlebars) {
+    'use strict';
+
+    var baziView = Backbone.View.extend({
+        el: '#bazi',
+        template: JST['app/templates/bazi'],
+        render: function(){
+            var self = this;
+            var html = self.template();
+            self.$el.html(html);
+        }
+    });
+
     $('#getCurlocation').click(function(){
         if (navigator.geolocation)
         {
@@ -61,7 +74,6 @@ $(document).ready(function() {
         $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+Iching.Trigram_wuxing[gong_index]+'</h2>');
         Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));
     });
-    
-    $('#getCurlocation').click();
-    $('#getCurtime').click();
+
+    return baziView;
 });
