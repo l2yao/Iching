@@ -5,7 +5,7 @@ require.config({
         raphael: '../components/raphael/raphael',
         backbone: '../components/backbone-amd/backbone',
         underscore: '../components/underscore-amd/underscore',
-        handlebars: '../components/handlebars/handlebars'
+        handlebars: '../components/handlebars.js/dist/handlebars'
     },
     shim: {
         bootstrap: {
