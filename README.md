@@ -6,4 +6,8 @@ Iching
 Deploy Instructions:
 
 1. npm install && bower install
-2. grunt 
+2. grunt
+
+Demo:
+
+http://l2yao.github.com/Iching/ 
