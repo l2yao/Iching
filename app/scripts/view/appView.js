@@ -4,6 +4,7 @@ define(['jquery','underscore','backbone',
 	'use strict';
 
 	var appView = Backbone.View.extend({
+		el: '#app',
 		views: [],
 		events: {
 			"click #nav-title": "clickTitle",
@@ -32,6 +33,8 @@ define(['jquery','underscore','backbone',
 		    this.views.push(calendarview);
 
 		    this.render();
+		    this.hideAll();
+		    this.showView(0);
 		},
 		render: function() {
 			for(var i=0;i<this.views.length;i++){
@@ -43,30 +46,28 @@ define(['jquery','underscore','backbone',
 				this.views[i].$el.hide();
 			}
 		},
+		showView: function(index) {
+			this.views[index].$el.show();
+		},
 		clickTitle: function(ev){
 			this.hideAll();
-			this.views[0].$el.show();
-			console.log('clickTitle');
+			this.showView(0);
 		},
 		clickBazi: function(ev) {
 			this.hideAll();
-			this.views[1].$el.show();
-			console.log('clickBazi');
+			this.showView(1);
 		},
 		clickZhanbu:function(ev){
 			this.hideAll();
-			this.views[2].$el.show();
-			console.log('clickZhanbu');
+			this.showView(2);
 		},
 		clickFengshui:function(ev){
 			this.hideAll();
-			this.views[3].$el.show();
-			console.log('clickFengshui');
+			this.showView(3);
 		},
 		clickCalendar:function(ev){
 			this.hideAll();
-			this.views[4].$el.show();
-			console.log('clickCalendar');
+			this.showView(4);
 		}
 	});
 
