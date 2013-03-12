@@ -32,10 +32,6 @@ define(['jquery','underscore','backbone',
 		    this.views.push(calendarview);
 
 		    this.render();
-
-		    this.hideAll();
-
-		    baguaview.$el.show();
 		},
 		render: function() {
 			for(var i=0;i<this.views.length;i++){

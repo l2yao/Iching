@@ -1,11 +1,18 @@
 require.config({
+    hbs : {
+        templateExtension : 'handlebars',
+        disableI18n : true
+    },
     paths: {
         jquery: '../components/jquery/jquery',
         bootstrap: '../components/sass-bootstrap/docs/assets/js/bootstrap',
         raphael: '../components/raphael/raphael',
         backbone: '../components/backbone-amd/backbone',
         underscore: '../components/underscore-amd/underscore',
-        handlebars: '../components/handlebars.js/dist/handlebars'
+        handlebars: '../components/require-handlebars-plugin/Handlebars',
+        hbs: '../components/require-handlebars-plugin/hbs',
+        json2: '../components/require-handlebars-plugin/hbs/json2',
+        i18nprecompile: '../components/require-handlebars-plugin/hbs/i18nprecompile'
     },
     shim: {
         bootstrap: {

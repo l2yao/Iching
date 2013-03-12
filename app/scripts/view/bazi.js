@@ -1,10 +1,10 @@
-define(['jquery','underscore','backbone', 'handlebars','../../templates/bazi','iching'], 
-    function ($, _, Backbone,Handlebars) {
+define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi','iching'], 
+    function ($, _, Backbone,Handlebars,templOne) {
     'use strict';
 
     var baziView = Backbone.View.extend({
         el: '#bazi',
-        template: JST['app/templates/bazi'],
+        template: templOne,
         render: function(){
             var self = this;
             var html = self.template();
