@@ -1,3 +1,5 @@
+var Calendar = (function() {
+
 var lun = new Lunar(); //月历全局对象
 var msc = new sun_moon(); //日月计算全局对象
 var curJD; //现在日期
@@ -863,3 +865,5 @@ function tick() { //即时坐标计算
   window.setTimeout("tick()", 1000);
 }
 tick(); //触发时钟
+
+}());

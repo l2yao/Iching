@@ -26,8 +26,8 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
         },
         clickCurTime: function() {
             var now=new Date();
-            curTZ = now.getTimezoneOffset()/60; //时区 -8为北京时
-            curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
+            var curTZ = now.getTimezoneOffset()/60; //时区 -8为北京时
+            var curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
             JD.setFromJD(curJD+J2000);
 
             $('#input-date').attr('value', JD.Y+'-'+JD.M+'-'+JD.D);

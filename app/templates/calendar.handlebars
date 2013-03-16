@@ -1,80 +1,74 @@
-<div class="hero-unit">
+<div class="tabbable">
 
-    <div class="btn-group">
-    <button class="btn" onclick="showPage(1)">月历</button>
-    <button class="btn" onclick="showPage(2)">年历</button>
-    <button class="btn" onclick="showPage(3)">日月食</button>
-    <button class="btn" onclick="showPage(4)">地方食</button>
-    <button class="btn" onclick="showPage(5)">星历</button>
-    <button class="btn" onclick="showPage(6)">天象</button>
-    <button class="btn" onclick="showPage(7)">恒星</button>
-    <button class="btn" onclick="showPage(8)">气朔</button>
-    <button class="btn" onclick="showPage(9)">升降</button>
-    <button class="btn" onclick="showPage(10)">日食概略</button>
-    <button class="btn" onclick="showPage(11)">八字</button>
-    <button class="btn" onclick="showPage(12)">工具</button>
-    <button class="btn" onclick="showPage(13)">常数</button>
-    </div>
-
-      <table class="table">
-      <!--帮助-->
-      <tr><td class=dBot2 colspan=2 id=help style="display:none"></td></tr>
-
-      <!--月历表-->
-      <tr id=page1>
-       <td width=25% valign=top class=dRig>
-        <!--日月出没--><div class="alert" id=Cal5></div>
-        <!--月相节气--><div class="alert" id=Cal4></div>
-        <!--农历信息--><div class="alert" id=Cal_pan_in></div>
-        <div id=Cal_pan></div>
-        
-       </td>
-
-       <td width=75% valign=top>
-      <table class="table"><!--月历表-->
-       <tr><td>
-        公元<input class="input-small" type="text" id=Cal_y>年<input class="input-small" type="text" id=Cal_m>月
-        <div class="btn-group">
-        <button class="btn" onclick='getLunar()'>确定</button>
-        <button class="btn" onclick='changeYear(0)'>年↑</button>
-        <button class="btn" onclick='changeYear(1)'>年↓</button>
-        <button class="btn" onclick='changeMonth(0)'>月↑</button>
-        <button class="btn" onclick='changeMonth(1)'>月↓</button>
-        <button class="btn" onclick='changeMonth(2)'>今</button>
-        </div><br>
-        <div id=Cal2></div>
-       </td></tr>
-      </table>
-       </td>
-      </tr>
-
-      <!--年历表-->
-      <tr id=page2 style="display:none"><td class=dBot2 colspan=2>
-        公元<input class="input-small" type=text id=Cp2_y value=2008>
-        年<input type=checkbox id=Cp2_tg checked>时刻/干支
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#page1" data-toggle="tab">月历</a></li>
+      <li><a href="#page2" data-toggle="tab">年历</a></li>
+      <li><a href="#page3" data-toggle="tab">日月食</a></li>
+      <li><a href="#page4" data-toggle="tab">地方食</a></li>
+      <li><a href="#page5" data-toggle="tab">星历</a></li>
+      <li><a href="#page6" data-toggle="tab">天象</a></li>
+      <li><a href="#page7" data-toggle="tab">恒星</a></li>
+      <li><a href="#page8" data-toggle="tab">气朔</a></li>
+      <li><a href="#page9" data-toggle="tab">升降</a></li>
+      <li><a href="#page10" data-toggle="tab">日食概略</a></li>
+      <li><a href="#page11" data-toggle="tab">八字</a></li>
+      <li><a href="#page12" data-toggle="tab">工具</a></li>
+      <li><a href="#page13" data-toggle="tab">常数</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="page1" class="tab-pane active">
+        <table class="table"><!--月历表-->
+         <tr>
+          <td width="25%" valign="top">
+            <!--日月出没--><div class="alert" id="Cal5"></div>
+            <!--月相节气--><div class="alert" id="Cal4"></div>
+            <!--农历信息--><div class="alert" id="Cal_pan_in"></div>
+            <div id="Cal_pan"></div>
+          </td>
+          <td width="75%">
+          公元
+          <input class="input-small" type="text" id="Cal_y">年
+          <input class="input-small" type="text" id="Cal_m">月
+          <div class="btn-group">
+          <button class="btn" onclick='getLunar()'>确定</button>
+          <button class="btn" onclick='changeYear(0)'>年↑</button>
+          <button class="btn" onclick='changeYear(1)'>年↓</button>
+          <button class="btn" onclick='changeMonth(0)'>月↑</button>
+          <button class="btn" onclick='changeMonth(1)'>月↓</button>
+          <button class="btn" onclick='changeMonth(2)'>今</button>
+          </div><br>
+          <div id="Cal2"></div>
+          </td></tr>
+        </table>
+      </div>
+      <div id="page2" class="tab-pane">
+        公元<input class="input-small" type=text id="Cp2_y" value=2008>
+        年<input type=checkbox id="Cp2_tg" checked>时刻/干支
         <button class="btn" onclick="getNianLi(0)">确定</button>
         <button class="btn" onclick="getNianLi(-1)">年↑</button>
         <button class="btn" onclick="getNianLi(1)">年↓</button>
-        年数<input class="input-small"type=text id=Cp2_n value=2>
+        年数<input class="input-small"type=text id="Cp2_n" value=2>
         <button class="btn" onclick="getNianLiN()">多年</button>
-        <div id=Cal7></div>
-      </td></tr>
+        <div id="Cal7"></div>
+      </div>
+      <div id="page3" class="tab-pane">
+        <div align=center>暂停<input id="Cal_pause" type=checkbox checked></div><br>
+        <div id="Cal_zb"></div>
 
-      <!--日月食图表-->
-      <tr id=page3 style="display:none">
-       <td width=25% valign=top style='line-height: 150%' class=dRig>
-        <div align=center>暂停<input id=Cal_pause type=checkbox checked></div><br>
-        <div id=Cal_zb></div>
-       </td>
-
-       <td width=75% valign=top>
-      <table class="table">
+        <table class="table">
        <tr><td>
-       经度<input class="input-small" id=Cb_J type=text value=0>纬度<input class="input-small" id=Cb_W type=text value=0>海拔<input class="input-small" id=Cb_high type=text value=0>km
-       北/南<input id=Cb_bei type=checkbox>  时角坐标<input id=Cb_sjzb type=checkbox>
+       经度<input class="input-small" id="Cb_J" type=text value=0>
+       纬度<input class="input-small" id="Cb_W" type=text value=0>
+       海拔<input class="input-small" id="Cb_high" type=text value=0>km
+       北/南<input id="Cb_bei" type=checkbox>  
+       时角坐标<input id="Cb_sjzb" type=checkbox>
        <a href="javascript:showHelp(2)">帮助</a><br>
-       公元<input class="input-small" id=Cb_y type=text value=2008>年<input class="input-small" id=Cb_m type=text value=8 maxleng=2>月<input class="input-small" id=Cb_d type=text value=1>日<input class="input-small" id=Cb_t type=text value="18:17:15">UTC/TD<input id=Cb_ut type=checkbox checked>
-       NASA<input id=Cb_nasa type=checkbox>
+       公元<input class="input-small" id="Cb_y" type=text value=2008>
+       年<input class="input-small" id="Cb_m" type=text value=8 maxleng=2>
+       月<input class="input-small" id="Cb_d" type=text value=1>
+       日<input class="input-small" id="Cb_t" type=text value="18:17:15">
+       UTC/TD<input id="Cb_ut" type=checkbox checked>
+       NASA<input id="Cb_nasa" type=checkbox>
        <button class="btn" onclick="tu_calc(1)">今</button><br>
        朔望粗定位
        <div class="btn-group">
@@ -97,27 +91,29 @@
        <button class="btn" onclick="tu_calc(3)">+&gt;</button>
        </div>
        
-       日食路径<input id=Cb_phSave type=checkbox> <button class="btn" onclick="tu_cls_path()">清除</button>
+       日食路径<input id="Cb_phSave" type=checkbox> 
+       <button class="btn" onclick="tu_cls_path()">清除</button>
        </td></tr>
-       <tr><td id=Cb_zb></td></tr>
-       <tr><td align=center><v:group id=Can1 style="width:480;height:300;position:relative"/></td></tr>
+       <tr><td id="Cb_zb"></td></tr>
+       <tr><td align=center><v:group id="Can1" style="width:480;height:300;position:relative"/></td></tr>
        <tr><td align=center><font color=red>本图表中，天坐标(横坐标方位角,纵坐标高度角)与地坐标合用，括号内为地标。</font></td></tr>
        <tr><td>
          <table width="100%" cellspacing=0 cellpadding=0><tr>
-         <td id=Cb_b1 width="50%"></td><!--日食界线表-->
-         <td id=Cb_b2 width="50%"></td><!--日月食时刻表-->
+         <td id="Cb_b1" width="50%"></td><!--日食界线表-->
+         <td id="Cb_b2" width="50%"></td><!--日月食时刻表-->
          </tr></table>
        </td></tr>
       </table>
-       </td>
-      </tr>
-
-      <!--地方日食表-->
-      <tr id=page4 style="display:none"><td class=dBot2 colspan=2 align=center>
-       公元<input class="input-small" id=Cc_y type=text value=2008>年<input class="input-small" id=Cc_m type=text value=8 maxleng=2>月<input class="input-small" id=Cc_d type=text value=1>日
-       <button class="btn" onclick="dfRS(1)">&lt;-</button><button class="btn" onclick="dfRS(0)">朔</button><button class="btn" onclick="dfRS(2)">+&gt;</button>
-       NASA<input id=Cc_nasa type=checkbox><br>
-       <textarea cols=100 rows=15 id=Cc_db>*地名,纬度,经度,海拔(米)
+      </div>
+      <div id="page4" class="tab-pane">
+        公元<input class="input-small" id="Cc_y" type=text value=2008>年
+        <input class="input-small" id="Cc_m" type=text value=8 maxleng=2>月
+        <input class="input-small" id="Cc_d" type=text value=1>日
+       <button class="btn" onclick="dfRS(1)">&lt;-</button>
+       <button class="btn" onclick="dfRS(0)">朔</button>
+       <button class="btn" onclick="dfRS(2)">+&gt;</button>
+       NASA<input id="Cc_nasa" type=checkbox><br>
+       <textarea cols=100 rows=15 id="Cc_db">*地名,纬度,经度,海拔(米)
       北京, 39.93, -116.37,  31  # 天津, 39.14, -117.19,   3  # 太原, 37.87, -112.56, 778
       沈阳, 41.78, -123.41,  41  # 长春, 43.89, -125.31, 237  # 上海, 31.23, -121,46,   5
       南京, 32.05, -118.76,   9  # 杭州, 30.29, -120.17,  42  # 拉萨, 29.66,  -91.13,3658
@@ -129,13 +125,11 @@
       台北, 25.03, -121.50,   9  # 哈市, 45.80, -126.53, 150
 
       </textarea><br>
-       <textarea cols=100 rows=15 id=Cc_tb></textarea><br>
+       <textarea cols=100 rows=15 id="Cc_tb"></textarea><br>
        P1指两圆相初亏切点的方位，从日面北点起算(赤道坐标系中,日面顶点)，向东测量。日面在我们的视觉平面上，按上北下南左东右西确定方向。P2指复圆方位角。V1,V2也是切点方位，起算点从地平坐标中的日面顶点开始。
-      </td></tr>
-
-      <!--行星星历表-->
-      <tr id=page5 style="display:none"><td class=dBot2 colspan=2 align=center>
-       <select id=Cd_xt>
+      </div>
+      <div id="page5" class="tab-pane">
+        <select id="Cd_xt">
         <option value=1 selected>水星</option>
         <option value=2>金星</option>
         <option value=3>火星</option>
@@ -147,25 +141,23 @@
         <option value=9>太阳</option>
         <option value=10>月亮</option>
        </select> 
-       <input class="input-small" id=Cd_y type=text value=2008>年
-       <input class="input-small" id=Cd_m type=text value=1>月
-       <input class="input-small" id=Cd_d type=text value=1>日
-       <input id=Cd_t type=text size=8 value="00:00:00">
-       UTC/TD<input id=Cd_ut type=checkbox checked> <a href="javascript:showHelp(4)">帮助</a><br>
-       经度<input class="input-small" id=Cd_J type=text value=0>
-       纬度<input class="input-small" id=Cd_W type=text value=0>
-       间隔<input class="input-small" id=Cd_dt type=text value=1>(天)
-       个数<input class="input-small" id=Cd_n type=text value=10>
+       <input class="input-small" id="Cd_y" type=text value=2008>年
+       <input class="input-small" id="Cd_m" type=text value=1>月
+       <input class="input-small" id="Cd_d" type=text value=1>日
+       <input id="Cd_t" type=text size=8 value="00:00:00">
+       UTC/TD<input id="Cd_ut" type=checkbox checked> <a href="javascript:showHelp(4)">帮助</a><br>
+       经度<input class="input-small" id="Cd_J" type=text value=0>
+       纬度<input class="input-small" id="Cd_W" type=text value=0>
+       间隔<input class="input-small" id="Cd_dt" type=text value=1>(天)
+       个数<input class="input-small" id="Cd_n" type=text value=10>
        <button class="btn" onclick="pCalc()">确定</button><br>
-       <textarea cols=100 rows=20 id=Cd_tab></textarea>
-      </td></tr>
-
-      <!--天象表-->
-      <tr id=page6 style="display:none"><td class=dBot2 colspan=2 align=center>
-      <input class="input-small" id=Ce_y type=text value=2008>年
-      <input class="input-small" id=Ce_m type=text value=1 maxleng=2>月
-      <input class="input-small" id=Ce_d type=text value=1>日 TD
-      个数<input class="input-small" id=Ce_n type=text value=10>
+       <textarea cols=100 rows=20 id="Cd_tab"></textarea>
+      </div>
+      <div id="page6" class="tab-pane">
+        <input class="input-small" id="Ce_y" type=text value=2008>年
+      <input class="input-small" id="Ce_m" type=text value=1 maxleng=2>月
+      <input class="input-small" id="Ce_d" type=text value=1>日 TD
+      个数<input class="input-small" id="Ce_n" type=text value=10>
       <a href="javascript:showHelp(5)">帮助</a><br>
       <a href="javascript:tianXiang(1,0)">月亮近点</a> <a href="javascript:tianXiang(2,0)">月亮远点</a>
       <a href="javascript:tianXiang(3,0)">月亮升交</a> <a href="javascript:tianXiang(4,0)">月亮降交</a>
@@ -192,68 +184,64 @@
       <a href="javascript:tianXiang(15,2)">金</a> <a href="javascript:tianXiang(15,3)">火</a>
       <a href="javascript:tianXiang(15,4)">木</a> <a href="javascript:tianXiang(15,5)">土</a>
       <a href="javascript:tianXiang(15,6)">天</a> <a href="javascript:tianXiang(15,7)">海</a><br>
-      <textarea cols=100 rows=20 id=Ce_tab></textarea><br>
-      </td></tr>
+      <textarea cols=100 rows=20 id="Ce_tab"></textarea><br>
+      </div>
+      <div id="page7" class="tab-pane">
+        <select id="Cf_xk" onchange='javascript:showHXK(this.options[this.selectedIndex].value)'></select>
+        <select id="Cf_lx">
+          <option value=0>视位置</option>
+          <option value=1>站坐标</option>
+          <option value=2>平位置</option>
+        </select>
+        <input class="input-small" id="Cf_y" type=text value=2008>年
+        <input class="input-small" id="Cf_m" type=text value=1 maxleng=2>月
+        <input class="input-small" id="Cf_d" type=text value=1>日 
+        <input class="input-small" id="Cf_t" type=text value="00:00:00">
+        UTC/TD<input id="Cf_ut" type=checkbox checked>
+        略短章<input id="Cf_nsn" type=checkbox><br>
 
-      <!--恒星星历表-->
-      <tr id=page7 style="display:none"><td class=dBot2 colspan=2 align=center>
-      <select id=Cf_xk onchange='javascript:showHXK(this.options[this.selectedIndex].value)'></select>
-      <select id=Cf_lx><option value=0>视位置</option><option value=1>站坐标</option><option value=2>平位置</option></select>
-      <input class="input-small" id=Cf_y type=text value=2008>年
-      <input class="input-small" id=Cf_m type=text value=1 maxleng=2>月
-      <input class="input-small" id=Cf_d type=text value=1>日 
-      <input class="input-small" id=Cf_t type=text value="00:00:00">
-      UTC/TD<input id=Cf_ut type=checkbox checked>
-      略短章<input id=Cf_nsn type=checkbox><br>
+        经度<input class="input-small" id="Cf_J" type=text size=10 value=0>
+        纬度<input class="input-small" id="Cf_W" type=text size=8 value=0>
 
-      经度<input class="input-small" id=Cf_J type=text size=10 value=0>
-      纬度<input class="input-small" id=Cf_W type=text size=8 value=0>
-
-      间隔<input class="input-small" id=Cf_dt type=text size=4 value=10>(天)
-      个数<input class="input-small" id=Cf_n type=text size=4 value=10>
-      <button class="btn" onclick="aCalc()">确定</button>
-      <a href="javascript:showHelp(6)">帮助</a><br>
-      <textarea cols=100 rows=15 id=Cf_db style="font-family:宋体;font-size: 12px" wrap=off></textarea><br>
-      <textarea cols=100 rows=15 id=Cf_xl style="font-size: 12px"></textarea><br>
-      </td></tr>
-
-      <!--气朔表-->
-      <tr id=page8 style="display:none"><td class=dBot2 colspan=2>
-      <input class="input-small" id=Cp8_y type=text size=4 value=2008>年
-      <input class="input-small" id=Cp8_n type=text size=4 value=24>个
-      <button class="btn" onclick="suoCalc(0)" >定朔</button>
-      <button class="btn" onclick="suoCalc(180)">定望</button>
-      <button class="btn" onclick="suoCalc(90)">上弦</button>
-      <button class="btn" onclick="suoCalc(270)">下弦</button>
-      <button class="btn" onclick="suoCalc(-1)">任意</button>
-      <button class="btn" onclick="qiCalc()">定气</button>
-      <button class="btn" onclick="houCalc()">定候</button>
-      <div id=Cp8_out></div>
-      </td></tr>
-
-      <!--升降表-->
-      <tr id=page9 style="display:none"><td class=dBot2 colspan=2>
-      经度<input class="input-small" id=Cp9_J type=text size=10 value="0">
-      纬度<input class="input-small" id=Cp9_W type=text size=8  value="0">
-      <input class="input-small" id=Cp9_y type=text size=4 value=2008>年
-      <input class="input-small" id=Cp9_m type=text size=2 value=1 maxleng=2>月
-      <input class="input-small" id=Cp9_d type=text size=2 value=1>日
-      <button class="btn" onclick="shengjiang()">确定</button>
-      <button class="btn" onclick="shengjiang2()">太阳升降</button>
-      <button class="btn" onclick="shengjiang3()">时差表</button><br>
-      <div id=Cp9_out></div>
-      </td></tr>
-
-      <!--日食概略图-->
-      <tr id=page10 style="display:none"><td class=dBot2 colspan=2>
-      <table class="table">
+        间隔<input class="input-small" id="Cf_dt" type=text size=4 value=10>(天)
+        个数<input class="input-small" id="Cf_n" type=text size=4 value=10>
+        <button class="btn" onclick="aCalc()">确定</button>
+        <a href="javascript:showHelp(6)">帮助</a><br>
+        <textarea cols=100 rows=15 id="Cf_db" style="font-family:宋体;font-size: 12px" wrap=off></textarea><br>
+        <textarea cols=100 rows=15 id="Cf_xl" style="font-size: 12px"></textarea><br>
+      </div>
+      <div id="page8" class="tab-pane">
+        <input class="input-small" id="Cp8_y" type=text size=4 value=2008>年
+        <input class="input-small" id="Cp8_n" type=text size=4 value=24>个
+        <button class="btn" onclick="suoCalc(0)" >定朔</button>
+        <button class="btn" onclick="suoCalc(180)">定望</button>
+        <button class="btn" onclick="suoCalc(90)">上弦</button>
+        <button class="btn" onclick="suoCalc(270)">下弦</button>
+        <button class="btn" onclick="suoCalc(-1)">任意</button>
+        <button class="btn" onclick="qiCalc()">定气</button>
+        <button class="btn" onclick="houCalc()">定候</button>
+        <div id="Cp8_out"></div>
+      </div>
+      <div id="page9" class="tab-pane">
+        经度<input class="input-small" id="Cp9_J" type=text size=10 value="0">
+        纬度<input class="input-small" id="Cp9_W" type=text size=8  value="0">
+        <input class="input-small" id="Cp9_y" type=text size=4 value=2008>年
+        <input class="input-small" id="Cp9_m" type=text size=2 value=1 maxleng=2>月
+        <input class="input-small" id="Cp9_d" type=text size=2 value=1>日
+        <button class="btn" onclick="shengjiang()">确定</button>
+        <button class="btn" onclick="shengjiang2()">太阳升降</button>
+        <button class="btn" onclick="shengjiang3()">时差表</button><br>
+        <div id="Cp9_out"></div>
+      </div>
+      <div id="page10" class="tab-pane">
+        <table class="table">
        <tr><td>
        公元<input class="input-small" id=Cp10_y type=text size=4 value=2008>年
        <input class="input-small" id=Cp10_m type=text size=2 value=8 maxleng=2>月
        月数<input class="input-small" type=text id=Cp10_an size=3 value=200>
        <button class="btn" onclick="tuGL_search(0)">搜索</button>
        <button class="btn" onclick="tuGL_search(1)">精搜索</button>
-       <div id=Cp10_b1></div>
+       <div id="Cp10_b1"></div>
        <font color=red><b>选定的时间为：</b></font><span id=Cp10_jdstr>2008-08-01 10:14:30</span>TD
        <b>JDE</b>=<input class="input-small" id=Cp10_jd type=text size=14 value=2454679.926741>
        步长(可负)<input class="input-small" type=text id=Cp10_step size=7 value=6585.32>天
@@ -269,21 +257,21 @@
        <button class="btn" onclick="tu2_calc(4)">+&gt;</button>
 
        黄/赤<input type=checkbox id=Cp10_hc>
-       步数<input class="input-small" type=text id=Cp10_bn size=3 value=10>
+       步数<input class="input-small" type=text id="Cp10_bn" size=3 value=10>
        <button class="btn" onclick="tu2_calc(5)">确定</button>
        <button class="btn" onclick="tu2_cls_path()">清除</button>
 
 
        </td></tr>
        <tr><td id=Cp10_tz></td></tr>
-       <tr><td align=center><v:group id=Can2 style="width:480;height:300;position:relative"/></td></tr>
+       <tr><td align=center><v:group id="Can2" style="width:480;height:300;position:relative"/></td></tr>
        <tr><td>
        <button class="btn" onclick="tu3_xz(0)">经＋</button>
        <button class="btn" onclick="tu3_xz(1)">经－</button>
        <button class="btn" onclick="tu3_xz(2)">纬＋</button>
        <button class="btn" onclick="tu3_xz(3)">纬－</button>
        球半径<input type=textbox id=Cp10_eR value="250" size=5>
-       <select id=Cp10_tylx>
+       <select id="Cp10_tylx">
         <option value=0>斜轴正射方位投影</option>
         <option value=1>横轴等距方位投影</option>
         <option value=2>横轴等积方位投影</option>
@@ -296,42 +284,38 @@
        </select>
        <button class="btn" onclick="tu3_xz(4)">确定</button>
 
-       <b>JDE</b>=<input class="input-small" id=Cp10_jd2 type=text size=13 value=2454679.926741>
-       <b>步长</b><input class="input-small" id=Cp10_step2 type=text size=4 value="180">秒
+       <b>JDE</b>=<input class="input-small" id="Cp10_jd2" type=text size=13 value=2454679.926741>
+       <b>步长</b><input class="input-small" id="Cp10_step2" type=text size=4 value="180">秒
        <button class="btn" onclick="tu3_yingzi(1)">-</button>
        <button class="btn" onclick="tu3_yingzi(0)">影子</button>
        <button class="btn" onclick="tu3_yingzi(2)">+</button><br>
        <b>局部显示(0.1球半径为单位)</b>
-       x0<input class="input-small" id=Cp10_x0 type=text size=4 value="0">
-       y0<input class="input-small" id=Cp10_y0 type=text size=4 value="0">
-       dx<input class="input-small" id=Cp10_dx type=text size=4 value="10">
-       dy<input class="input-small" id=Cp10_dy type=text size=4 value="10">
+       x0<input class="input-small" id="Cp10_x0" type=text size=4 value="0">
+       y0<input class="input-small" id="Cp10_y0" type=text size=4 value="0">
+       dx<input class="input-small" id="Cp10_dx" type=text size=4 value="10">
+       dy<input class="input-small" id="Cp10_dy" type=text size=4 value="10">
 
        </td></tr>
-       <tr><td align=center><v:group id=Can3 style="width:700;height:400;position:relative"/></td></tr>
+       <tr><td align=center><v:group id="Can3" style="width:700;height:400;position:relative"/></td></tr>
        <tr><td>　小圆点为北极,北极向阳高亮,背阳变黑,只显示最后一条线的北极。站在日心观测，斜线为白道，水平线为赤道(用户可选黄道)，竖直线过地心自转轴(或黄轴)，大圆是贝塞尔基面上的地球圆面。方位角给出大阳的地平坐标。全的食分为月日视径比，食带宽的单位是千米。<br>
       　类型：T全食，T0无中心全食，T1有中心全食但本影没有完全进入，A环食，A0无中心环食，A1月中心环食但伪本影没有全部进入地球，P偏食，H环全环，H2全全环，H3环全全。因为只采用二点线性插值，所以P类型(γ值较大时)的精度稍差一些。
        </td></tr>
       </table>
-      </td></tr>
-
-      <!--命理八字-->
-      <tr id=page11 style="display:none"><td class=dBot2 colspan=2>
-       经度 <input class="input-small" id=Cp11_J type=text value="0">
-       纬度 <input class="input-small" id=Cp11_W type=text value="0"> 公元
-       <input class="input-small" type=text id=Cml_y value='2008'>年
-       <input class="input-small" type=text id=Cml_m value='01'>月
-       <input class="input-small" type=text id=Cml_d value='01'>日
-       <input class="input-small" type=text id=Cml_his value='12:00:00'>
+      </div>
+      <div id="page11" class="tab-pane">
+        经度 <input class="input-small" id="Cp11_J" type=text value="0">
+       纬度 <input class="input-small" id="Cp11_W" type=text value="0"> 公元
+       <input class="input-small" type=text id="Cml_y" value='2008'>年
+       <input class="input-small" type=text id="Cml_m" value='01'>月
+       <input class="input-small" type=text id="Cml_d" value='01'>日
+       <input class="input-small" type=text id="Cml_his" value='12:00:00'>
        <button class="btn" onclick='ML_calc()'>确定</button>
        <button class="btn" onclick='ML_settime()'>此刻</button>
        <button class="btn" onclick='ML_setlocation()'>此地</button>
-       <div id=Cal6></div>
-      </td></tr>
-
-      <!--工具-->
-      <tr id=page12 style="display:none"><td class=dBot2 colspan=2>
-       儒略日计算1： JD <input class="input-small" id=GJ1_jd type=text size=10 value="2451545"> 
+       <div id="Cal6"></div>
+      </div>
+      <div id="page12" class="tab-pane">
+        儒略日计算1： JD <input class="input-small" id=GJ1_jd type=text size=10 value="2451545"> 
        <button class="btn" onclick='GJ1_calc1()'>确定</button> 
        <span id=GJ1_out style="font-size:16;color:red"></span><br>
        儒略日计算2：公元<input class="input-small" id=GJ1_y  type=text size=4 value=2008>年
@@ -359,14 +343,10 @@
        <button class="btn" onclick='GJ2_pi()'>现代</button>
        <button class="btn" onclick='GJ2_machin.pi()'>现代2</button>
        <button class="btn" onclick='GJ2_cls()'>清除</button>
-       <div id=GJ2_out></div>
-
-      </td></tr>
-
-
-      <!--常数表等-->
-      <tr id=page13 style="display:none"><td class=dBot2 colspan=2>
-      <center><b>定义常数</b></center>
+       <div id="GJ2_out"></div>        
+      </div>
+      <div id="page13" class="tab-pane">
+          <center><b>定义常数</b></center>
       儒略日：d = 86400秒<br>
       儒略年：y = 365.25d<br>
       儒略世纪：cy = 36525d<br>
@@ -420,9 +400,9 @@
       交点月：27.21222082 + 0.0000000038(t-2000) = 27天05时05分35.9秒 at 2008.0<br>
       <center><b>说明</b></center>
       　　年月长度的解析表达取自《2008年中国天文年历》，这些数据通常与早期IAU推荐值有关，常做为教科书标准参考值，本软件实际星历计算采用更理想的解析表达，以便与实际星历计算相符。行星质量系统取自JPL数值积分的初始值。黄经总岁差的IAU2000采用值与其它理论采用值几乎相同，每世纪一般只相差几个毫角秒。
-      </td></tr>
-
-      </table>
+      </div>
+      <div id ="help"></div>
+    </div><!-- /.tab-content -->
 
 </div>
 
