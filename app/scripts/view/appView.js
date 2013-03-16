@@ -4,7 +4,7 @@ define(['jquery','underscore','backbone',
 	'use strict';
 
 	var appView = Backbone.View.extend({
-		el: '#app',
+		el: '#wrap',
 		views: [],
 		events: {
 			"click #nav-title": "clickTitle",
