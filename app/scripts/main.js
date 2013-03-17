@@ -6,6 +6,7 @@ require.config({
     paths: {
         jquery: '../components/sass-bootstrap/docs/assets/js/jquery',
         bootstrap: '../components/sass-bootstrap/docs/assets/js/bootstrap',
+        bootstraptab: '../components/sass-bootstrap/docs/assets/js/bootstrap-tab',
         raphael: '../components/raphael/raphael',
         backbone: '../components/backbone-amd/backbone',
         underscore: '../components/underscore-amd/underscore',

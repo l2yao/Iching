@@ -1,4 +1,4 @@
-define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/calendar','iching'], 
+define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/calendar','iching','bootstraptab'], 
     function ($, _, Backbone,Handlebars,templOne) {
     'use strict';
 
@@ -6,19 +6,11 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/cale
         el: '#calendar',
         template: templOne,
         events: {
-            'click .nav a': 'showtab'
         },
         render: function(){
             var self = this;
             var html = self.template();
             self.$el.html(html);
-        },
-        showtab: function(ev){
-            var tabindex = $(ev.target).data('tab');
-            
-            $(function () {
-                $(ev.target).tab('show');
-            });
         }
     });
 
