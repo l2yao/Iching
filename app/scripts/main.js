@@ -4,7 +4,7 @@ require.config({
         disableI18n : true
     },
     paths: {
-        jquery: '../components/jquery/jquery',
+        jquery: '../components/sass-bootstrap/docs/assets/js/jquery',
         bootstrap: '../components/sass-bootstrap/docs/assets/js/bootstrap',
         raphael: '../components/raphael/raphael',
         backbone: '../components/backbone-amd/backbone',

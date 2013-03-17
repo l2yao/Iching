@@ -1,19 +1,19 @@
 <div class="tabbable">
 
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#page1" data-toggle="tab">月历</a></li>
-      <li><a href="#page2" data-toggle="tab">年历</a></li>
-      <li><a href="#page3" data-toggle="tab">日月食</a></li>
-      <li><a href="#page4" data-toggle="tab">地方食</a></li>
-      <li><a href="#page5" data-toggle="tab">星历</a></li>
-      <li><a href="#page6" data-toggle="tab">天象</a></li>
-      <li><a href="#page7" data-toggle="tab">恒星</a></li>
-      <li><a href="#page8" data-toggle="tab">气朔</a></li>
-      <li><a href="#page9" data-toggle="tab">升降</a></li>
-      <li><a href="#page10" data-toggle="tab">日食概略</a></li>
-      <li><a href="#page11" data-toggle="tab">八字</a></li>
-      <li><a href="#page12" data-toggle="tab">工具</a></li>
-      <li><a href="#page13" data-toggle="tab">常数</a></li>
+      <li class="active"><a href="#page1" data-toggle="tab" data-tab="1">月历</a></li>
+      <li><a href="#page2" data-toggle="tab" data-tab="2">年历</a></li>
+      <li><a href="#page3" data-toggle="tab" data-tab="3">日月食</a></li>
+      <li><a href="#page4" data-toggle="tab" data-tab="4">地方食</a></li>
+      <li><a href="#page5" data-toggle="tab" data-tab="5">星历</a></li>
+      <li><a href="#page6" data-toggle="tab" data-tab="6">天象</a></li>
+      <li><a href="#page7" data-toggle="tab" data-tab="7">恒星</a></li>
+      <li><a href="#page8" data-toggle="tab" data-tab="8">气朔</a></li>
+      <li><a href="#page9" data-toggle="tab" data-tab="9">升降</a></li>
+      <li><a href="#page10" data-toggle="tab" data-tab="10">日食概略</a></li>
+      <li><a href="#page11" data-toggle="tab" data-tab="11">八字</a></li>
+      <li><a href="#page12" data-toggle="tab" data-tab="12">工具</a></li>
+      <li><a href="#page13" data-toggle="tab" data-tab="13">常数</a></li>
     </ul>
     <div class="tab-content">
       <div id="page1" class="tab-pane active">
@@ -408,14 +408,18 @@
 
 <div class="row">
     <div class="span4">
-      <!--本地时间--><span id=Clock1 style='color:red;font-weight:bold'></span>
+      <!--本地时间--><span id="Clock1" style='color:red;font-weight:bold'></span>
     </div>
     <div class="span4">
-      <!--时区选择--><select id=Sel_zhou onchange="change_zhou()"></select> <select id=Sel_dq onchange="change_dq()"></select><br>
-      <!--外地时间--><span id=Sel_sqsm></span>&nbsp;<span id=Clock2 style='font-weight:bold;color:blue'></span>
+      <!--时区选择--><select id="Sel_zhou" onchange="change_zhou()"></select> 
+      <select id="Sel_dq" onchange="change_dq()"></select><br>
+      <!--外地时间--><span id="Sel_sqsm"></span>&nbsp;
+      <span id="Clock2" style='font-weight:bold;color:blue'></span>
     </div>
     <div class="span4">
-      <!--经纬选择--><select id=Sel1 onchange="change(0)"></select> <select id=Sel2 onchange="change2()"></select><br>
-      <!--经度纬度--><span id=Cal_zdzb></span>
+      <!--经纬选择-->
+      <select id="Sel1" onchange="change(0)"></select> 
+      <select id="Sel2" onchange="change2()"></select><br>
+      <!--经度纬度--><span id="Cal_zdzb"></span>
     </div>
 </div>
