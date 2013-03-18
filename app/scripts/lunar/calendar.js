@@ -26,8 +26,7 @@ function showHXK(ind){ //显示恒星库
  }
  Cf_db.innerText = bt + r.replace(/\#/g,'\r\n');
 }
-showHXK0();
-showHXK(0);
+
 function aCalc(){ //恒星计算
  var jd = JD.JD( year2Ayear(Cf_y.value), Cf_m.value-0, (Cf_d.value-0)+timeStr2hour(Cf_t.value)/24 ) - J2000;  //取屏幕时间
  if(Cf_ut.checked) jd += curTZ/24+dt_T(jd); //转为力学时
@@ -558,41 +557,6 @@ function houCalc(){ //定候测试函数
  Cp8_out.innerHTML=s+s2;
 }
 
-
-//==========================
-//页面生成有关的函数
-//==========================
-function showPage(pg){
-  showHelp(0); //关闭可能已打开的帮助页面
-  Cal_pause.checked=true;
-  page1.style.display='none';
-  page2.style.display='none';
-  page3.style.display='none';
-  page4.style.display='none';
-  page5.style.display='none';
-  page6.style.display='none';
-  page7.style.display='none';
-  page8.style.display='none';
-  page9.style.display='none';
-  page10.style.display='none';
-  page11.style.display='none';
-  page12.style.display='none';
-  page13.style.display='none';
-  if(pg==1) page1.style.display='block';
-  if(pg==2){page2.style.display='block'; getNianLi(0);} //年历
-  if(pg==3){page3.style.display='block'; tu_calc(0);} //图表
-  if(pg==4) page4.style.display='block'; //地方日食
-  if(pg==5) page5.style.display='block'; //行星星历
-  if(pg==6) page6.style.display='block'; //行星天象
-  if(pg==7) page7.style.display='block'; //恒星星历
-  if(pg==8) page8.style.display='block'; //气朔表
-  if(pg==9) page9.style.display='block'; //升降表
-  if(pg==10) page10.style.display='block'; //食概
-  if(pg==11) page11.style.display='block'; //命理八字
-  if(pg==12) page12.style.display='block'; //工具
-  if(pg==13) page13.style.display='block'; //常数表
-}
-
 function set_curlocation(){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
@@ -624,7 +588,7 @@ function set_date_screen(fw){ //把当前时间置于屏幕的便入框之中
  }
  curJD=int2(curJD+0.5);
 }
-set_date_screen(0);
+
 
 /****************
 外地时间选择
@@ -643,11 +607,6 @@ function change_zhou(){ //洲别改变
   for(i=1; i<ob.length; i+=2) addOp(Sel_dq,ob[i+1],ob[i]);
   change_dq();
 }
-
-for(i=0;i<SQv.length;i++) addOp(document.all.Sel_zhou,i,SQv[i][0]);
-change_zhou();
-
-
 
 function show_clock(t){ //显示时钟,传入日期对象
   var h  = Sel_dq.v-0, rg='';
@@ -691,13 +650,6 @@ function change(){
    addOp( Sel2, ob[i].substr(0,4), ob[i].substr(4,ob[i].length-4) );
   change2();
 }
-var i;
-for(i=0;i<JWv.length;i++) addOp(document.all.Sel1,i,JWv[i][0]);
-
-var seI1=getCookie('Sel1');
-var seI2=getCookie('Sel2');
-Sel1.selectedIndex = seI1; change();
-Sel2.selectedIndex = seI2; change2();
 
 
 /**********************
@@ -828,8 +780,6 @@ function getLunar(){ //月历页面生成
   showMessD(-2);
 }
 
-getLunar(); //调用月历页面生成函数
-
 /**********************
 年历面页生成
 **********************/
@@ -862,4 +812,3 @@ function tick() { //即时坐标计算
   zb_calc();
   window.setTimeout("tick()", 1000);
 }
-tick(); //触发时钟

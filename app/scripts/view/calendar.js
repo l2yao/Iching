@@ -1,5 +1,5 @@
 define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/calendar','iching','bootstraptab',
-    'lunar/lunar','lunar/eph','lunar/eph0','lunar/ephB','lunar/page_gj','lunar/calendar'], 
+    'lunar/lunar','lunar/eph','lunar/eph0','lunar/ephB','lunar/page_gj','lunar/JW','lunar/calendar'], 
     function ($, _, Backbone,Handlebars,templOne) {
     'use strict';
 
@@ -15,6 +15,33 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/cale
 
             // render this month calendar
             changeMonth(2);
+
+            // 显示恒星库 
+            showHXK0();
+            showHXK(0);
+
+            // init current date time
+            set_date_screen(0);
+
+            for(var i=0;i<SQv.length;i++) {
+                addOp(document.all.Sel_zhou,i,SQv[i][0]);
+            }
+            change_zhou();
+
+            for(var i=0;i<JWv.length;i++) {
+                addOp(document.all.Sel1,i,JWv[i][0]);
+            }
+
+            var seI1=getCookie('Sel1');
+            var seI2=getCookie('Sel2');
+            Sel1.selectedIndex = seI1; 
+            change();
+            Sel2.selectedIndex = seI2; 
+            change2();
+
+            getLunar(); //调用月历页面生成函数
+
+            tick(); //触发时钟
         }
     });
 
