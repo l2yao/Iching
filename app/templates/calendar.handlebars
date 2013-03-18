@@ -113,7 +113,7 @@
        <button class="btn" onclick="dfRS(0)">朔</button>
        <button class="btn" onclick="dfRS(2)">+&gt;</button>
        NASA<input id="Cc_nasa" type=checkbox><br>
-       <textarea cols=100 rows=15 id="Cc_db">*地名,纬度,经度,海拔(米)
+       <textarea cols="200" rows="15" id="Cc_db">*地名,纬度,经度,海拔(米)
       北京, 39.93, -116.37,  31  # 天津, 39.14, -117.19,   3  # 太原, 37.87, -112.56, 778
       沈阳, 41.78, -123.41,  41  # 长春, 43.89, -125.31, 237  # 上海, 31.23, -121,46,   5
       南京, 32.05, -118.76,   9  # 杭州, 30.29, -120.17,  42  # 拉萨, 29.66,  -91.13,3658
@@ -125,7 +125,7 @@
       台北, 25.03, -121.50,   9  # 哈市, 45.80, -126.53, 150
 
       </textarea><br>
-       <textarea cols=100 rows=15 id="Cc_tb"></textarea><br>
+       <textarea cols="200" rows="15" id="Cc_tb"></textarea><br>
        P1指两圆相初亏切点的方位，从日面北点起算(赤道坐标系中,日面顶点)，向东测量。日面在我们的视觉平面上，按上北下南左东右西确定方向。P2指复圆方位角。V1,V2也是切点方位，起算点从地平坐标中的日面顶点开始。
       </div>
       <div id="page5" class="tab-pane">
@@ -151,7 +151,7 @@
        间隔<input class="input-small" id="Cd_dt" type=text value=1>(天)
        个数<input class="input-small" id="Cd_n" type=text value=10>
        <button class="btn" onclick="pCalc()">确定</button><br>
-       <textarea cols=100 rows=20 id="Cd_tab"></textarea>
+       <textarea cols="200" rows="20" id="Cd_tab"></textarea>
       </div>
       <div id="page6" class="tab-pane">
         <input class="input-small" id="Ce_y" type=text value=2008>年
@@ -184,7 +184,7 @@
       <a href="javascript:tianXiang(15,2)">金</a> <a href="javascript:tianXiang(15,3)">火</a>
       <a href="javascript:tianXiang(15,4)">木</a> <a href="javascript:tianXiang(15,5)">土</a>
       <a href="javascript:tianXiang(15,6)">天</a> <a href="javascript:tianXiang(15,7)">海</a><br>
-      <textarea cols=100 rows=20 id="Ce_tab"></textarea><br>
+      <textarea cols="200" rows="20" id="Ce_tab"></textarea><br>
       </div>
       <div id="page7" class="tab-pane">
         <select id="Cf_xk" onchange='javascript:showHXK(this.options[this.selectedIndex].value)'></select>
@@ -207,8 +207,8 @@
         个数<input class="input-small" id="Cf_n" type=text size=4 value=10>
         <button class="btn" onclick="aCalc()">确定</button>
         <a href="javascript:showHelp(6)">帮助</a><br>
-        <textarea cols=100 rows=15 id="Cf_db" style="font-family:宋体;font-size: 12px" wrap=off></textarea><br>
-        <textarea cols=100 rows=15 id="Cf_xl" style="font-size: 12px"></textarea><br>
+        <textarea cols="200" rows="15" id="Cf_db" wrap=off></textarea><br>
+        <textarea cols="200" rows="15" id="Cf_xl"></textarea><br>
       </div>
       <div id="page8" class="tab-pane">
         <input class="input-small" id="Cp8_y" type=text size=4 value=2008>年
