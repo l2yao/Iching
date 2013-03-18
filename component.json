@@ -2,10 +2,10 @@
   "name": "iching",
   "version": "0.0.0",
   "dependencies": {
+    "d3": "~3.0.8",
     "sass-bootstrap": "~2.3.0",
     "requirejs": "~2.1.4",
     "modernizr": "~2.6.2",
-    "raphael": "~2.1.0",
     "underscore-amd": "~1.4.4",
     "backbone-amd": "~0.9.10",
     "require-handlebars-plugin": "~0.4.0"

@@ -1,4 +1,5 @@
-define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/calendar','iching','bootstraptab'], 
+define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/calendar','iching','bootstraptab',
+    'lunar/lunar','lunar/eph','lunar/ephB','lunar/calendar'], 
     function ($, _, Backbone,Handlebars,templOne) {
     'use strict';
 

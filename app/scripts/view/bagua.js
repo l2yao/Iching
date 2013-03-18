@@ -1,5 +1,5 @@
 define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bagua','iching'], 
-	function ($, _, Backbone,Handlebars,templOne) {
+	function ($, _, Backbone,Handlebars,templOne, iching) {
 	'use strict';
 
 	var baguaView = Backbone.View.extend({
@@ -7,7 +7,7 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bagu
 		template: templOne,
 		render: function(){
 			var self = this;
-			var html = self.template({'bagong': Iching.bagong_bagua});
+			var html = self.template({'bagong': iching.bagong_bagua});
 			self.$el.html(html);
 		}
 	});

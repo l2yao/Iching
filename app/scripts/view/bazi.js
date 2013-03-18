@@ -1,5 +1,6 @@
-define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi','iching'], 
-    function ($, _, Backbone,Handlebars,templOne) {
+define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi','iching',
+    'lunar/lunar','lunar/eph0','lunar/eph','lunar/ephB', 'lunar/tools'], 
+    function ($, _, Backbone,Handlebars,templOne, iching) {
     'use strict';
 
     var baziView = Backbone.View.extend({
@@ -14,6 +15,8 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             var self = this;
             var html = self.template();
             self.$el.html(html);
+            this.clickCurLocation();
+            this.clickCurTime();
         },
         clickCurLocation: function(){
             if (navigator.geolocation)
@@ -26,21 +29,24 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
         },
         clickCurTime: function() {
             var now=new Date();
-            var curTZ = now.getTimezoneOffset()/60; //时区 -8为北京时
-            var curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
+            curTZ = now.getTimezoneOffset()/60; //时区 -8为北京时
+            curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
             JD.setFromJD(curJD+J2000);
 
-            $('#input-date').attr('value', JD.Y+'-'+JD.M+'-'+JD.D);
-            $('#input-time').attr('value', JD.h+':'+JD.m+':'+Math.floor(JD.s));       
+            $('#input-time').attr('value',JD.Y+'-'+JD.M+'-'+JD.D+'T'+JD.h+':'+JD.m+':'+JD.s);       
         },
         clickBazi: function() {
             var ob = new Object();
-            var date = $('#input-date').attr('value');
-            var array = date.split('-');
+            var datetime = $('#input-time').attr('value');
+            var array = datetime.split('T');
+            var date = array[0];
+            var time = array[1];
+
+            array = date.split('-');
             JD.Y = Number(array[0]);
             JD.M = Number(array[1]);
             JD.D = Number(array[2]);
-            var t = timeStr2hour($('#input-time').attr('value'));
+            var t = timeStr2hour(time);
             var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
             var longitude = new Number($('#input-longitude').attr('value'));
             obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
@@ -65,15 +71,15 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             var nongli_yue = (mk-1) % 8;
             var nongli_ri = nlr % 8;
             
-            var ri_index = Iching.Trigram.indexOf(Iching.xiantian_bagua[nongli_ri]);
-            var ri_symbol = Iching.Trigram_symbol[ri_index];
-            var yue_index = Iching.Trigram.indexOf(Iching.xiantian_bagua[nongli_yue]);
-            var yue_symbol = Iching.Trigram_symbol[yue_index];
-            var hexagram_symbol = Iching.Hexagram_name[ri_index+yue_index*8];
-            var gong_name = Iching.getGongName(Iching.Hexagram[ri_index+yue_index*8]);
-            var gong_index = Iching.Trigram_name.indexOf(gong_name);
-            $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+Iching.Trigram_wuxing[gong_index]+'</h2>');
-            Iching.drawTrigrams('gua', Iching.xiantian_bagua[nongli_ri], Iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));    
+            var ri_index = iching.Trigram.indexOf(iching.xiantian_bagua[nongli_ri]);
+            var ri_symbol = iching.Trigram_symbol[ri_index];
+            var yue_index = iching.Trigram.indexOf(iching.xiantian_bagua[nongli_yue]);
+            var yue_symbol = iching.Trigram_symbol[yue_index];
+            var hexagram_symbol = iching.Hexagram_name[ri_index+yue_index*8];
+            var gong_name = iching.getGongName(iching.Hexagram[ri_index+yue_index*8]);
+            var gong_index = iching.Trigram_name.indexOf(gong_name);
+            $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+iching.Trigram_wuxing[gong_index]+'</h2>');
+            iching.drawTrigrams('#gua', iching.xiantian_bagua[nongli_ri], iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));    
         }
     });
 

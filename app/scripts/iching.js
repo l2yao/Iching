@@ -1,4 +1,6 @@
-var Iching = (function() {
+define(['d3'], function () {
+    'use strict';
+
     var iching = {
         Trigram: ['☰','☳','☵','☶','☷','☴','☲','☱'],
         Trigram_name:['乾','震','坎','艮','坤','巽','離','兌'],
@@ -37,34 +39,34 @@ var Iching = (function() {
                        {'gua': ['䷳','䷕','䷙','䷨','䷥','䷉','䷼','䷴'], 'gong': '䷳'},
                        {'gua': ['䷁','䷗','䷒','䷊','䷡','䷪','䷄','䷇'], 'gong': '䷁'}],
         getGongIndex : function(hexagram) {
-            for(var i=0;i<Iching.bagong_bagua.length; i++) {
-                var gong = Iching.bagong_bagua[i].gua;
+            for(var i=0;i<this.bagong_bagua.length; i++) {
+                var gong = this.bagong_bagua[i].gua;
                 var gong_index = gong.indexOf(hexagram);
                 if(gong_index != -1)    return gong_index;
             }
             return -1;
         },
         getGongName : function(hexagram) {
-            for(var i=0;i<Iching.bagong_bagua.length; i++) {
-                var gong = Iching.bagong_bagua[i].gua;
+            for(var i=0;i<this.bagong_bagua.length; i++) {
+                var gong = this.bagong_bagua[i].gua;
                 var gong_index = gong.indexOf(hexagram);
                 if(gong_index != -1){
-                    return Iching.Hexagram_name[Iching.Hexagram.indexOf(gong[0])];
+                    return this.Hexagram_name[this.Hexagram.indexOf(gong[0])];
                 }
             }
         },
         trigram2hexagram : function(upper_trigram, lower_trigram) {
-            var upper_index = Iching.Trigram.indexOf(upper_trigram);
-            var lower_index = Iching.Trigram.indexOf(lower_trigram);
-            return Iching.Hexagram[lower_index * 8 + upper_index];
+            var upper_index = this.Trigram.indexOf(upper_trigram);
+            var lower_index = this.Trigram.indexOf(lower_trigram);
+            return this.Hexagram[lower_index * 8 + upper_index];
         },
         getLiuqin : function(dizhi, hexagram) {
-            var dizhi_index = Iching.dizhi.indexOf(dizhi);
-            var dizhi_wuxing = Iching.dizhi_wuxing[dizhi_index];
-            var gongName = Iching.getGongName(hexagram);
-            var hexagram_wuxing = Iching.Trigram_wuxing[Iching.Trigram_name.indexOf(gongName)];
-            var dizhi_wuxing_index = Iching.wuxing.indexOf(dizhi_wuxing);
-            var hexagram_wuxing_index = Iching.wuxing.indexOf(hexagram_wuxing);
+            var dizhi_index = this.dizhi.indexOf(dizhi);
+            var dizhi_wuxing = this.dizhi_wuxing[dizhi_index];
+            var gongName = this.getGongName(hexagram);
+            var hexagram_wuxing = this.Trigram_wuxing[this.Trigram_name.indexOf(gongName)];
+            var dizhi_wuxing_index = this.wuxing.indexOf(dizhi_wuxing);
+            var hexagram_wuxing_index = this.wuxing.indexOf(hexagram_wuxing);
             switch(dizhi_wuxing_index - hexagram_wuxing_index){
             case 0:
                 return '兄弟';
@@ -86,90 +88,105 @@ var Iching = (function() {
                 return '父母';
             }
         },
-        drawYangYao : function(paper, xoffset, yoffset, width, height){
-            var yao = paper.rect(xoffset, yoffset, width, height);
-            yao.attr('fill',yao.attr('stroke'));
+        drawYangYao : function(svgContainer, xoffset, yoffset, width, height){
+            var yao = svgContainer.append("rect")
+                            .attr("x", xoffset)
+                            .attr("y", yoffset)
+                            .attr("width", width)
+                            .attr("height", height);
         },
-        drawYinYao : function(paper, xoffset, yoffset, width, height){
-            var yao1 = paper.rect(xoffset, yoffset, (width-height)/2, height);
-            var yao2 = paper.rect(xoffset+(width+height)/2, yoffset, (width-height)/2, height);
-            yao1.attr('fill',yao1.attr('stroke'));
-            yao2.attr('fill',yao2.attr('stroke'));
+        drawYinYao : function(svgContainer, xoffset, yoffset, width, height){
+            var yao1 = svgContainer.append("rect")
+                            .attr("x", xoffset)
+                            .attr("y", yoffset)
+                            .attr("width", (width-height)/2)
+                            .attr("height", height);
+            var yao2 = svgContainer.append("rect")
+                            .attr("x", xoffset+(width+height)/2)
+                            .attr("y", yoffset)
+                            .attr("width", (width-height)/2)
+                            .attr("height", height);
         },
-        drawBagua : function(paper, trigram, x, y, interval, width, height) {
+        drawBagua : function(svgContainer, trigram, x, y, interval, width, height) {
             switch(trigram){
             case '☰':
-                Iching.drawYangYao(paper, x, y, width, height);
-                Iching.drawYangYao(paper, x, y+interval, width, height);
-                Iching.drawYangYao(paper, x, y+interval*2, width, height);
+                this.drawYangYao(svgContainer, x, y, width, height);
+                this.drawYangYao(svgContainer, x, y+interval, width, height);
+                this.drawYangYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☱':
-                Iching.drawYinYao(paper, x, y, width, height);
-                Iching.drawYangYao(paper, x, y+interval, width, height);
-                Iching.drawYangYao(paper, x, y+interval*2, width, height);
+                this.drawYinYao(svgContainer, x, y, width, height);
+                this.drawYangYao(svgContainer, x, y+interval, width, height);
+                this.drawYangYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☲':
-                Iching.drawYangYao(paper, x, y, width, height);
-                Iching.drawYinYao(paper, x, y+interval, width, height);
-                Iching.drawYangYao(paper, x, y+interval*2, width, height);
+                this.drawYangYao(svgContainer, x, y, width, height);
+                this.drawYinYao(svgContainer, x, y+interval, width, height);
+                this.drawYangYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☳':
-                Iching.drawYinYao(paper, x, y, width, height);
-                Iching.drawYinYao(paper, x, y+interval, width, height);
-                Iching.drawYangYao(paper, x, y+interval*2, width, height);
+                this.drawYinYao(svgContainer, x, y, width, height);
+                this.drawYinYao(svgContainer, x, y+interval, width, height);
+                this.drawYangYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☴':
-                Iching.drawYangYao(paper, x, y, width, height);
-                Iching.drawYangYao(paper, x, y+interval, width, height);
-                Iching.drawYinYao(paper, x, y+interval*2, width, height);
+                this.drawYangYao(svgContainer, x, y, width, height);
+                this.drawYangYao(svgContainer, x, y+interval, width, height);
+                this.drawYinYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☵':
-                Iching.drawYinYao(paper, x, y, width, height);
-                Iching.drawYangYao(paper, x, y+interval, width, height);
-                Iching.drawYinYao(paper, x, y+interval*2, width, height);
+                this.drawYinYao(svgContainer, x, y, width, height);
+                this.drawYangYao(svgContainer, x, y+interval, width, height);
+                this.drawYinYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☶':
-                Iching.drawYangYao(paper, x, y, width, height);
-                Iching.drawYinYao(paper, x, y+interval, width, height);
-                Iching.drawYinYao(paper, x, y+interval*2, width, height);
+                this.drawYangYao(svgContainer, x, y, width, height);
+                this.drawYinYao(svgContainer, x, y+interval, width, height);
+                this.drawYinYao(svgContainer, x, y+interval*2, width, height);
                 break;
             case '☷':
-                Iching.drawYinYao(paper, x, y, width, height);
-                Iching.drawYinYao(paper, x, y+interval, width, height);
-                Iching.drawYinYao(paper, x, y+interval*2, width, height);
+                this.drawYinYao(svgContainer, x, y, width, height);
+                this.drawYinYao(svgContainer, x, y+interval, width, height);
+                this.drawYinYao(svgContainer, x, y+interval*2, width, height);
                 break;
             }
         },
         drawTrigram : function(div, trigram) {
-            var paper = Raphael(div, 300, 210);
-            Iching.drawBagua(paper, trigram, 50, 50, 50, 200, 30);
+            var svgContainer = d3.select(div).append("svg")
+                                     .attr("width", 300)
+                                     .attr("height", 210);
+            this.drawBagua(svgContainer, trigram, 50, 50, 50, 200, 30);
         },
         drawHexagram: function(div, hexagram, ri_tiangan) {
-            var paper = Raphael(div, 400, 420);
-            var hexagram_index = Iching.Hexagram.indexOf(hexagram);
+            var svgContainer = d3.select(div).append("svg")
+                                     .attr("width", 400)
+                                     .attr("height", 420);
+            var hexagram_index = this.Hexagram.indexOf(hexagram);
             var lower_index = Math.floor(hexagram_index / 8);
             var upper_index = hexagram_index % 8;
-            Iching.drawBagua(paper, Iching.Trigram[upper_index], 150, 50, 50, 200, 30);
-            Iching.drawNaJia(paper, Iching.Trigram[upper_index], 'upper', 100, 65, 50);
-            Iching.drawBagua(paper, Iching.Trigram[lower_index], 150, 200, 50, 200, 30);
-            Iching.drawNaJia(paper, Iching.Trigram[lower_index], 'lower', 100, 215, 50);
-            Iching.drawShiYing(paper, hexagram, 375, 65, 50);
-            Iching.drawLiuQin(paper, hexagram, 60, 65, 50);
-            Iching.drawLiuShou(paper, ri_tiangan, 20, 65, 50);
+            this.drawBagua(svgContainer, this.Trigram[upper_index], 150, 50, 50, 200, 30);
+            this.drawNaJia(svgContainer, this.Trigram[upper_index], 'upper', 100, 65, 50);
+            this.drawBagua(svgContainer, this.Trigram[lower_index], 150, 200, 50, 200, 30);
+            this.drawNaJia(svgContainer, this.Trigram[lower_index], 'lower', 100, 215, 50);
+            this.drawShiYing(svgContainer, hexagram, 375, 65, 50);
+            this.drawLiuQin(svgContainer, hexagram, 60, 65, 50);
+            this.drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
         },
         drawTrigrams : function(div, upper_trigram, lower_trigram, ri_tiangan) {
-            var paper = Raphael(div, 400, 420);
-            Iching.drawBagua(paper, upper_trigram, 150, 50, 50, 200, 30);
-            Iching.drawNaJia(paper, upper_trigram, 'upper', 100, 65, 50);
-            Iching.drawBagua(paper, lower_trigram, 150, 200, 50, 200, 30);
-            Iching.drawNaJia(paper, lower_trigram, 'lower', 100, 215, 50);
-            var hexagram = Iching.trigram2hexagram(upper_trigram, lower_trigram);
-            Iching.drawShiYing(paper, hexagram, 375, 65, 50);
-            Iching.drawLiuQin(paper, hexagram, 60, 65, 50);
-            Iching.drawLiuShou(paper, ri_tiangan, 20, 65, 50);
+            var svgContainer = d3.select(div).append("svg")
+                                     .attr("width", 400)
+                                     .attr("height", 420);
+            this.drawBagua(svgContainer, upper_trigram, 150, 50, 50, 200, 30);
+            this.drawNaJia(svgContainer, upper_trigram, 'upper', 100, 65, 50);
+            this.drawBagua(svgContainer, lower_trigram, 150, 200, 50, 200, 30);
+            this.drawNaJia(svgContainer, lower_trigram, 'lower', 100, 215, 50);
+            var hexagram = this.trigram2hexagram(upper_trigram, lower_trigram);
+            this.drawShiYing(svgContainer, hexagram, 375, 65, 50);
+            this.drawLiuQin(svgContainer, hexagram, 60, 65, 50);
+            this.drawLiuShou(svgContainer, ri_tiangan, 20, 65, 50);
         },
-        drawShiYing : function(paper, hexagram, x, y, interval) {
-            var gong_index = Iching.getGongIndex(hexagram);
+        drawShiYing : function(svgContainer, hexagram, x, y, interval) {
+            var gong_index = this.getGongIndex(hexagram);
             var shi = -1;
             var ying = -1;
             switch(gong_index){
@@ -209,10 +226,16 @@ var Iching = (function() {
                 break;
             }
             if( shi >= 0 && ying >= 0){
-                var text = paper.text(x, y + shi * interval, '世');
-                text.attr({'font-size':16});
-                text = paper.text(x, y + ying * interval,'应');
-                text.attr({'font-size':16});
+                var text = svgContainer.append('text')
+                            .text('世')
+                            .attr('x', x)
+                            .attr('y', y + shi * interval)
+                            .attr('font-size', 16);
+                text = svgContainer.append('text')
+                            .text('应')
+                            .attr('x', x)
+                            .attr('y', y + ying * interval)
+                            .attr('font-size', 16);
             }
         },
         getNaJia: function(trigram, gua_pos) {
@@ -277,30 +300,36 @@ var Iching = (function() {
             }
             return najia;
         },
-        drawNaJia : function(paper, trigram, gua_pos, x, y, interval) {
-            var najia = Iching.getNaJia(trigram, gua_pos);
+        drawNaJia : function(svgContainer, trigram, gua_pos, x, y, interval) {
+            var najia = this.getNaJia(trigram, gua_pos);
             for(var i =0 ; i <najia.length; i++){
-                var dizhi_index = Iching.dizhi.indexOf(najia[i]);
-                var text = paper.text(x, y + i*interval, najia[i]+ Iching.dizhi_wuxing[dizhi_index]);
-                text.attr({'font-size':16});
+                var dizhi_index = this.dizhi.indexOf(najia[i]);
+                var text = svgContainer.append('text')
+                            .text(najia[i]+ this.dizhi_wuxing[dizhi_index])
+                            .attr('x', x)
+                            .attr('y', y + i * interval)
+                            .attr('font-size', 16);
             }
         },
-        drawLiuQin : function(paper, hexagram, x, y, interval) {
-            var hexagram_index = Iching.Hexagram.indexOf(hexagram);
-            var upper_trigram = Iching.Trigram[hexagram_index % 8];
-            var lower_trigram = Iching.Trigram[Math.floor(hexagram_index / 8)];
-            var upper_gua = Iching.getNaJia(upper_trigram, 'upper');
-            var lower_gua = Iching.getNaJia(lower_trigram, 'lower');
+        drawLiuQin : function(svgContainer, hexagram, x, y, interval) {
+            var hexagram_index = this.Hexagram.indexOf(hexagram);
+            var upper_trigram = this.Trigram[hexagram_index % 8];
+            var lower_trigram = this.Trigram[Math.floor(hexagram_index / 8)];
+            var upper_gua = this.getNaJia(upper_trigram, 'upper');
+            var lower_gua = this.getNaJia(lower_trigram, 'lower');
             var gua = upper_gua.concat(lower_gua);
             
             for( var i=0;i<gua.length; i++) {
-                var liuqin = Iching.getLiuqin(gua[i], hexagram);
-                var text = paper.text(x, y + i * interval, liuqin);
-                text.attr({'font-size':16}); 
+                var liuqin = this.getLiuqin(gua[i], hexagram);
+                var text = svgContainer.append('text')
+                            .text(liuqin)
+                            .attr('x', x)
+                            .attr('y', y + i * interval)
+                            .attr('font-size', 16);
             }
         },
-        drawLiuShou : function(paper, tiangan, x, y, interval) {
-            var tiangan_index = Iching.tiangan.indexOf(tiangan);
+        drawLiuShou : function(svgContainer, tiangan, x, y, interval) {
+            var tiangan_index = this.tiangan.indexOf(tiangan);
             var offset = 0;
             if(tiangan_index ===0 || tiangan_index ===1){
                 offset =0;
@@ -316,12 +345,16 @@ var Iching = (function() {
                 offset =5;
             }
             
-            for( var i=0; i<Iching.liushou.length; i++) {
+            for( var i=0; i<this.liushou.length; i++) {
                 var pos = (i + offset) % 6;
-                var text = paper.text(x, y + (Iching.liushou.length -1 - i) *interval, Iching.liushou[pos]);
-                text.attr({'font-size':16});                
+                var text = svgContainer.append('text')
+                            .text(this.liushou[pos])
+                            .attr('x', x)
+                            .attr('y', y + (this.liushou.length -1 - i) *interval)
+                            .attr('font-size', 16);
             }
         }
     }
     return iching;
-}());
+
+});

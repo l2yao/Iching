@@ -4,10 +4,10 @@ require.config({
         disableI18n : true
     },
     paths: {
+        d3: '../components/d3/d3',
         jquery: '../components/sass-bootstrap/docs/assets/js/jquery',
         bootstrap: '../components/sass-bootstrap/docs/assets/js/bootstrap',
         bootstraptab: '../components/sass-bootstrap/docs/assets/js/bootstrap-tab',
-        raphael: '../components/raphael/raphael',
         backbone: '../components/backbone-amd/backbone',
         underscore: '../components/underscore-amd/underscore',
         handlebars: '../components/require-handlebars-plugin/Handlebars',
@@ -19,6 +19,9 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        d3: {
+            exports: 'd3'
         }
     }
 });
