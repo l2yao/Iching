@@ -1,5 +1,5 @@
 define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi','iching',
-    'lunar/lunar','lunar/eph0','lunar/eph','lunar/ephB', 'lunar/tools'], 
+    'lunar','eph0','eph','ephB', 'tools'], 
     function ($, _, Backbone,Handlebars,templOne, iching) {
     'use strict';
 
