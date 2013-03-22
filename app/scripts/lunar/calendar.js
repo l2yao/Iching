@@ -806,9 +806,9 @@ function getNianLiN(){ //dy起始年份偏移数
 /**********************
 时钟1秒定时
 **********************/
-function tick() { //即时坐标计算
+/*function tick() { //即时坐标计算
   var now = new Date();
   show_clock(now);
   zb_calc();
   window.setTimeout("tick()", 1000);
-}
+}*/

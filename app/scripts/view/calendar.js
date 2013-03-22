@@ -1,5 +1,5 @@
 define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/calendar','iching','bootstraptab',
-    'lunar/lunar','lunar/eph','lunar/eph0','lunar/ephB','lunar/page_gj','lunar/JW','lunar/calendar'], 
+    'lunar','eph','eph0','ephB','page_gj','JW','calendar'], 
     function ($, _, Backbone,Handlebars,templOne) {
     'use strict';
 
@@ -41,7 +41,11 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/cale
 
             getLunar(); //调用月历页面生成函数
 
-            tick(); //触发时钟
+            setInterval(function(){
+                var now = new Date();
+                show_clock(now);
+                zb_calc();
+            }, 1000);
         }
     });
 

@@ -13,7 +13,15 @@ require.config({
         handlebars: '../components/require-handlebars-plugin/Handlebars',
         hbs: '../components/require-handlebars-plugin/hbs',
         json2: '../components/require-handlebars-plugin/hbs/json2',
-        i18nprecompile: '../components/require-handlebars-plugin/hbs/i18nprecompile'
+        i18nprecompile: '../components/require-handlebars-plugin/hbs/i18nprecompile',
+        calendar: 'lunar/calendar',
+        eph: 'lunar/eph',
+        eph0: 'lunar/eph0',
+        ephB: 'lunar/ephB',
+        lunar: 'lunar/lunar',
+        JW: 'lunar/JW',
+        page_gj: 'lunar/page_gj',
+        tools: 'lunar/tools'
     },
     shim: {
         bootstrap: {
@@ -22,6 +30,9 @@ require.config({
         },
         d3: {
             exports: 'd3'
+        },
+        calendar: {
+            deps: ['lunar']
         }
     }
 });
