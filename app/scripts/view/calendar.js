@@ -91,7 +91,45 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/cale
             'click #page8-dinghou': 'page8dinghou',
             'click #page9-enter': 'page9enter',
             'click #page9-sun': 'page9sun',
-            'click #page9-timediff': 'page9timediff'
+            'click #page9-timediff': 'page9timediff',
+            'click #page10-search': 'page10search',
+            'click #page10-accuratesearch': 'page10accuratesearch',
+            'click #page10-borderdown': 'page10borderdown',
+            'click #page10-border': 'page10border',
+            'click #page10-borderup': 'page10borderup',
+            'click #page10-enter': 'page10enter',
+            'click #page10-clear': 'page10clear',
+            'click #page10-longitudeup': 'page10longitudeup',
+            'click #page10-longitudedown': 'page10longitudedown',
+            'click #page10-latitudeup': 'page10latitudeup',
+            'click #page10-latitudedown': 'page10latitudedown',
+            'click #page10-xzenter': 'page10xzenter',
+            'click #page10-shadowdown': 'page10shadowdown',
+            'click #page10-shadow': 'page10shadow',
+            'click #page10-shadowup': 'page10shadowup',
+            'change #page10-step': 'page10step',
+            'click #page11-enter': 'page11enter',
+            'click #page11-now': 'page11now',
+            'click #page11-here': 'page11here',
+            'click #page12-enter': 'page12enter',
+            'click #page12-convertday': 'page12convertday',
+            'click #page12-removeup': 'page12removeup',
+            'click #page12-addday': 'page12addday',
+            'click #page12-rowminus': 'page12rowminus',
+            'click #page12-6c': 'page126c',
+            'click #page12-4c': 'page124c',
+            'click #page12-6s': 'page126s',
+            'click #page12-4s': 'page124s',
+            'click #page12-6fast': 'page126fast',
+            'click #page12-4fast': 'page124fast',
+            'click #page12-zuchongzhi': 'page12zuchongzhi',
+            'click #page12-morden': 'page12morden',
+            'click #page12morden2': 'page12morden2',
+            'click #page12clear': 'page12clear',
+            'change #Sel_dq': 'seldq',
+            'change #Sel_zhou': 'selzhou',
+            'change #Sel1': 'sel1',
+            'change #Sel2': 'sel2'
         },
         render: function(){
             var self = this;
@@ -386,6 +424,120 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/cale
         },
         page9timediff: function() {
             shengjiang3();
+        },
+        page10search: function() {
+            tuGL_search(0);
+        },
+        page10accuratesearch: function() {
+            tuGL_search(1);
+        },
+        page10borderdown: function() {
+            tu2_calc(3);
+        },
+        page10border: function() {
+            tu2_calc(2);
+        },
+        page10borderup: function() {
+            tu2_calc(4);
+        },
+        page10enter: function() {
+            tu2_calc(5);
+        },
+        page10clear: function() {
+            tu2_cls_path();
+        },
+        page10longitudeup: function() {
+            tu3_xz(0);
+        },
+        page10longitudedown: function() {
+            tu3_xz(1);
+        },
+        page10latitudeup: function() {
+            tu3_xz(2);
+        },
+        page10latitudedown: function() {
+            tu3_xz(3);
+        },
+        page10xzenter: function() {
+            tu3_xz(4);
+        },
+        page10shadowdown: function() {
+            tu3_yingzi(1);
+        },
+        page10shadow: function() {
+            tu3_yingzi(0);
+        },
+        page10shadowup: function() {
+            tu3_yingzi(2);
+        },
+        page10step: function() {
+            Cp10_step.value=this.options[this.selectedIndex].value;
+        },
+        page11enter: function() {
+            ML_calc();
+        },
+        page11now: function() {
+            ML_settime();
+        },
+        page11here: function() {
+            ML_setlocation();
+        },
+        page12enter:function() {
+            GJ1_calc1();
+        },
+        page12convertday: function() {
+            GJ1_calc2(0);
+        },
+        page12removeup: function() {
+            GJ1_calc2(1);
+        },
+        page12addday: function() {
+            GJ1_calc2(2);
+        },
+        page12rowminus: function() {
+            GJ1_calc2(3);
+        },
+        page126c: function() {
+            GJ2_pi1(0);
+        },
+        page124c: function() {
+            GJ2_pi1(1);
+        },
+        page126s: function() {
+            GJ2_pi1(2);
+        },
+        page124s: function() {
+            GJ2_pi1(3);
+        },
+        page126fast: function() {
+            GJ2_pi1(4);
+        },
+        page124fast: function() {
+            GJ2_pi1(5);
+        },
+        page12zuchongzhi: function() {
+            GJ2_pi2();
+        },
+        page12morden: function() {
+            GJ2_pi();
+        },
+        page12morden2: function() {
+            GJ2_machin.pi();
+        },
+        page12clear: function() {
+            GJ2_cls();
+        },
+        seldq: function() {
+            change_dq();
+        },
+        selzhou: function() {
+            change_zhou();
+        },
+        sel1: function() {
+            change(0);
+        },
+        sel2: function() {
+            change2();
         }
     });
 

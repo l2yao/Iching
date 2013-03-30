@@ -259,37 +259,37 @@
        公元<input class="input-small" id=Cp10_y type=text size=4 value=2008>年
        <input class="input-small" id=Cp10_m type=text size=2 value=8 maxleng=2>月
        月数<input class="input-small" type=text id=Cp10_an size=3 value=200>
-       <button class="btn" id="page10-search" onclick="tuGL_search(0)">搜索</button>
-       <button class="btn" id="page10-accuratesearch" onclick="tuGL_search(1)">精搜索</button>
+       <button class="btn" id="page10-search" >搜索</button>
+       <button class="btn" id="page10-accuratesearch" >精搜索</button>
        <div id="Cp10_b1"></div>
        <font color=red><b>选定的时间为：</b></font><span id=Cp10_jdstr>2008-08-01 10:14:30</span>TD
        <b>JDE</b>=<input class="input-small" id=Cp10_jd type=text size=14 value=2454679.926741>
        步长(可负)<input class="input-small" type=text id=Cp10_step size=7 value=6585.32>天
-       <select onchange='javascript:document.all.Cp10_step.value=this.options[this.selectedIndex].value'>
+       <select id="page10-step">
         <option value=6585.32>默认</option>
         <option value=29.5306>朔望</option>
         <option value=6585.32>沙罗</option>
         <option value=346.620>食年</option>
        </select>
        界线<input type=checkbox id=Cp10_showJX>
-       <button class="btn" id="page10-borderdown" onclick="tu2_calc(3)">&lt;-</button>
-       <button class="btn" id="page10-border" onclick="tu2_calc(2)">特征</button>
-       <button class="btn" id="page10-borderup" onclick="tu2_calc(4)">+&gt;</button>
+       <button class="btn" id="page10-borderdown" >&lt;-</button>
+       <button class="btn" id="page10-border" >特征</button>
+       <button class="btn" id="page10-borderup" >+&gt;</button>
 
        黄/赤<input type=checkbox id=Cp10_hc>
        步数<input class="input-small" type=text id="Cp10_bn" size=3 value=10>
-       <button class="btn" id="page10-enter" onclick="tu2_calc(5)">确定</button>
-       <button class="btn" id="page10-clear" onclick="tu2_cls_path()">清除</button>
+       <button class="btn" id="page10-enter" >确定</button>
+       <button class="btn" id="page10-clear" >清除</button>
 
 
        </td></tr>
        <tr><td id=Cp10_tz></td></tr>
        <tr><td align=center><v:group id="Can2" style="width:480;height:300;position:relative"/></td></tr>
        <tr><td>
-       <button class="btn" id="page10-longitudeup" onclick="tu3_xz(0)">经＋</button>
-       <button class="btn" id="page10-longitudedown" onclick="tu3_xz(1)">经－</button>
-       <button class="btn" id="page10-latitudeup" onclick="tu3_xz(2)">纬＋</button>
-       <button class="btn" id="page10-latitudedown" onclick="tu3_xz(3)">纬－</button>
+       <button class="btn" id="page10-longitudeup" >经＋</button>
+       <button class="btn" id="page10-longitudedown" >经－</button>
+       <button class="btn" id="page10-latitudeup" >纬＋</button>
+       <button class="btn" id="page10-latitudedown" >纬－</button>
        球半径<input type=textbox id=Cp10_eR value="250" size=5>
        <select id="Cp10_tylx">
         <option value=0>斜轴正射方位投影</option>
@@ -302,13 +302,13 @@
         <option value=7>正轴多圆锥投影</option>
         <option value=8>中国灯笼投影</option>
        </select>
-       <button class="btn" id="page10-xzenter" onclick="tu3_xz(4)">确定</button>
+       <button class="btn" id="page10-xzenter" >确定</button>
 
        <b>JDE</b>=<input class="input-small" id="Cp10_jd2" type=text size=13 value=2454679.926741>
        <b>步长</b><input class="input-small" id="Cp10_step2" type=text size=4 value="180">秒
-       <button class="btn" id="page10-shadowdown" onclick="tu3_yingzi(1)">-</button>
-       <button class="btn" id="page10-shadow" onclick="tu3_yingzi(0)">影子</button>
-       <button class="btn" id="page10-shadowup" onclick="tu3_yingzi(2)">+</button><br>
+       <button class="btn" id="page10-shadowdown" >-</button>
+       <button class="btn" id="page10-shadow" >影子</button>
+       <button class="btn" id="page10-shadowup" >+</button><br>
        <b>局部显示(0.1球半径为单位)</b>
        x0<input class="input-small" id="Cp10_x0" type=text size=4 value="0">
        y0<input class="input-small" id="Cp10_y0" type=text size=4 value="0">
@@ -329,40 +329,40 @@
        <input class="input-small" type=text id="Cml_m" value='01'>月
        <input class="input-small" type=text id="Cml_d" value='01'>日
        <input class="input-small" type=text id="Cml_his" value='12:00:00'>
-       <button class="btn" onclick='ML_calc()'>确定</button>
-       <button class="btn" onclick='ML_settime()'>此刻</button>
-       <button class="btn" onclick='ML_setlocation()'>此地</button>
+       <button class="btn" id="page11-enter" >确定</button>
+       <button class="btn" id="page11-now" >此刻</button>
+       <button class="btn" id="page11-here" >此地</button>
        <div id="Cal6"></div>
       </div>
       <div id="page12" class="tab-pane">
         儒略日计算1： JD <input class="input-small" id=GJ1_jd type=text size=10 value="2451545"> 
-       <button class="btn" onclick='GJ1_calc1()'>确定</button> 
+       <button class="btn" id="page12-enter" >确定</button> 
        <span id=GJ1_out style="font-size:16;color:red"></span><br>
        儒略日计算2：公元<input class="input-small" id=GJ1_y  type=text size=4 value=2008>年
        <input class="input-small" id=GJ1_m  type=text size=2 value=1 maxleng=2>月
        <input class="input-small" id=GJ1_d  type=text size=2 value=1>日
        <input class="input-small" id=GJ1_t  type=text size=8 value="12:00:00">  
-       <button class="btn" onclick='GJ1_calc2(0)'>转儒略日</button>
-       <button class="btn" onclick='GJ1_calc2(1)'>减去上行</button>
-       <button class="btn" onclick='GJ1_calc2(2)'>年内积日</button><br>
+       <button class="btn" id="page12-convertday" >转儒略日</button>
+       <button class="btn" id="page12-removeup" >减去上行</button>
+       <button class="btn" id="page12-addday" >年内积日</button><br>
        儒略日计算3：公元<input class="input-small" id=GJ1_y2 type=text size=4 value=2000>年
        <input class="input-small" id=GJ1_m2 type=text size=2 value=1 maxleng=2>月
        <input class="input-small" id=GJ1_d2 type=text size=2 value=1>日
        <input class="input-small" id=GJ1_t2 type=text size=8 value="12:00:00">  
-       <button class="btn" onclick='GJ1_calc2(3)'>两行相减</button>
+       <button class="btn" id="page12-rowminus" >两行相减</button>
        <hr>
-       <button class="btn" onclick='GJ2_pi1(0)'>6边C</button>
-       <button class="btn" onclick='GJ2_pi1(1)'>4边C</button>
-       <button class="btn" onclick='GJ2_pi1(2)'>6边S</button>
-       <button class="btn" onclick='GJ2_pi1(3)'>4边S</button>
-       <button class="btn" onclick='GJ2_pi1(4)'>6边快速</button>
-       <button class="btn" onclick='GJ2_pi1(5)'>4边快速</button>
+       <button class="btn" id="page12-6c" >6边C</button>
+       <button class="btn" id="page12-4c" >4边C</button>
+       <button class="btn" id="page12-6s" >6边S</button>
+       <button class="btn" id="page12-4s" >4边S</button>
+       <button class="btn" id="page12-6fast" >6边快速</button>
+       <button class="btn" id="page12-4fast" >4边快速</button>
        半径R<input class="input-small" type=text id=GJ2_r size=10 value='100000000'>毫
-       <button class="btn"  onclick='GJ2_pi2()'>祖冲之</button>
+       <button class="btn" id="page12-zuchongzhi" >祖冲之</button>
        <input class="input-small" type=text id=GJ2_N size=4 maxlength=5 value='100'>位
-       <button class="btn" onclick='GJ2_pi()'>现代</button>
-       <button class="btn" onclick='GJ2_machin.pi()'>现代2</button>
-       <button class="btn" onclick='GJ2_cls()'>清除</button>
+       <button class="btn" id="page12-morden" >现代</button>
+       <button class="btn" id="page12-morden2" >现代2</button>
+       <button class="btn" id="page12-clear" >清除</button>
        <div id="GJ2_out"></div>        
       </div>
       <div id="page13" class="tab-pane">
@@ -431,15 +431,15 @@
       <!--本地时间--><span id="Clock1" style='color:red;font-weight:bold'></span>
     </div>
     <div class="span4">
-      <!--时区选择--><select id="Sel_zhou" onchange="change_zhou()"></select> 
-      <select id="Sel_dq" onchange="change_dq()"></select><br>
+      <!--时区选择--><select id="Sel_zhou" ></select> 
+      <select id="Sel_dq" ></select><br>
       <!--外地时间--><span id="Sel_sqsm"></span>&nbsp;
       <span id="Clock2" style='font-weight:bold;color:blue'></span>
     </div>
     <div class="span4">
       <!--经纬选择-->
-      <select id="Sel1" onchange="change(0)"></select> 
-      <select id="Sel2" onchange="change2()"></select><br>
+      <select id="Sel1" ></select> 
+      <select id="Sel2" ></select><br>
       <!--经度纬度--><span id="Cal_zdzb"></span>
     </div>
 </div>
