@@ -55,7 +55,7 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/cale
             'click #page6-togethergold' : 'page6togethergold',
             'click #page6-togetherfire' : 'page6togetherfire',
             'click #page6-togetherwood' : 'page6togetherwood',
-            'click #page6-togetherearth' : 'page6togethersearth',
+            'click #page6-togetherearth' : 'page6togetherearth',
             'click #page6-togethersky' : 'page6togethersky',
             'click #page6-togethersea' : 'page6togethersea',
             'click #page6-starwater' : 'page6starwater',
