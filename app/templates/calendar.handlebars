@@ -30,12 +30,12 @@
           <input class="input-small" type="text" id="Cal_y">年
           <input class="input-small" type="text" id="Cal_m">月
           <div class="btn-group">
-          <button class="btn" onclick='getLunar()'>确定</button>
-          <button class="btn" onclick='changeYear(0)'>年↑</button>
-          <button class="btn" onclick='changeYear(1)'>年↓</button>
-          <button class="btn" onclick='changeMonth(0)'>月↑</button>
-          <button class="btn" onclick='changeMonth(1)'>月↓</button>
-          <button class="btn" onclick='changeMonth(2)'>今</button>
+          <button class="btn" id="page1-enter">确定</button>
+          <button class="btn" id="page1-yearup">年↑</button>
+          <button class="btn" id="page1-yeardown">年↓</button>
+          <button class="btn" id="page1-monthup">月↑</button>
+          <button class="btn" id="page1-monthdown">月↓</button>
+          <button class="btn" id="page1-today">今</button>
           </div><br>
           <div id="Cal2"></div>
           </td></tr>
@@ -44,11 +44,11 @@
       <div id="page2" class="tab-pane">
         公元<input class="input-small" type=text id="Cp2_y" value=2008>
         年<input type=checkbox id="Cp2_tg" checked>时刻/干支
-        <button class="btn" onclick="getNianLi(0)">确定</button>
-        <button class="btn" onclick="getNianLi(-1)">年↑</button>
-        <button class="btn" onclick="getNianLi(1)">年↓</button>
-        年数<input class="input-small"type=text id="Cp2_n" value=2>
-        <button class="btn" onclick="getNianLiN()">多年</button>
+        <button class="btn" id="page2-enter">确定</button>
+        <button class="btn" id="page2-yearup">年↑</button>
+        <button class="btn" id="page2-yeardown">年↓</button>
+        年数<input class="input-small" type="text" id="Cp2_n" value=2>
+        <button class="btn" id="page2-multiyear">多年</button>
         <div id="Cal7"></div>
       </div>
       <div id="page3" class="tab-pane">
@@ -62,37 +62,36 @@
        海拔<input class="input-small" id="Cb_high" type=text value=0>km
        北/南<input id="Cb_bei" type=checkbox>  
        时角坐标<input id="Cb_sjzb" type=checkbox>
-       <a href="javascript:showHelp(2)">帮助</a><br>
        公元<input class="input-small" id="Cb_y" type=text value=2008>
        年<input class="input-small" id="Cb_m" type=text value=8 maxleng=2>
        月<input class="input-small" id="Cb_d" type=text value=1>
        日<input class="input-small" id="Cb_t" type=text value="18:17:15">
        UTC/TD<input id="Cb_ut" type=checkbox checked>
        NASA<input id="Cb_nasa" type=checkbox>
-       <button class="btn" onclick="tu_calc(1)">今</button><br>
+       <button class="btn" id="page3-today">今</button><br>
        朔望粗定位
        <div class="btn-group">
-       <button class="btn" onclick="tu_calc(4)">&lt;-</button>
-       <button class="btn" onclick="tu_calc(5)">朔</button>
-       <button class="btn" onclick="tu_calc(6)">+&gt;</button>
+       <button class="btn" id="page3-sudown">&lt;-</button>
+       <button class="btn" id="page3-su">朔</button>
+       <button class="btn" id="page3-suup">+&gt;</button>
        </div>
        
        <div class="btn-group">
-       <button class="btn" onclick="tu_calc(7)">&lt;-</button>
-       <button class="btn" onclick="tu_calc(8)">望</button>
-       <button class="btn" onclick="tu_calc(9)">+&gt;</button>
+       <button class="btn" id="page3-wangdown">&lt;-</button>
+       <button class="btn" id="page3-wang">望</button>
+       <button class="btn" id="page3-wangup">+&gt;</button>
        </div>
        
        步长<input class="input-small" type=text id=Cb_step value=300>秒
        
        <div class="btn-group">
-       <button class="btn" onclick="tu_calc(2)">&lt;-</button>
-       <button class="btn" onclick="tu_calc(0)">确定</button>
-       <button class="btn" onclick="tu_calc(3)">+&gt;</button>
+       <button class="btn" id="page3-budown">&lt;-</button>
+       <button class="btn" id="page3-enter">确定</button>
+       <button class="btn" id="page3-buup">+&gt;</button>
        </div>
        
        日食路径<input id="Cb_phSave" type=checkbox> 
-       <button class="btn" onclick="tu_cls_path()">清除</button>
+       <button class="btn" id="page3-clear">清除</button>
        </td></tr>
        <tr><td id="Cb_zb"></td></tr>
        <tr><td align=center><v:group id="Can1" style="width:480;height:300;position:relative"/></td></tr>
@@ -109,9 +108,9 @@
         公元<input class="input-small" id="Cc_y" type=text value=2008>年
         <input class="input-small" id="Cc_m" type=text value=8 maxleng=2>月
         <input class="input-small" id="Cc_d" type=text value=1>日
-       <button class="btn" onclick="dfRS(1)">&lt;-</button>
-       <button class="btn" onclick="dfRS(0)">朔</button>
-       <button class="btn" onclick="dfRS(2)">+&gt;</button>
+       <button class="btn" id="page4-sudown">&lt;-</button>
+       <button class="btn" id="page4-su">朔</button>
+       <button class="btn" id="page4-suup">+&gt;</button>
        NASA<input id="Cc_nasa" type=checkbox><br>
        <textarea cols="200" rows="15" id="Cc_db">*地名,纬度,经度,海拔(米)
       北京, 39.93, -116.37,  31  # 天津, 39.14, -117.19,   3  # 太原, 37.87, -112.56, 778
@@ -145,12 +144,13 @@
        <input class="input-small" id="Cd_m" type=text value=1>月
        <input class="input-small" id="Cd_d" type=text value=1>日
        <input id="Cd_t" type=text size=8 value="00:00:00">
-       UTC/TD<input id="Cd_ut" type=checkbox checked> <a href="javascript:showHelp(4)">帮助</a><br>
+       UTC/TD<input id="Cd_ut" type=checkbox checked> 
+       <button class="btn" id="page5-help">帮助</button><br>
        经度<input class="input-small" id="Cd_J" type=text value=0>
        纬度<input class="input-small" id="Cd_W" type=text value=0>
        间隔<input class="input-small" id="Cd_dt" type=text value=1>(天)
        个数<input class="input-small" id="Cd_n" type=text value=10>
-       <button class="btn" onclick="pCalc()">确定</button><br>
+       <button class="btn" id="page5-enter">确定</button><br>
        <textarea cols="200" rows="20" id="Cd_tab"></textarea>
       </div>
       <div id="page6" class="tab-pane">
@@ -158,36 +158,56 @@
       <input class="input-small" id="Ce_m" type=text value=1 maxleng=2>月
       <input class="input-small" id="Ce_d" type=text value=1>日 TD
       个数<input class="input-small" id="Ce_n" type=text value=10>
-      <a href="javascript:showHelp(5)">帮助</a><br>
-      <a href="javascript:tianXiang(1,0)">月亮近点</a> <a href="javascript:tianXiang(2,0)">月亮远点</a>
-      <a href="javascript:tianXiang(3,0)">月亮升交</a> <a href="javascript:tianXiang(4,0)">月亮降交</a>
-      <a href="javascript:tianXiang(5,0)">地球近日</a> <a href="javascript:tianXiang(6,0)">地球远日</a><br>
-      <a href="javascript:tianXiang(7,0)">水东大距</a> <a href="javascript:tianXiang(8,0)">水西大距</a>
-      <a href="javascript:tianXiang(9,0)">金东大距</a> <a href="javascript:tianXiang(10,0)">金西大距</a><br>
-      [赤经合月] <a href="javascript:tianXiang(11,1)">水</a>
-      <a href="javascript:tianXiang(11,2)">金</a> <a href="javascript:tianXiang(11,3)">火</a>
-      <a href="javascript:tianXiang(11,4)">木</a> <a href="javascript:tianXiang(11,5)">土</a>
-      <a href="javascript:tianXiang(11,6)">天</a> <a href="javascript:tianXiang(11,7)">海</a><br>
-      [黄经合日] <a href="javascript:tianXiang(12,1)">水上</a>
-      <a href="javascript:tianXiang(12,2)">金上</a> <a href="javascript:tianXiang(12,3)">火</a>
-      <a href="javascript:tianXiang(12,4)">木</a> <a href="javascript:tianXiang(12,5)">土</a>
-      <a href="javascript:tianXiang(12,6)">天</a> <a href="javascript:tianXiang(12,7)">海</a>
-      [行星顺留] <a href="javascript:tianXiang(14,1)">水</a>
-      <a href="javascript:tianXiang(14,2)">金</a> <a href="javascript:tianXiang(14,3)">火</a>
-      <a href="javascript:tianXiang(14,4)">木</a> <a href="javascript:tianXiang(14,5)">土</a>
-      <a href="javascript:tianXiang(14,6)">天</a> <a href="javascript:tianXiang(14,7)">海</a><br>
-      [黄经冲日] <a href="javascript:tianXiang(13,1)">水下</a>
-      <a href="javascript:tianXiang(13,2)">金下</a> <a href="javascript:tianXiang(13,3)">火</a>
-      <a href="javascript:tianXiang(13,4)">木</a> <a href="javascript:tianXiang(13,5)">土</a>
-      <a href="javascript:tianXiang(13,6)">天</a> <a href="javascript:tianXiang(13,7)">海</a>
-      [行星逆留] <a href="javascript:tianXiang(15,1)">水</a>
-      <a href="javascript:tianXiang(15,2)">金</a> <a href="javascript:tianXiang(15,3)">火</a>
-      <a href="javascript:tianXiang(15,4)">木</a> <a href="javascript:tianXiang(15,5)">土</a>
-      <a href="javascript:tianXiang(15,6)">天</a> <a href="javascript:tianXiang(15,7)">海</a><br>
+      <button class="btn" id="page6-help">帮助</button><br>
+      <button class="btn" id="page6-moonnear" >月亮近点</button> 
+      <button class="btn" id="page6-moonfar" >月亮远点</button>
+      <button class="btn" id="page6-moonup" >月亮升交</button> 
+      <button class="btn" id="page6-moondown" >月亮降交</button>
+      <button class="btn" id="page6-earthnear" >地球近日</button> 
+      <button class="btn" id="page6-earthfar" >地球远日</button><br>
+      <button class="btn" id="page6-watereast" >水东大距</button> 
+      <button class="btn" id="page6-waterwest" >水西大距</button>
+      <button class="btn" id="page6-goldeast" >金东大距</button> 
+      <button class="btn" id="page6-goldwest" >金西大距</button><br>
+      [赤经合月] <button class="btn" id="page6-redwater" >水</button>
+      <button class="btn" id="page6-redgold" >金</button> 
+      <button class="btn" id="page6-redfire" >火</button>
+      <button class="btn" id="page6-redwood" >木</button> 
+      <button class="btn" id="page6-redearth" >土</button>
+      <button class="btn" id="page6-redsky" >天</button> 
+      <button class="btn" id="page6-redsea" >海</button><br>
+      [黄经合日] <button class="btn" id="page6-togetherwater" >水上</button>
+      <button class="btn" id="page6-togethergold" >金上</button> 
+      <button class="btn" id="page6-togetherfire" >火</button>
+      <button class="btn" id="page6-togetherwood" >木</button> 
+      <button class="btn" id="page6-togetherearth" >土</button>
+      <button class="btn" id="page6-togethersky" >天</button> 
+      <button class="btn" id="page6-togethersea" >海</button>
+      [行星顺留] <button class="btn" id="page6-starwater" >水</button>
+      <button class="btn" id="page6-stargold" >金</button> 
+      <button class="btn" id="page6-starfire" >火</button>
+      <button class="btn" id="page6-starwood" >木</button> 
+      <button class="btn" id="page6-starearth" >土</button>
+      <button class="btn" id="page6-starsky" >天</button> 
+      <button class="btn" id="page6-starsea" >海</button><br>
+      [黄经冲日] <button class="btn" id="page6-oppositewater" >水下</button>
+      <button class="btn" id="page6-oppositegold" >金下</button> 
+      <button class="btn" id="page6-oppositefire" >火</button>
+      <button class="btn" id="page6-oppositewood" >木</button> 
+      <button class="btn" id="page6-oppositeearth" >土</button>
+      <button class="btn" id="page6-oppositesky" >天</button> 
+      <button class="btn" id="page6-oppositesea" >海</button>
+      [行星逆留] <button class="btn" id="page6-backwater" >水</button>
+      <button class="btn" id="page6-backgold" >金</button> 
+      <button class="btn" id="page6-backfire" >火</button>
+      <button class="btn" id="page6-backwood" >木</button> 
+      <button class="btn" id="page6-backearth" >土</button>
+      <button class="btn" id="page6-backsky" >天</button> 
+      <button class="btn" id="page6-backsea" >海</button><br>
       <textarea cols="200" rows="20" id="Ce_tab"></textarea><br>
       </div>
       <div id="page7" class="tab-pane">
-        <select id="Cf_xk" onchange='javascript:showHXK(this.options[this.selectedIndex].value)'></select>
+        <select id="Cf_xk"></select>
         <select id="Cf_lx">
           <option value=0>视位置</option>
           <option value=1>站坐标</option>
@@ -205,21 +225,21 @@
 
         间隔<input class="input-small" id="Cf_dt" type=text size=4 value=10>(天)
         个数<input class="input-small" id="Cf_n" type=text size=4 value=10>
-        <button class="btn" onclick="aCalc()">确定</button>
-        <a href="javascript:showHelp(6)">帮助</a><br>
+        <button class="btn" id="page7-enter">确定</button>
+        <button class="btn" id="page7-help">帮助</button><br>
         <textarea cols="200" rows="15" id="Cf_db" wrap=off></textarea><br>
         <textarea cols="200" rows="15" id="Cf_xl"></textarea><br>
       </div>
       <div id="page8" class="tab-pane">
         <input class="input-small" id="Cp8_y" type=text size=4 value=2008>年
         <input class="input-small" id="Cp8_n" type=text size=4 value=24>个
-        <button class="btn" onclick="suoCalc(0)" >定朔</button>
-        <button class="btn" onclick="suoCalc(180)">定望</button>
-        <button class="btn" onclick="suoCalc(90)">上弦</button>
-        <button class="btn" onclick="suoCalc(270)">下弦</button>
-        <button class="btn" onclick="suoCalc(-1)">任意</button>
-        <button class="btn" onclick="qiCalc()">定气</button>
-        <button class="btn" onclick="houCalc()">定候</button>
+        <button class="btn" id="page8-dingsu">定朔</button>
+        <button class="btn" id="page8-dingwang">定望</button>
+        <button class="btn" id="page8-upstring">上弦</button>
+        <button class="btn" id="page8-downstring">下弦</button>
+        <button class="btn" id="page8-any">任意</button>
+        <button class="btn" id="page8-dingqi">定气</button>
+        <button class="btn" id="page8-dinghou">定候</button>
         <div id="Cp8_out"></div>
       </div>
       <div id="page9" class="tab-pane">
@@ -228,9 +248,9 @@
         <input class="input-small" id="Cp9_y" type=text size=4 value=2008>年
         <input class="input-small" id="Cp9_m" type=text size=2 value=1 maxleng=2>月
         <input class="input-small" id="Cp9_d" type=text size=2 value=1>日
-        <button class="btn" onclick="shengjiang()">确定</button>
-        <button class="btn" onclick="shengjiang2()">太阳升降</button>
-        <button class="btn" onclick="shengjiang3()">时差表</button><br>
+        <button class="btn" id="page9-enter">确定</button>
+        <button class="btn" id="page9-sun">太阳升降</button>
+        <button class="btn" id="page9-timediff">时差表</button><br>
         <div id="Cp9_out"></div>
       </div>
       <div id="page10" class="tab-pane">
@@ -239,8 +259,8 @@
        公元<input class="input-small" id=Cp10_y type=text size=4 value=2008>年
        <input class="input-small" id=Cp10_m type=text size=2 value=8 maxleng=2>月
        月数<input class="input-small" type=text id=Cp10_an size=3 value=200>
-       <button class="btn" onclick="tuGL_search(0)">搜索</button>
-       <button class="btn" onclick="tuGL_search(1)">精搜索</button>
+       <button class="btn" id="page10-search" onclick="tuGL_search(0)">搜索</button>
+       <button class="btn" id="page10-accuratesearch" onclick="tuGL_search(1)">精搜索</button>
        <div id="Cp10_b1"></div>
        <font color=red><b>选定的时间为：</b></font><span id=Cp10_jdstr>2008-08-01 10:14:30</span>TD
        <b>JDE</b>=<input class="input-small" id=Cp10_jd type=text size=14 value=2454679.926741>
@@ -252,24 +272,24 @@
         <option value=346.620>食年</option>
        </select>
        界线<input type=checkbox id=Cp10_showJX>
-       <button class="btn" onclick="tu2_calc(3)">&lt;-</button>
-       <button class="btn" onclick="tu2_calc(2)">特征</button>
-       <button class="btn" onclick="tu2_calc(4)">+&gt;</button>
+       <button class="btn" id="page10-borderdown" onclick="tu2_calc(3)">&lt;-</button>
+       <button class="btn" id="page10-border" onclick="tu2_calc(2)">特征</button>
+       <button class="btn" id="page10-borderup" onclick="tu2_calc(4)">+&gt;</button>
 
        黄/赤<input type=checkbox id=Cp10_hc>
        步数<input class="input-small" type=text id="Cp10_bn" size=3 value=10>
-       <button class="btn" onclick="tu2_calc(5)">确定</button>
-       <button class="btn" onclick="tu2_cls_path()">清除</button>
+       <button class="btn" id="page10-enter" onclick="tu2_calc(5)">确定</button>
+       <button class="btn" id="page10-clear" onclick="tu2_cls_path()">清除</button>
 
 
        </td></tr>
        <tr><td id=Cp10_tz></td></tr>
        <tr><td align=center><v:group id="Can2" style="width:480;height:300;position:relative"/></td></tr>
        <tr><td>
-       <button class="btn" onclick="tu3_xz(0)">经＋</button>
-       <button class="btn" onclick="tu3_xz(1)">经－</button>
-       <button class="btn" onclick="tu3_xz(2)">纬＋</button>
-       <button class="btn" onclick="tu3_xz(3)">纬－</button>
+       <button class="btn" id="page10-longitudeup" onclick="tu3_xz(0)">经＋</button>
+       <button class="btn" id="page10-longitudedown" onclick="tu3_xz(1)">经－</button>
+       <button class="btn" id="page10-latitudeup" onclick="tu3_xz(2)">纬＋</button>
+       <button class="btn" id="page10-latitudedown" onclick="tu3_xz(3)">纬－</button>
        球半径<input type=textbox id=Cp10_eR value="250" size=5>
        <select id="Cp10_tylx">
         <option value=0>斜轴正射方位投影</option>
@@ -282,13 +302,13 @@
         <option value=7>正轴多圆锥投影</option>
         <option value=8>中国灯笼投影</option>
        </select>
-       <button class="btn" onclick="tu3_xz(4)">确定</button>
+       <button class="btn" id="page10-xzenter" onclick="tu3_xz(4)">确定</button>
 
        <b>JDE</b>=<input class="input-small" id="Cp10_jd2" type=text size=13 value=2454679.926741>
        <b>步长</b><input class="input-small" id="Cp10_step2" type=text size=4 value="180">秒
-       <button class="btn" onclick="tu3_yingzi(1)">-</button>
-       <button class="btn" onclick="tu3_yingzi(0)">影子</button>
-       <button class="btn" onclick="tu3_yingzi(2)">+</button><br>
+       <button class="btn" id="page10-shadowdown" onclick="tu3_yingzi(1)">-</button>
+       <button class="btn" id="page10-shadow" onclick="tu3_yingzi(0)">影子</button>
+       <button class="btn" id="page10-shadowup" onclick="tu3_yingzi(2)">+</button><br>
        <b>局部显示(0.1球半径为单位)</b>
        x0<input class="input-small" id="Cp10_x0" type=text size=4 value="0">
        y0<input class="input-small" id="Cp10_y0" type=text size=4 value="0">

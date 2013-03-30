@@ -914,8 +914,7 @@ function Lunar(){
 
     if(ob.Fjia) c2 = sty_date2; //节日置红色
     else        c2 = sty_date;
-    c2 += ' onmouseover="showMessD('+i+')"';
-    c2 += ' onmouseout ="showMessD(-1)"';
+    c2 += ' class="yueli_day" data-day="' + i + '"';
     c2 = '<span' + c2 + '>' +ob.d + '</span>'; //公历的日名称
 
     if(ob.d0 == curJD) c2='<span'+sty_cur+'>'+c2+'</span>'; //今日标识

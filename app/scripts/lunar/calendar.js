@@ -772,9 +772,15 @@ function getLunar(){ //月历页面生成
   if(By == -10000) return;
 
   if(!lun.dn || lun.y!=By || lun.m!=Bm){  //月历未计算
-   lun.yueLiHTML(By,Bm,curJD);
-   Cal2.innerHTML = lun.pg1;
-   Cal4.innerHTML = lun.pg2;
+    lun.yueLiHTML(By,Bm,curJD);
+    Cal2.innerHTML = lun.pg1;
+    Cal4.innerHTML = lun.pg2;
+    $('span.yueli_day').mouseover(function(){
+      showMessD($(this).data('day'));
+    });
+    $('span.yueli_day').mouseleave(function(){
+      showMessD(-1);
+    });
   }
 
   showMessD(-2);
