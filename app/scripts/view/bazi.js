@@ -33,16 +33,15 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
             JD.setFromJD(curJD+J2000);
 
-            $('#input-time').attr('value',JD.Y+'-'+JD.M+'-'+JD.D+'T'+JD.h+':'+JD.m+':'+JD.s);       
+            $('#input-date').attr('value',JD.Y+'-'+JD.M+'-'+JD.D)
+            $('#input-time').attr('value',JD.h+':'+JD.m+':'+Math.floor(JD.s));
         },
         clickBazi: function() {
             var ob = new Object();
-            var datetime = $('#input-time').attr('value');
-            var array = datetime.split('T');
-            var date = array[0];
-            var time = array[1];
+            var date = $('#input-date').attr('value');
+            var time = $('#input-time').attr('value');
 
-            array = date.split('-');
+            var array = date.split('-');
             JD.Y = Number(array[0]);
             JD.M = Number(array[1]);
             JD.D = Number(array[2]);
