@@ -14,6 +14,7 @@ require.config({
         hbs: '../components/require-handlebars-plugin/hbs',
         json2: '../components/require-handlebars-plugin/hbs/json2',
         i18nprecompile: '../components/require-handlebars-plugin/hbs/i18nprecompile',
+        datejs: '../components/datejs/build/date',
         calendar: 'lunar/calendar',
         eph: 'lunar/eph',
         eph0: 'lunar/eph0',
