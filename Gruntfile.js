@@ -38,7 +38,7 @@ module.exports = function (grunt) {
             },
             handlebars: {
                 files: ['<%= yeoman.app %>/templates/*.handlebars'],
-                tasks: ['handlebars reload']
+                tasks: ['handlebars:compile']
             },
             livereload: {
                 files: [

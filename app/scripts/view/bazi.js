@@ -1,5 +1,5 @@
 define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi','iching',
-    'lunar','eph0','eph','ephB', 'tools'], 
+    'lunar','eph0','eph','ephB', 'tools', 'datejs'], 
     function ($, _, Backbone,Handlebars,templOne, iching) {
     'use strict';
 
@@ -22,8 +22,8 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             if (navigator.geolocation)
             {
                 navigator.geolocation.getCurrentPosition(function(position){
-                    $('#input-latitude').attr('value', position.coords.latitude);
-                    $('#input-longitude').attr('value', position.coords.longitude);
+                    $('#input-latitude').val(position.coords.latitude);
+                    $('#input-longitude').val(position.coords.longitude);
                 });
             }
         },
@@ -33,21 +33,21 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
             JD.setFromJD(curJD+J2000);
 
-            $('#input-date').attr('value',JD.Y+'-'+JD.M+'-'+JD.D)
-            $('#input-time').attr('value',JD.h+':'+JD.m+':'+Math.floor(JD.s));
+            $('#input-date').val(now.toString('yyyy-MM-dd'));
+            $('#input-time').val(now.toString('HH:mm:ss'));
         },
         clickBazi: function() {
             var ob = new Object();
-            var date = $('#input-date').attr('value');
-            var time = $('#input-time').attr('value');
+            var date = $('#input-date').val();
+            var time = $('#input-time').val();
 
-            var array = date.split('-');
-            JD.Y = Number(array[0]);
-            JD.M = Number(array[1]);
-            JD.D = Number(array[2]);
+            var datetime = Date.parse(date+' '+time);
+            JD.Y = datetime.getFullYear();
+            JD.M = datetime.getMonth() + 1;
+            JD.D = datetime.getDate();
             var t = timeStr2hour(time);
             var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
-            var longitude = new Number($('#input-longitude').attr('value'));
+            var longitude = new Number($('#input-longitude').val());
             obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
             
             var bazi = '<table class="table table-bordered"><thead><tr><td><h2>八字</h2></td><td><h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2></td></tr></thead><tbody><tr><td><h2>卦名</h2></td><td><div id="gua-name"></div></td></tr><tr><td><h2>卦象</h2></td><td><div id="gua"></div></td></tr></tbody></table>';
