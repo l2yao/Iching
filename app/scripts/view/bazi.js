@@ -50,9 +50,7 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             var longitude = new Number($('#input-longitude').val());
             obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
             
-            var bazi = '<table class="table table-bordered"><thead><tr><td><h2>八字</h2></td><td><h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2></td></tr></thead><tbody><tr><td><h2>卦名</h2></td><td><div id="gua-name"></div></td></tr><tr><td><h2>卦象</h2></td><td><div id="gua"></div></td></tr></tbody></table>';
-            
-            $('#guaxiang').html(bazi);
+            $('#sizhu').html('<h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2>');
             
             var d0 = int2(JD.toJD()) - J2000;
             if(!SSQ.ZQ.length || d0<SSQ.ZQ[0] || d0>=SSQ.ZQ[24]) {
@@ -68,7 +66,7 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
                 mk -= 1;
             }
             var nongli_yue = (mk-1) % 8;
-            var nongli_ri = nlr % 8;
+            var nongli_ri = (nlr+1) % 8;
             
             var ri_index = iching.Trigram.indexOf(iching.xiantian_bagua[nongli_ri]);
             var ri_symbol = iching.Trigram_symbol[ri_index];
@@ -78,6 +76,7 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             var gong_name = iching.getGongName(iching.Hexagram[ri_index+yue_index*8]);
             var gong_index = iching.Trigram_name.indexOf(gong_name);
             $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+iching.Trigram_wuxing[gong_index]+'</h2>');
+            $('#gua').empty();
             iching.drawTrigrams('#gua', iching.xiantian_bagua[nongli_ri], iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));    
         }
     });
