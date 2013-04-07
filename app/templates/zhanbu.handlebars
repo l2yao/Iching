@@ -1,2 +1,56 @@
 <div class="hero-unit">
+	<h3>取三枚大小一致的铜钱，心中默想所求之事，连掷六次，记录下正反:</h3>
+	<ol>
+		<li>
+		正<input id="up1" type="range" class="input-small" min="0" max="3" value="0">
+		反<input id="down1" type="range" class="input-small" min="0" max="3" value="0">
+		<input id="value1" type="text" class="input-small" disabled>
+		</li>
+		<li>
+		正<input id="up2" type="range" class="input-small" min="0" max="3" value="0">
+		反<input id="down2" type="range" class="input-small" min="0" max="3" value="0">
+		<input id="value2" type="text" class="input-small" disabled>
+		</li>
+		<li>
+		正<input id="up3" type="range" class="input-small" min="0" max="3" value="0">
+		反<input id="down3" type="range" class="input-small" min="0" max="3" value="0">
+		<input id="value3" type="text" class="input-small" disabled>
+		</li>
+		<li>
+		正<input id="up4" type="range" class="input-small" min="0" max="3" value="0">
+		反<input id="down4" type="range" class="input-small" min="0" max="3" value="0">
+		<input id="value4" type="text" class="input-small" disabled>
+		</li>
+		<li>
+		正<input id="up5" type="range" class="input-small" min="0" max="3" value="0">
+		反<input id="down5" type="range" class="input-small" min="0" max="3" value="0">
+		<input id="value5" type="text" class="input-small" disabled>
+		</li>
+		<li>
+		正<input id="up6" type="range" class="input-small" min="0" max="3" value="0">
+		反<input id="down6" type="range" class="input-small" min="0" max="3" value="0">
+		<input id="value6" type="text" class="input-small" disabled>
+		</li>
+	</ol>
+	<button class="btn btn-large btn-primary" id="zhanbu">排卦</button>
+	<div id="guaxiang">
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+              <td><h2>四柱</h2></td>
+              <td><div id="sizhu"></div></td>
+        </tr>
+        </thead>
+              <tbody>
+                    <tr>
+                          <td><h2>卦名</h2></td>
+                          <td><div id="gua-name"></div></td>
+                    </tr>
+                    <tr>
+                          <td><h2>卦象</h2></td>
+                          <td><div id="gua-zhanbu"></div></td>
+                    </tr>
+              </tbody>
+        </table>
+    </div>
 </div>

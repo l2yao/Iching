@@ -33,13 +33,13 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             curJD = now/86400000-10957.5 - curTZ/24; //J2000起算的儒略日数(当前本地时间)
             JD.setFromJD(curJD+J2000);
 
-            $('#input-date').val(now.toString('yyyy-MM-dd'));
-            $('#input-time').val(now.toString('HH:mm:ss'));
+            $(this.el).find('#input-date').val(now.toString('yyyy-MM-dd'));
+            $(this.el).find('#input-time').val(now.toString('HH:mm:ss'));
         },
         clickBazi: function() {
             var ob = new Object();
-            var date = $('#input-date').val();
-            var time = $('#input-time').val();
+            var date = $(this.el).find('#input-date').val();
+            var time = $(this.el).find('#input-time').val();
 
             var datetime = Date.parse(date+' '+time);
             JD.Y = datetime.getFullYear();
@@ -50,7 +50,7 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             var longitude = new Number($('#input-longitude').val());
             obb.mingLiBaZi(jd + curTZ/24-J2000, longitude/radd, ob );
             
-            $('#sizhu').html('<h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2>');
+            $(this.el).find('#sizhu').html('<h2>'+ob.bz_jn+'年 '+ob.bz_jy+'月 '+ob.bz_jr+'日 '+ob.bz_js+'时</h2>');
             
             var d0 = int2(JD.toJD()) - J2000;
             if(!SSQ.ZQ.length || d0<SSQ.ZQ[0] || d0>=SSQ.ZQ[24]) {
@@ -75,9 +75,9 @@ define(['jquery','underscore','backbone', 'handlebars','hbs!../../templates/bazi
             var hexagram_symbol = iching.Hexagram_name[ri_index+yue_index*8];
             var gong_name = iching.getGongName(iching.Hexagram[ri_index+yue_index*8]);
             var gong_index = iching.Trigram_name.indexOf(gong_name);
-            $('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+iching.Trigram_wuxing[gong_index]+'</h2>');
-            $('#gua').empty();
-            iching.drawTrigrams('#gua', iching.xiantian_bagua[nongli_ri], iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));    
+            $(this.el).find('#gua-name').html('<h2>'+ri_symbol+yue_symbol+hexagram_symbol+' '+gong_name+'宫 属'+iching.Trigram_wuxing[gong_index]+'</h2>');
+            $(this.el).find('#gua-bazi').empty();
+            iching.drawTrigrams('#gua-bazi', iching.xiantian_bagua[nongli_ri], iching.xiantian_bagua[nongli_yue], ob.bz_jr.substr(0,1));    
         }
     });
 
