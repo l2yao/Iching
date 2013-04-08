@@ -60,6 +60,49 @@ define(['d3'], function () {
             var lower_index = this.Trigram.indexOf(lower_trigram);
             return this.Hexagram[lower_index * 8 + upper_index];
         },
+        yinyang2trigram: function(first_yao, second_yao, third_yao) {
+            if(first_yao === 'yang' && second_yao === 'yang' && third_yao === 'yang'){
+                return '☰';
+            }else if(first_yao === 'yang' && second_yao === 'yang' && third_yao ==='yin'){
+                return '☱';
+            }else if(first_yao === 'yang' && second_yao === 'yin' && third_yao==='yang'){
+                return '☲';
+            }else if(first_yao === 'yang' && second_yao === 'yin' && third_yao === 'yin'){
+                return '☳';
+            }else if(first_yao === 'yin' && second_yao === 'yang' && third_yao ==='yang'){
+                return '☴';
+            }else if(first_yao === 'yin' && second_yao === 'yang' && third_yao === 'yin'){
+                return '☵';
+            }else if(first_yao === 'yin' && second_yao === 'yin' && third_yao === 'yang'){
+                return '☶';
+            }else if(first_yao === 'yin' && second_yao === 'yin' && third_yao === 'yin'){
+                return '☷';
+            }
+        },
+        zheng2yinyang: function(zheng){
+            switch(zheng){
+                case 0:
+                    return 'yin';
+                case 1:
+                    return 'yang';
+                case 2:
+                    return 'yin';
+                case 3:
+                    return 'yang';
+            }
+        },
+        fan2yinyang: function(fan) {
+            switch(fan){
+                case 0:
+                    return 'yang';
+                case 1:
+                    return 'yin';
+                case 2:
+                    return 'yang';
+                case 3:
+                    return 'yin';
+            }
+        },
         getLiuqin : function(dizhi, hexagram) {
             var dizhi_index = this.dizhi.indexOf(dizhi);
             var dizhi_wuxing = this.dizhi_wuxing[dizhi_index];
