@@ -1,6 +1,6 @@
-define(['jquery','underscore','backbone',
-	'view/nav','view/bagua', 'view/zhanbu', 'view/fengshui', 'view/bazi', 'view/calendar'], 
-	function ($, _, Backbone, navView, baguaView, zhanbuView, fengshuiView, baziView, calendarView) {
+define(['jquery','underscore','backbone', 'model/appRouter',
+	'view/bagua', 'view/zhanbu', 'view/fengshui', 'view/bazi', 'view/calendar'], 
+	function ($, _, Backbone, appRouter, baguaView, zhanbuView, fengshuiView, baziView, calendarView) {
 	'use strict';
 
 	var appView = Backbone.View.extend({
@@ -14,60 +14,40 @@ define(['jquery','underscore','backbone',
 			"click #nav-calendar": "clickCalendar"
 		},
 		initialize: function() {
-			var navview = new navView;
-	    	navview.render();
 
 		    var baguaview = new baguaView;
-		    this.views.push(baguaview);
+		    baguaview.render();
 
 		    var baziview = new baziView;
-		    this.views.push(baziview);
+		    baziview.render();
 
 		    var zhanbuview = new zhanbuView;
-		    this.views.push(zhanbuview);
+		    zhanbuview.render();
 
 		    var fengshuiview = new fengshuiView;
-		    this.views.push(fengshuiview);
+		    fengshuiview.render();
 
 		    var calendarview = new calendarView;
-		    this.views.push(calendarview);
+		    calendarview.render();
 
-		    this.render();
-		    this.hideAll();
-		    this.showView(0);
-		},
-		render: function() {
-			for(var i=0;i<this.views.length;i++){
-				this.views[i].render();
-			}
-		},
-		hideAll: function() {
-			for(var i=0;i<this.views.length;i++){
-				this.views[i].$el.hide();
-			}
-		},
-		showView: function(index) {
-			this.views[index].$el.show();
+		    this.router = new appRouter;
+
+		    Backbone.history.start({pushState: true});
 		},
 		clickTitle: function(ev){
-			this.hideAll();
-			this.showView(0);
+			this.router.navigate('bagua', true);
 		},
 		clickBazi: function(ev) {
-			this.hideAll();
-			this.showView(1);
+			this.router.navigate('bazi', true);
 		},
 		clickZhanbu:function(ev){
-			this.hideAll();
-			this.showView(2);
+			this.router.navigate('zhanbu', true);
 		},
 		clickFengshui:function(ev){
-			this.hideAll();
-			this.showView(3);
+			this.router.navigate('fengshui', true);
 		},
 		clickCalendar:function(ev){
-			this.hideAll();
-			this.showView(4);
+			this.router.navigate('calendar', true);
 		}
 	});
 
