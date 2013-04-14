@@ -10,4 +10,4 @@ Deploy Instructions:
 
 Demo:
 
-	http://l2yao.github.com/Iching/dist
+	[http://l2yao.github.com/Iching/dist](http://l2yao.github.com/Iching/dist)
