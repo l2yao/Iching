@@ -11,3 +11,5 @@ Deploy Instructions:
 Demo:
 
 [http://l2yao.github.com/Iching/dist](http://l2yao.github.com/Iching/dist)
+
+[![Build Status](https://travis-ci.org/l2yao/Iching.png)](https://travis-ci.org/l2yao/Iching)
