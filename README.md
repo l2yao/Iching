@@ -5,8 +5,10 @@ Iching
 
 Deploy Instructions:
 
-	1. npm install && bower install
-	2. grunt
+	1. npm install
+	2. bower install (npm install -g bower)
+	3. gem install compass
+	4. grunt (npm install -g grunt-cli)
 
 Demo:
 
