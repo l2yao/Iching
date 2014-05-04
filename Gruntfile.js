@@ -425,4 +425,18 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('github', [
+    'clean:dist',
+    'bowerInstall',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'rev'
+  ]);
 };
