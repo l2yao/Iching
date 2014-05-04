@@ -11,13 +11,13 @@
 
 <div class="jumbotron">
     <h3>填写出生时间:</h3>
-    <select>
+    <select class="input-lg">
     <option>公历</option>
     <option>农历</option>
     </select>
     <span class="add-on">时间</span>
-    <input class="input-medium" type="date" id="input-date" ng-model="curDateString">
-    <input class="input-medium" type="time" id="input-time" ng-model="curTimeString">
+    <input class="input-lg" type="date" id="input-date" ng-model="curDateString">
+    <input class="input-lg" type="time" id="input-time" ng-model="curTimeString">
     <button class="btn btn-primary" ng-click="getCurTime()">此时</button>
     <button class="btn btn-primary" ng-click="getBaZi()">排卦</button>
     

@@ -29,12 +29,6 @@ angular.module('ichingApp')
     change2();
 
     getLunar(); //调用月历页面生成函数
-
-    setInterval(function(){
-        var now = new Date();
-        show_clock(now);
-        zb_calc();
-    }, 1000);
     
   	$scope.page1enter= function() {
         getLunar();
