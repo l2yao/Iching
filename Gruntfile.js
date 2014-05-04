@@ -343,6 +343,21 @@ module.exports = function (grunt) {
             '*.css'
           ]
         }]
+      },
+      heroku: {
+        files: [{
+            expand: true,
+            dest: '<%= yeoman.dist %>',
+            cwd: 'heroku',
+            src: '*',
+            rename: function (dest, src) {
+                var path = require('path');
+                if (src === 'distpackage.json') {
+                    return path.join(dest, 'package.json');
+                }
+                return path.join(dest, src);
+            }
+        }]
       }
     },
 
@@ -448,13 +463,14 @@ module.exports = function (grunt) {
     'build'
   ]);
 
-  grunt.registerTask('github', [
+  grunt.registerTask('deploy', [
     'clean:dist',
     'bowerInstall',
     'concurrent:dist',
     'autoprefixer',
     'copy:github',
     'copy:css',
+    'copy:heroku',
     'htmlmin'
   ]);
 };
