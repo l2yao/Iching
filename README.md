@@ -4,12 +4,18 @@ Iching
 IChing, BaZi, FengShui, Divine, Lunar Calendar
 
 To build locally:
-  1. install node.js
-  2. install yeoman
-  3. install grunt
-  4. install compass
-  5. use grunt server to build app locally
-  6. use grunt deploy to deploy to heroku
+	install node.js
+	install yeoman
+	install grunt
+	install compass
+	use grunt server to build app locally
+	use grunt deploy to deploy to heroku
+
+To deploy to heroku:
+	git subtree push --prefix dist heroku master
+
+To deplot to github:
+	git subtree push --prefix dist origin gh-pages
 
 a live demo is on heroku:
-  http://ichingapp.herokuapp.com/
+	http://ichingapp.herokuapp.com/
