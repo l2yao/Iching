@@ -321,6 +321,28 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      github: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            '**','!styles/**'   // everything but styles/
+          ]
+        }]
+      },
+      css: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '.tmp/styles/',
+          dest: '<%= yeoman.dist %>/styles',
+          src: [
+            '*.css'
+          ]
+        }]
       }
     },
 
@@ -429,14 +451,10 @@ module.exports = function (grunt) {
   grunt.registerTask('github', [
     'clean:dist',
     'bowerInstall',
-    'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
-    'concat',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'rev'
+    'copy:github',
+    'copy:css',
+    'htmlmin'
   ]);
 };

@@ -1,0 +1,13 @@
+{
+  "name": "datejs",
+  "homepage": "https://github.com/datejs/Datejs",
+  "_release": "7bdddb55d6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "7bdddb55d69719e42c358c3a2b7df706ff3090f8"
+  },
+  "_source": "git://github.com/datejs/Datejs.git",
+  "_target": "*",
+  "_originalSource": "datejs"
+}
