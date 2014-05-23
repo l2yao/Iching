@@ -14,7 +14,7 @@ To build locally:
 To deploy to heroku:
 	git subtree push --prefix dist heroku master
 
-To deplot to github:
+To deploy to github:
 	git subtree push --prefix dist origin gh-pages
 
 a live demo is on heroku:
