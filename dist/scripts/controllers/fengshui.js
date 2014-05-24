@@ -7,5 +7,8 @@ angular.module('ichingApp')
   	$scope.feixing = function(){
   		$scope.xiang = fengshui.getMountain($scope.degree);
   		$scope.shan = fengshui.getOppositeMountain($scope.xiang);
+  		var now=new Date();
+  		$scope.yun = fengshui.getYun(now.getFullYear());
+  		fengshui.drawPan('#feixing', $scope.yun);
   	}
 });
