@@ -9,6 +9,6 @@ angular.module('ichingApp')
   		$scope.shan = fengshui.getOppositeMountain($scope.xiang);
   		var now=new Date();
   		$scope.yun = fengshui.getYun(now.getFullYear());
-  		fengshui.drawPan('#feixing', $scope.yun);
+  		fengshui.drawFeiXing('#feixing', $scope.yun, $scope.shan, $scope.xiang);
   	}
 });
