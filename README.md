@@ -9,12 +9,13 @@ To build locally:
 	install grunt
 	install compass
 	use grunt server to build app locally
-	use grunt deploy to deploy to heroku
 
 To deploy to heroku:
+	grunt deploy
 	git subtree push --prefix dist heroku master
 
 To deploy to github:
+	grunt deploy
 	git subtree push --prefix dist origin gh-pages
 
 a live demo is on heroku:
