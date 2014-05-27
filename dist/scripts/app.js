@@ -8,7 +8,7 @@ angular
     'ngRoute'
   ])
   .config(function ($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
+    
     $routeProvider
       .when('/', {
         templateUrl: 'views/calendar.html',
@@ -37,4 +37,6 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+    $locationProvider.html5Mode(true);
   });

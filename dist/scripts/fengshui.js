@@ -45,11 +45,11 @@ var fengshui = {
 	},
 
 	getDragon: function(mountain) {
-		if(this.tianyuanlong.indexOf(mountain) > 0){
+		if(this.tianyuanlong.indexOf(mountain) >= 0){
 			return 'tian';
-		}else if(this.diyuanlong.indexOf(mountain) > 0){
+		}else if(this.diyuanlong.indexOf(mountain) >= 0){
 			return 'di';
-		}else if(this.renyuanlong.indexOf(mountain) > 0){
+		}else if(this.renyuanlong.indexOf(mountain) >= 0){
 			return 'ren';
 		}
 	},
@@ -67,7 +67,7 @@ var fengshui = {
 		var dragon = this.getDragon(mountain);
 		var direction = this.base_pan[star - 1];
 		var newMountain = this.getMountainFromDirection(direction, dragon);
-		if(this.yang.indexOf(newMountain) > 0){
+		if(this.yang.indexOf(newMountain) >= 0){
 			return true;
 		}else{
 			return false;
@@ -76,7 +76,7 @@ var fengshui = {
 
 	getPan: function(yun, shun_ni) {
 		var shift = yun - 5;
-		var pan = this.base_pan;
+		var pan = this.base_pan.slice(0);
 		if(!shun_ni){
 			pan = pan.reverse();
 		}
@@ -113,12 +113,12 @@ var fengshui = {
                         .attr('stroke-width', 3);
         	}
         }
-        this.drawPan(svgContainer, pan, false, 36, 150/2 - 18, 150/2 + 18/2);
+        this.drawPan(svgContainer, pan, false, 36, 150/2 - 18, 150/2 + 18/2, 'red');
         this.drawShan(svgContainer, shan, pan);
         this.drawXiang(svgContainer, xiang, pan);
 	},
 
-	drawPan: function(svgContainer, pan, useNumber, fontSize, xOffset, yOffset){
+	drawPan: function(svgContainer, pan, useNumber, fontSize, xOffset, yOffset, color){
 		for(var i=0; i<pan.length; i++){
         	var pos = pan[i];
         	var x = pos % 3;
@@ -131,7 +131,8 @@ var fengshui = {
         				.text(number)
         				.attr('x', x * 150 + xOffset)
                         .attr('y', y * 150 + yOffset)
-                        .attr('font-size', fontSize);
+                        .attr('font-size', fontSize)
+                        .attr('fill', color);
         }
 	},
 
@@ -141,7 +142,7 @@ var fengshui = {
 		var shunni = this.getShunNi(shan, mountain_star);
 		var shan_pan = this.getPan(mountain_star, shunni);
 
-		this.drawPan(svgContainer, shan_pan, true, 28, 150/4, 150/4);
+		this.drawPan(svgContainer, shan_pan, true, 28, 150/4, 150/4, 'blue');
 	},
 
 	drawXiang: function(svgContainer, xiang, pan) {
@@ -150,6 +151,6 @@ var fengshui = {
 		var shunni = this.getShunNi(xiang, face_star);
 		var xiang_pan = this.getPan(face_star, shunni);
 
-		this.drawPan(svgContainer, xiang_pan, true, 28,150 *0.75 - 18/2, 150/4);
+		this.drawPan(svgContainer, xiang_pan, true, 28,150 *0.75 - 18/2, 150/4, 'green');
 	}
 };
