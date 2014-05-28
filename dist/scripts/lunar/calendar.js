@@ -730,7 +730,16 @@ function RTS1(jd,vJ,vW,tz){
 function showMessD(n){ //显时本月第n日的摘要信息。调用前应先执月历页面生成，产生有效的lun对象
  if(event){ if(event.ctrlKey) return; }
  if(!lun.dn||n>=lun.dn) return;
- var vJ = Sel2.vJ-0, vW = Sel2.vW-0;
+ var vJ = 0;
+ var vW = 0;
+  if (navigator.geolocation)
+  {
+      navigator.geolocation.getCurrentPosition(function(position){
+          vW = position.coords.latitude;
+          vJ = position.coords.longitude;
+      });
+  }
+ 
 
  if(n==-1){ //鼠标移出日期上方
    Cal_pan.style.display = 'none';

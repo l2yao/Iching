@@ -113,7 +113,7 @@ var fengshui = {
                         .attr('stroke-width', 3);
         	}
         }
-        this.drawPan(svgContainer, pan, false, 36, 150/2 - 18, 150/2 + 18/2, 'red');
+        this.drawPan(svgContainer, pan, false, 36, 150/2 - 18, 150/2 + 18/2, 'black');
         this.drawShan(svgContainer, shan, pan);
         this.drawXiang(svgContainer, xiang, pan);
 	},
@@ -142,7 +142,7 @@ var fengshui = {
 		var shunni = this.getShunNi(shan, mountain_star);
 		var shan_pan = this.getPan(mountain_star, shunni);
 
-		this.drawPan(svgContainer, shan_pan, true, 28, 150/4, 150/4, 'blue');
+		this.drawPan(svgContainer, shan_pan, true, 28, 150/4, 150/4, 'black');
 	},
 
 	drawXiang: function(svgContainer, xiang, pan) {
@@ -151,6 +151,6 @@ var fengshui = {
 		var shunni = this.getShunNi(xiang, face_star);
 		var xiang_pan = this.getPan(face_star, shunni);
 
-		this.drawPan(svgContainer, xiang_pan, true, 28,150 *0.75 - 18/2, 150/4, 'green');
+		this.drawPan(svgContainer, xiang_pan, true, 28,150 *0.75 - 18/2, 150/4, 'black');
 	}
 };

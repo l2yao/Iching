@@ -12,27 +12,8 @@ angular.module('ichingApp')
     // init current date time
     set_date_screen(0);
 
-    for(var i=0;i<SQv.length;i++) {
-        addOp(document.all.Sel_zhou,i,SQv[i][0]);
-    }
-    change_zhou();
-
-    for(var i=0;i<JWv.length;i++) {
-        addOp(document.all.Sel1,i,JWv[i][0]);
-    }
-
-    var seI1=getCookie('Sel1');
-    var seI2=getCookie('Sel2');
-    Sel1.selectedIndex = seI1; 
-    change();
-    Sel2.selectedIndex = seI2; 
-    change2();
-
     getLunar(); //调用月历页面生成函数
     
-  	$scope.page1enter= function() {
-        getLunar();
-    },
     $scope.page1yearup= function() {
         changeYear(0);
     },

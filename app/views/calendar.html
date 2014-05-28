@@ -13,7 +13,7 @@
 <div class="tabbable">
 
     <ul class="nav nav-tabs" data-tabs="tabs">
-      <li class="active"><a href="#page1" data-toggle="tab">月历</a></li>
+      <li><a href="#page1" data-toggle="tab">月历</a></li>
       <li><a href="#page2" data-toggle="tab">年历</a></li>
       <li><a href="#page3" data-toggle="tab">日月食</a></li>
       <li><a href="#page4" data-toggle="tab">地方食</a></li>
@@ -33,16 +33,15 @@
          <tr>
           <td width="25%" valign="top">
             <!--日月出没--><div class="alert" id="Cal5"></div>
-            <!--月相节气--><div class="alert" id="Cal4"></div>
+            <!--月相节气--><div class="alert" id="Cal4" style="display: none;"></div>
             <!--农历信息--><div class="alert" id="Cal_pan_in"></div>
             <div id="Cal_pan"></div>
           </td>
           <td width="75%">
           公元
-          <input class="input-small" type="text" id="Cal_y">年
-          <input class="input-small" type="text" id="Cal_m">月
+          <input class="form-control" type="number" id="Cal_y">年
+          <input class="form-control" type="number" id="Cal_m">月
           <div class="btn-group">
-          <button class="btn" id="page1-enter" ng-click="page1enter()">确定</button>
           <button class="btn" id="page1-yearup" ng-click="page1yearup()">年↑</button>
           <button class="btn" id="page1-yeardown" ng-click="page1yeardown()">年↓</button>
           <button class="btn" id="page1-monthup" ng-click="page1monthup()">月↑</button>
@@ -54,12 +53,12 @@
         </table>
       </div>
       <div id="page2" class="tab-pane">
-        公元<input class="input-small" type=text id="Cp2_y" value=2008>
+        公元<input class="form-control" type=text id="Cp2_y" value=2008>
         年<input type=checkbox id="Cp2_tg" checked>时刻/干支
         <button class="btn" id="page2-enter" ng-click="page2enter()">确定</button>
         <button class="btn" id="page2-yearup" ng-click="page2yearup()">年↑</button>
         <button class="btn" id="page2-yeardown" ng-click="page2yeardown()">年↓</button>
-        年数<input class="input-small" type="text" id="Cp2_n" value=2>
+        年数<input class="form-control" type="text" id="Cp2_n" value=2>
         <button class="btn" id="page2-multiyear" ng-click="page2multiyear()">多年</button>
         <div id="Cal7"></div>
       </div>
@@ -69,15 +68,15 @@
 
         <table class="table">
        <tr><td>
-       经度<input class="input-small" id="Cb_J" type=text value=0>
-       纬度<input class="input-small" id="Cb_W" type=text value=0>
-       海拔<input class="input-small" id="Cb_high" type=text value=0>km
+       经度<input class="form-control" id="Cb_J" type=text value=0>
+       纬度<input class="form-control" id="Cb_W" type=text value=0>
+       海拔<input class="form-control" id="Cb_high" type=text value=0>km
        北/南<input id="Cb_bei" type=checkbox>  
        时角坐标<input id="Cb_sjzb" type=checkbox>
-       公元<input class="input-small" id="Cb_y" type=text value=2008>
-       年<input class="input-small" id="Cb_m" type=text value=8 maxleng=2>
-       月<input class="input-small" id="Cb_d" type=text value=1>
-       日<input class="input-small" id="Cb_t" type=text value="18:17:15">
+       公元<input class="form-control" id="Cb_y" type=text value=2008>
+       年<input class="form-control" id="Cb_m" type=text value=8 maxleng=2>
+       月<input class="form-control" id="Cb_d" type=text value=1>
+       日<input class="form-control" id="Cb_t" type=text value="18:17:15">
        UTC/TD<input id="Cb_ut" type=checkbox checked>
        NASA<input id="Cb_nasa" type=checkbox>
        <button class="btn" id="page3-today" ng-click="page3today()">今</button><br>
@@ -94,7 +93,7 @@
        <button class="btn" id="page3-wangup" ng-click="page3wangup()">+&gt;</button>
        </div>
        
-       步长<input class="input-small" type=text id=Cb_step value=300>秒
+       步长<input class="form-control" type=text id=Cb_step value=300>秒
        
        <div class="btn-group">
        <button class="btn" id="page3-budown" ng-click="page3budown()">&lt;-</button>
@@ -117,9 +116,9 @@
       </table>
       </div>
       <div id="page4" class="tab-pane">
-        公元<input class="input-small" id="Cc_y" type=text value=2008>年
-        <input class="input-small" id="Cc_m" type=text value=8 maxleng=2>月
-        <input class="input-small" id="Cc_d" type=text value=1>日
+        公元<input class="form-control" id="Cc_y" type=text value=2008>年
+        <input class="form-control" id="Cc_m" type=text value=8 maxleng=2>月
+        <input class="form-control" id="Cc_d" type=text value=1>日
        <button class="btn" id="page4-sudown" ng-click="page4sudown()">&lt;-</button>
        <button class="btn" id="page4-su" ng-click="page4su()">朔</button>
        <button class="btn" id="page4-suup" ng-click="page4suup()">+&gt;</button>
@@ -152,24 +151,24 @@
         <option value=9>太阳</option>
         <option value=10>月亮</option>
        </select> 
-       <input class="input-small" id="Cd_y" type=text value=2008>年
-       <input class="input-small" id="Cd_m" type=text value=1>月
-       <input class="input-small" id="Cd_d" type=text value=1>日
+       <input class="form-control" id="Cd_y" type=text value=2008>年
+       <input class="form-control" id="Cd_m" type=text value=1>月
+       <input class="form-control" id="Cd_d" type=text value=1>日
        <input id="Cd_t" type=text size=8 value="00:00:00">
        UTC/TD<input id="Cd_ut" type=checkbox checked> 
        <button class="btn" id="page5-help" ng-click="page5help()">帮助</button><br>
-       经度<input class="input-small" id="Cd_J" type=text value=0>
-       纬度<input class="input-small" id="Cd_W" type=text value=0>
-       间隔<input class="input-small" id="Cd_dt" type=text value=1>(天)
-       个数<input class="input-small" id="Cd_n" type=text value=10>
+       经度<input class="form-control" id="Cd_J" type=text value=0>
+       纬度<input class="form-control" id="Cd_W" type=text value=0>
+       间隔<input class="form-control" id="Cd_dt" type=text value=1>(天)
+       个数<input class="form-control" id="Cd_n" type=text value=10>
        <button class="btn" id="page5-enter" ng-click="page5enter()">确定</button><br>
        <textarea cols="200" rows="20" id="Cd_tab"></textarea>
       </div>
       <div id="page6" class="tab-pane">
-        <input class="input-small" id="Ce_y" type=text value=2008>年
-      <input class="input-small" id="Ce_m" type=text value=1 maxleng=2>月
-      <input class="input-small" id="Ce_d" type=text value=1>日 TD
-      个数<input class="input-small" id="Ce_n" type=text value=10>
+        <input class="form-control" id="Ce_y" type=text value=2008>年
+      <input class="form-control" id="Ce_m" type=text value=1 maxleng=2>月
+      <input class="form-control" id="Ce_d" type=text value=1>日 TD
+      个数<input class="form-control" id="Ce_n" type=text value=10>
       <button class="btn" id="page6-help" ng-click="page6help()">帮助</button><br>
       <button class="btn" id="page6-moonnear" ng-click="page6moonnear()">月亮近点</button> 
       <button class="btn" id="page6-moonfar" ng-click="page6moonfar()">月亮远点</button>
@@ -225,26 +224,26 @@
           <option value=1>站坐标</option>
           <option value=2>平位置</option>
         </select>
-        <input class="input-small" id="Cf_y" type=text value=2008>年
-        <input class="input-small" id="Cf_m" type=text value=1 maxleng=2>月
-        <input class="input-small" id="Cf_d" type=text value=1>日 
-        <input class="input-small" id="Cf_t" type=text value="00:00:00">
+        <input class="form-control" id="Cf_y" type=text value=2008>年
+        <input class="form-control" id="Cf_m" type=text value=1 maxleng=2>月
+        <input class="form-control" id="Cf_d" type=text value=1>日 
+        <input class="form-control" id="Cf_t" type=text value="00:00:00">
         UTC/TD<input id="Cf_ut" type=checkbox checked>
         略短章<input id="Cf_nsn" type=checkbox><br>
 
-        经度<input class="input-small" id="Cf_J" type=text size=10 value=0>
-        纬度<input class="input-small" id="Cf_W" type=text size=8 value=0>
+        经度<input class="form-control" id="Cf_J" type=text size=10 value=0>
+        纬度<input class="form-control" id="Cf_W" type=text size=8 value=0>
 
-        间隔<input class="input-small" id="Cf_dt" type=text size=4 value=10>(天)
-        个数<input class="input-small" id="Cf_n" type=text size=4 value=10>
+        间隔<input class="form-control" id="Cf_dt" type=text size=4 value=10>(天)
+        个数<input class="form-control" id="Cf_n" type=text size=4 value=10>
         <button class="btn" id="page7-enter" ng-click="page7enter()">确定</button>
         <button class="btn" id="page7-help" ng-click="page7help()">帮助</button><br>
         <textarea cols="200" rows="15" id="Cf_db" wrap=off></textarea><br>
         <textarea cols="200" rows="15" id="Cf_xl"></textarea><br>
       </div>
       <div id="page8" class="tab-pane">
-        <input class="input-small" id="Cp8_y" type=text size=4 value=2008>年
-        <input class="input-small" id="Cp8_n" type=text size=4 value=24>个
+        <input class="form-control" id="Cp8_y" type=text size=4 value=2008>年
+        <input class="form-control" id="Cp8_n" type=text size=4 value=24>个
         <button class="btn" id="page8-dingsu" ng-click="page8dingsu()">定朔</button>
         <button class="btn" id="page8-dingwang" ng-click="page8dingwang()">定望</button>
         <button class="btn" id="page8-upstring" ng-click="page8upstring()">上弦</button>
@@ -255,11 +254,11 @@
         <div id="Cp8_out"></div>
       </div>
       <div id="page9" class="tab-pane">
-        经度<input class="input-small" id="Cp9_J" type=text size=10 value="0">
-        纬度<input class="input-small" id="Cp9_W" type=text size=8  value="0">
-        <input class="input-small" id="Cp9_y" type=text size=4 value=2008>年
-        <input class="input-small" id="Cp9_m" type=text size=2 value=1 maxleng=2>月
-        <input class="input-small" id="Cp9_d" type=text size=2 value=1>日
+        经度<input class="form-control" id="Cp9_J" type=text size=10 value="0">
+        纬度<input class="form-control" id="Cp9_W" type=text size=8  value="0">
+        <input class="form-control" id="Cp9_y" type=text size=4 value=2008>年
+        <input class="form-control" id="Cp9_m" type=text size=2 value=1 maxleng=2>月
+        <input class="form-control" id="Cp9_d" type=text size=2 value=1>日
         <button class="btn" id="page9-enter" ng-click="page9enter()">确定</button>
         <button class="btn" id="page9-sun" ng-click="page9sun()">太阳升降</button>
         <button class="btn" id="page9-timediff" ng-click="page9timediff()">时差表</button><br>
@@ -268,15 +267,15 @@
       <div id="page10" class="tab-pane">
         <table class="table">
        <tr><td>
-       公元<input class="input-small" id="Cp10_y" type=text size=4 value=2008>年
-       <input class="input-small" id="Cp10_m" type=text size=2 value=8 maxleng=2>月
-       月数<input class="input-small" type=text id="Cp10_an" size=3 value=200>
+       公元<input class="form-control" id="Cp10_y" type=text size=4 value=2008>年
+       <input class="form-control" id="Cp10_m" type=text size=2 value=8 maxleng=2>月
+       月数<input class="form-control" type=text id="Cp10_an" size=3 value=200>
        <button class="btn" id="page10-search" ng-click="page10search()">搜索</button>
        <button class="btn" id="page10-accuratesearch" ng-click="page10accuratesearch()">精搜索</button>
        <div id="Cp10_b1"></div>
        <font color=red><b>选定的时间为：</b></font><span id="Cp10_jdstr">2008-08-01 10:14:30</span>TD
-       <b>JDE</b>=<input class="input-small" id="Cp10_jd" type=text size=14 value=2454679.926741>
-       步长(可负)<input class="input-small" type=text id="Cp10_step" size=7 value=6585.32>天
+       <b>JDE</b>=<input class="form-control" id="Cp10_jd" type=text size=14 value=2454679.926741>
+       步长(可负)<input class="form-control" type=text id="Cp10_step" size=7 value=6585.32>天
        <select id="page10-step">
         <option value=6585.32>默认</option>
         <option value=29.5306>朔望</option>
@@ -289,7 +288,7 @@
        <button class="btn" id="page10-borderup" ng-click="page10borderup()">+&gt;</button>
 
        黄/赤<input type=checkbox id=Cp10_hc>
-       步数<input class="input-small" type=text id="Cp10_bn" size=3 value=10>
+       步数<input class="form-control" type=text id="Cp10_bn" size=3 value=10>
        <button class="btn" id="page10-enter" ng-click="page10enter()">确定</button>
        <button class="btn" id="page10-clear" ng-click="page10clear()">清除</button>
 
@@ -316,16 +315,16 @@
        </select>
        <button class="btn" id="page10-xzenter" ng-click="page10xzenter()">确定</button>
 
-       <b>JDE</b>=<input class="input-small" id="Cp10_jd2" type=text size=13 value=2454679.926741>
-       <b>步长</b><input class="input-small" id="Cp10_step2" type=text size=4 value="180">秒
+       <b>JDE</b>=<input class="form-control" id="Cp10_jd2" type=text size=13 value=2454679.926741>
+       <b>步长</b><input class="form-control" id="Cp10_step2" type=text size=4 value="180">秒
        <button class="btn" id="page10-shadowdown" ng-click="page10shadowdown()">-</button>
        <button class="btn" id="page10-shadow" ng-click="page10shadow()">影子</button>
        <button class="btn" id="page10-shadowup" ng-click="page10shadowup()">+</button><br>
        <b>局部显示(0.1球半径为单位)</b>
-       x0<input class="input-small" id="Cp10_x0" type=text size=4 value="0">
-       y0<input class="input-small" id="Cp10_y0" type=text size=4 value="0">
-       dx<input class="input-small" id="Cp10_dx" type=text size=4 value="10">
-       dy<input class="input-small" id="Cp10_dy" type=text size=4 value="10">
+       x0<input class="form-control" id="Cp10_x0" type=text size=4 value="0">
+       y0<input class="form-control" id="Cp10_y0" type=text size=4 value="0">
+       dx<input class="form-control" id="Cp10_dx" type=text size=4 value="10">
+       dy<input class="form-control" id="Cp10_dy" type=text size=4 value="10">
 
        </td></tr>
        <tr><td align=center><v:group id="Can3" style="width:700;height:400;position:relative"/></td></tr>
@@ -335,32 +334,32 @@
       </table>
       </div>
       <div id="page11" class="tab-pane">
-        经度 <input class="input-small" id="Cp11_J" type=text value="0">
-       纬度 <input class="input-small" id="Cp11_W" type=text value="0"> 公元
-       <input class="input-small" type=text id="Cml_y" value='2008'>年
-       <input class="input-small" type=text id="Cml_m" value='01'>月
-       <input class="input-small" type=text id="Cml_d" value='01'>日
-       <input class="input-small" type=text id="Cml_his" value='12:00:00'>
+        经度 <input class="form-control" id="Cp11_J" type=text value="0">
+       纬度 <input class="form-control" id="Cp11_W" type=text value="0"> 公元
+       <input class="form-control" type=text id="Cml_y" value='2008'>年
+       <input class="form-control" type=text id="Cml_m" value='01'>月
+       <input class="form-control" type=text id="Cml_d" value='01'>日
+       <input class="form-control" type=text id="Cml_his" value='12:00:00'>
        <button class="btn" id="page11-enter" ng-click="page11enter()">确定</button>
        <button class="btn" id="page11-now" ng-click="page11now()">此刻</button>
        <button class="btn" id="page11-here" ng-click="page11here()">此地</button>
        <div id="Cal6"></div>
       </div>
       <div id="page12" class="tab-pane">
-        儒略日计算1： JD <input class="input-small" id=GJ1_jd type=text size=10 value="2451545"> 
+        儒略日计算1： JD <input class="form-control" id=GJ1_jd type=text size=10 value="2451545"> 
        <button class="btn" id="page12-enter" ng-click="page12enter()">确定</button> 
        <span id=GJ1_out style="font-size:16;color:red"></span><br>
-       儒略日计算2：公元<input class="input-small" id="GJ1_y"  type=text size=4 value=2008>年
-       <input class="input-small" id="GJ1_m"  type=text size=2 value=1 maxleng=2>月
-       <input class="input-small" id="GJ1_d"  type=text size=2 value=1>日
-       <input class="input-small" id="GJ1_t"  type=text size=8 value="12:00:00">  
+       儒略日计算2：公元<input class="form-control" id="GJ1_y"  type=text size=4 value=2008>年
+       <input class="form-control" id="GJ1_m"  type=text size=2 value=1 maxleng=2>月
+       <input class="form-control" id="GJ1_d"  type=text size=2 value=1>日
+       <input class="form-control" id="GJ1_t"  type=text size=8 value="12:00:00">  
        <button class="btn" id="page12-convertday" ng-click="page12convertday()">转儒略日</button>
        <button class="btn" id="page12-removeup" ng-click="page12removeup()">减去上行</button>
        <button class="btn" id="page12-addday" ng-click="page12addday()">年内积日</button><br>
-       儒略日计算3：公元<input class="input-small" id="GJ1_y2" type=text size=4 value=2000>年
-       <input class="input-small" id="GJ1_m2" type=text size=2 value=1 maxleng=2>月
-       <input class="input-small" id="GJ1_d2" type=text size=2 value=1>日
-       <input class="input-small" id="GJ1_t2" type=text size=8 value="12:00:00">  
+       儒略日计算3：公元<input class="form-control" id="GJ1_y2" type=text size=4 value=2000>年
+       <input class="form-control" id="GJ1_m2" type=text size=2 value=1 maxleng=2>月
+       <input class="form-control" id="GJ1_d2" type=text size=2 value=1>日
+       <input class="form-control" id="GJ1_t2" type=text size=8 value="12:00:00">  
        <button class="btn" id="page12-rowminus" ng-click="page12rowminus()">两行相减</button>
        <hr>
        <button class="btn" id="page12-6c" ng-click="page126c()">6边C</button>
@@ -369,9 +368,9 @@
        <button class="btn" id="page12-4s" ng-click="page124s()">4边S</button>
        <button class="btn" id="page12-6fast" ng-click="page126fast()">6边快速</button>
        <button class="btn" id="page12-4fast" ng-click="page124fast()">4边快速</button>
-       半径R<input class="input-small" type=text id=GJ2_r size=10 value='100000000'>毫
+       半径R<input class="form-control" type=text id=GJ2_r size=10 value='100000000'>毫
        <button class="btn" id="page12-zuchongzhi" ng-click="page12zuchongzhi()">祖冲之</button>
-       <input class="input-small" type=text id=GJ2_N size=4 maxlength=5 value='100'>位
+       <input class="form-control" type=text id=GJ2_N size=4 maxlength=5 value='100'>位
        <button class="btn" id="page12-morden" ng-click="page12morden()">现代</button>
        <button class="btn" id="page12-morden2" ng-click="page12morden2()">现代2</button>
        <button class="btn" id="page12-clear" ng-click="page12clear()">清除</button>
@@ -438,23 +437,6 @@
 
 </div>
 
-<div class="row">
-    <div class="span4">
-      <!--本地时间--><span id="Clock1" style='color:red;font-weight:bold'></span>
-    </div>
-    <div class="span4">
-      <!--时区选择--><select id="Sel_zhou" ></select> 
-      <select id="Sel_dq" ></select><br>
-      <!--外地时间--><span id="Sel_sqsm"></span>&nbsp;
-      <span id="Clock2" style='font-weight:bold;color:blue'></span>
-    </div>
-    <div class="span4">
-      <!--经纬选择-->
-      <select id="Sel1" ></select> 
-      <select id="Sel2" ></select><br>
-      <!--经度纬度--><span id="Cal_zdzb"></span>
-    </div>
-</div>
 </div>
 
 <div class="footer">
