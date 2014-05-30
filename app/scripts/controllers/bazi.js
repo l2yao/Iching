@@ -36,10 +36,17 @@ angular.module('ichingApp')
         JD.Y = $scope.curDatetime.getFullYear();
         JD.M = $scope.curDatetime.getMonth() + 1;
         JD.D = $scope.curDatetime.getDate();
-        var t = $scope.curDatetime.getHours();
+        JD.h = $scope.curDatetime.getHours();
+        JD.m = $scope.curDatetime.getMinutes();
+        JD.s = $scope.curDatetime.getSeconds();
+        var t = JD.h + JD.m/60 + JD.s/3600 + 4;
         var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
-        obb.mingLiBaZi(jd + curTZ/24-J2000, $scope.longitude/radd, $scope.sizhu );
+        obb.mingLiBaZi(jd -J2000, $scope.longitude/radd, $scope.sizhu );
         
+        $scope.curDatetime.setHours($scope.curDatetime.getHours() - 12);
+        JD.D = $scope.curDatetime.getDate();
+        JD.h = $scope.curDatetime.getHours();
+
         var d0 = int2(JD.toJD()) - J2000;
         if(!SSQ.ZQ.length || d0<SSQ.ZQ[0] || d0>=SSQ.ZQ[24]) {
             SSQ.calcY(d0);
