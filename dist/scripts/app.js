@@ -11,8 +11,8 @@ angular
     
     $routeProvider
       .when('/', {
-        templateUrl: 'views/calendar.html',
-        controller: 'calendar'
+        templateUrl: 'views/bagong.html',
+        controller: 'bagong'
       })
       .when('/bagong', {
         templateUrl: 'views/bagong.html',
@@ -33,6 +33,10 @@ angular
       .when('/calendar', {
         templateUrl: 'views/calendar.html',
         controller: 'calendar'
+      })
+      .when('/tools', {
+        templateUrl: 'views/tools.html',
+        controller: 'tools'
       })
       .otherwise({
         redirectTo: '/'

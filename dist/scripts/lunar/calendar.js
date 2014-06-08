@@ -780,7 +780,7 @@ function getLunar(){ //月历页面生成
   var Bm  = Cal_m.value-0;
   if(By == -10000) return;
 
-  if(!lun.dn || lun.y!=By || lun.m!=Bm){  //月历未计算
+  //if(!lun.dn || lun.y!=By || lun.m!=Bm){  //月历未计算
     lun.yueLiHTML(By,Bm,curJD);
     Cal2.innerHTML = lun.pg1;
     Cal4.innerHTML = lun.pg2;
@@ -790,7 +790,7 @@ function getLunar(){ //月历页面生成
     $('span.yueli_day').mouseleave(function(){
       showMessD(-1);
     });
-  }
+  //}
 
   showMessD(-2);
 }
