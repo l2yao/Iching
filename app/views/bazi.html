@@ -11,10 +11,7 @@
 
 <div class="jumbotron">
     <h3>填写出生时间:</h3>
-    <select class="input-lg">
-    <option>公历</option>
-    <option>农历</option>
-    </select>
+    <select class="input-lg" ng-model="curCalendarType" ng-options="calendar.name for calendar in calendarTypes"></select>
     <span class="add-on">时间</span>
     <input class="input-lg" type="date" id="input-date" ng-model="curDateString">
     <input class="input-lg" type="time" id="input-time" ng-model="curTimeString">

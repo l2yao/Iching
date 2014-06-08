@@ -2,6 +2,11 @@
 
 angular.module('ichingApp')
   .controller('bazi', function ($scope, $filter) {
+    $scope.calendarTypes = [
+    {name: '公历'},
+    {name: '农历'}
+    ];
+    $scope.curCalendarType = $scope.calendarTypes[0]
 
   	$scope.getCurLocation = function(){
   		if (navigator.geolocation)
@@ -21,7 +26,7 @@ angular.module('ichingApp')
 
         $scope.curDatetime = now;
         $scope.curDateString = $filter("date")(now, 'yyyy-MM-dd');
-        $scope.curTimeString = $filter("date")(now, 'HH:mm:ss');;
+        $scope.curTimeString = $filter("date")(now, 'HH:mm:ss');
   	}
 
   	$scope.getCurTime();
@@ -33,16 +38,19 @@ angular.module('ichingApp')
   		var timeArry = $scope.curTimeString.split(':');
   		$scope.curDatetime = new Date(dateArry[0],dateArry[1]-1,dateArry[2],timeArry[0],timeArry[1],timeArry[2]);
 
-        JD.Y = $scope.curDatetime.getFullYear();
-        JD.M = $scope.curDatetime.getMonth() + 1;
-        JD.D = $scope.curDatetime.getDate();
-        JD.h = $scope.curDatetime.getHours();
-        JD.m = $scope.curDatetime.getMinutes();
-        JD.s = $scope.curDatetime.getSeconds();
-        var t = JD.h + JD.m/60 + JD.s/3600 + 4;
-        var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
-        obb.mingLiBaZi(jd -J2000, $scope.longitude/radd, $scope.sizhu );
-        
+      JD.Y = $scope.curDatetime.getFullYear();
+      JD.M = $scope.curDatetime.getMonth() + 1;
+      JD.D = $scope.curDatetime.getDate();
+      JD.h = $scope.curDatetime.getHours();
+      JD.m = $scope.curDatetime.getMinutes();
+      JD.s = $scope.curDatetime.getSeconds();
+
+      var mk, nlr = 0; 
+      var t = JD.h + JD.m/60 + JD.s/3600 + 4;
+      var jd = JD.JD(year2Ayear(JD.Y), JD.M, JD.D + t/24);
+      obb.mingLiBaZi(jd -J2000, $scope.longitude/radd, $scope.sizhu );
+      
+      if($scope.curCalendarType.name === '公历'){
         $scope.curDatetime.setHours($scope.curDatetime.getHours() - 12);
         JD.D = $scope.curDatetime.getDate();
         JD.h = $scope.curDatetime.getHours();
@@ -51,15 +59,30 @@ angular.module('ichingApp')
         if(!SSQ.ZQ.length || d0<SSQ.ZQ[0] || d0>=SSQ.ZQ[24]) {
             SSQ.calcY(d0);
         }
-        var mk = int2( (d0-SSQ.HS[0])/30 );  
+        mk = int2( (d0-SSQ.HS[0])/30 );  
         if(mk<13 && SSQ.HS[mk+1]<=d0) mk++; //农历所在月的序数
-        var nlr = d0 - SSQ.HS[mk];
+        nlr = d0 - SSQ.HS[mk];
         
         if(mk <2) {
             mk += 11;
         }else{
             mk -= 1;
         }
+      }else if($scope.curCalendarType.name === '农历'){
+        mk = JD.M ;
+        nlr = JD.D - 2;
+
+        var lunar_mk;
+        if(mk > 10){
+          lunar_mk = mk - 11;
+        }else{
+          lunar_mk = mk + 1;
+        }
+        var d0 = int2(JD.toJD()) - J2000;
+        SSQ.calcY(d0);
+        var lunar_d0 = nlr + SSQ.HS[lunar_mk] + (t + 12)/24;
+        obb.mingLiBaZi(lunar_d0, $scope.longitude/radd, $scope.sizhu );
+      }
         $scope.nongli_yue = (mk-1) % 8;
         $scope.nongli_ri = (nlr+1) % 8;
         
