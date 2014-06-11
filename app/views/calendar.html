@@ -11,28 +11,18 @@
 </div>
 
 <div class="jumbotron">
-  <table class="table"><!--月历表-->
-     <tr>
-      <td width="25%" valign="top">
-        <!--日月出没--><div class="alert" id="Cal5"></div>
-        <!--月相节气--><div class="alert" id="Cal4" style="display: none;"></div>
-        <!--农历信息--><div class="alert" id="Cal_pan_in"></div>
-        <div id="Cal_pan"></div>
-      </td>
-      <td width="75%">
-      公元
       <input class="input-lg" type="number" id="Cal_y">年
       <input class="input-lg" type="number" id="Cal_m">月
-      <div class="btn-group">
       <button class="btn" id="page1-yearup" ng-click="page1yearup()">年↑</button>
       <button class="btn" id="page1-yeardown" ng-click="page1yeardown()">年↓</button>
       <button class="btn" id="page1-monthup" ng-click="page1monthup()">月↑</button>
       <button class="btn" id="page1-monthdown" ng-click="page1monthdown()">月↓</button>
       <button class="btn" id="page1-today" ng-click="page1today()">今</button>
-      </div><br>
       <div id="Cal2"></div>
-      </td></tr>
-    </table>
+      <!--日月出没--><div class="bg-info" id="Cal5" style="display: none;"></div>
+      <!--月相节气--><div class="bg-info" id="Cal4" style="display: none;"></div>
+      <!--农历信息--><div class="bg-info" id="Cal_pan_in"></div>
+      <div id="Cal_pan"></div>
 </div>
 
 <div class="footer">
