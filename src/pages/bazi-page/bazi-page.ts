@@ -30,7 +30,7 @@ export class BaziPage {
         var solarInfo = lunarCalendar.lunarToSolar(dateArray[0], dateArray[1], dateArray[2]);
         lunarInfo = lunarCalendar.solarToLunar(solarInfo.year, solarInfo.month, solarInfo.day);
       }
-      var upper_yao = iching.getXianTianBaGua(lunarInfo.lunarDay);
+      var upper_yao = iching.getXianTianBaGua(Math.round(lunarInfo.lunarDay));
       var lower_yao = iching.getXianTianBaGua(lunarInfo.lunarMonth);
       var hexagram = iching.trigram2hexagram(upper_yao, lower_yao);
       var gong = iching.getGongName(hexagram);
